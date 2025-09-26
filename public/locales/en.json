@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "home": "HOME",
+    "thoughts": "THOUGHTS",
+    "talks": "TALKS",
+    "contact": "CONTACT"
+  },
+  "home": {
+    "title": "I'm Iván Olivares — a senior software engineer, vinyl enthusiast, and dog dad.",
+    "newArticle": "New",
+    "articleTitle": "Building my v2025 website with V0: Thoughts on using AI for prototyping and shipping",
+    "currentWork": "I'm currently working as a Tech Director at Globant, based in Santiago, Chile. I also enjoy sharing my knowledge and insights with the community through articles and talks.",
+    "background": "I started in the development world in 2004, experimenting with computers (often breaking things) and learning to program by researching online. At just 15, I built my first website — and never stopped. In 2010, I launched my first entrepreneurial venture with my first clients, and fell even more in love with technology.",
+    "mission": "My personal mission is to push the world forward by building bridges between people and technology."
+  },
+  "footer": {
+    "connect": "Let's connect!",
+    "contactText": "If you'd like to chat about building products, development, consulting, or software design, get in touch at hi@iolivares.com or reach out to me on X @ivolivares.",
+    "followX": "Follow me on X",
+    "collaborateGithub": "Let's collaborate on GitHub",
+    "loveToTalk": "Love to talk?",
+    "copyright": "©2025 Iván Olivares",
+    "madeWith": "Vibecoded using v0.dev from 🇨🇱"
+  },
+  "language": {
+    "english": "English",
+    "spanish": "Español"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "home": "INICIO",
+    "thoughts": "IDEAS",
+    "talks": "CHARLAS",
+    "contact": "CONTACTO"
+  },
+  "home": {
+    "title": "Soy Iván Olivares — ingeniero de software senior, entusiasta de los vinilos y papá perruno.",
+    "newArticle": "Nuevo",
+    "articleTitle": "Construyendo mi sitio web v2025 con V0: Reflexiones sobre el uso de IA para prototipado",
+    "currentWork": "Actualmente trabajo como Director de Tecnología en Globant, con base en Santiago, Chile. También disfruto compartir mi conocimiento y experiencias con la comunidad a través de artículos y charlas.",
+    "background": "Comencé en el mundo del desarrollo en 2004, experimentando con computadoras (rompiendo cosas) y aprendiendo a programar investigando en internet. Con solo 15 años, construí mi primer sitio web — y nunca paré. En 2010, lancé mi primer emprendimiento con mis primeros clientes y me enamoré aún más de la tecnología.",
+    "mission": "Mi misión personal es impulsar el mundo hacia adelante construyendo puentes entre las personas y la tecnología."
+  },
+  "footer": {
+    "connect": "¡Conectemos!",
+    "contactText": "Si quieres conversar sobre creación de productos, desarrollo, consultoría o diseño de software, escríbeme a hi@iolivares.com o contáctame en X @ivolivares.",
+    "followX": "Sígueme en X",
+    "collaborateGithub": "Colaboremos en GitHub",
+    "loveToTalk": "¿Te gusta conversar?",
+    "copyright": "©2025 Iván Olivares",
+    "madeWith": "Vibecodeado usando v0.dev desde 🇨🇱"
+  },
+  "language": {
+    "english": "English",
+    "spanish": "Español"
+  }
+}
