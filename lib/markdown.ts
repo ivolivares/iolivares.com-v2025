@@ -14,13 +14,6 @@ export interface Post extends PostMetadata {
 
 const posts: Post[] = [
   {
-    slug: "future-of-web-development",
-    title: "The Future of Web Development",
-    date: "2024-01-15",
-    readTime: "8 min",
-    excerpt: "Exploring emerging trends and technologies that will shape the next decade of web development.",
-    tags: ["web development", "future", "technology"],
-    published: true,
     content: `# The Future of Web Development
 
 The web development landscape is evolving at an unprecedented pace. As we look toward the future, several key trends are emerging that will fundamentally reshape how we build and interact with web applications.
@@ -44,15 +37,15 @@ Modern frameworks are focusing on developer experience, performance optimization
 ## Conclusion
 
 The future of web development is bright, with new technologies enabling more powerful, efficient, and user-friendly applications than ever before.`,
+    date: "2024-01-15",
+    excerpt: "Exploring emerging trends and technologies that will shape the next decade of web development.",
+    published: true,
+    readTime: "8 min",
+    slug: "future-of-web-development",
+    tags: ["web development", "future", "technology"],
+    title: "The Future of Web Development",
   },
   {
-    slug: "design-systems-at-scale",
-    title: "Building Design Systems at Scale",
-    date: "2024-01-10",
-    readTime: "12 min",
-    excerpt: "A comprehensive guide to creating and maintaining design systems that grow with your organization.",
-    tags: ["design systems", "ui/ux", "scalability"],
-    published: true,
     content: `# Building Design Systems at Scale
 
 Design systems have become essential for organizations looking to maintain consistency and efficiency across their digital products. However, building a design system that scales effectively requires careful planning and execution.
@@ -80,15 +73,15 @@ Foster a community around your design system. Encourage feedback, contributions,
 ## Measuring Success
 
 Establish metrics to measure the success of your design system, including adoption rates, consistency improvements, and development velocity gains.`,
+    date: "2024-01-10",
+    excerpt: "A comprehensive guide to creating and maintaining design systems that grow with your organization.",
+    published: true,
+    readTime: "12 min",
+    slug: "design-systems-at-scale",
+    tags: ["design systems", "ui/ux", "scalability"],
+    title: "Building Design Systems at Scale",
   },
   {
-    slug: "performance-first-development",
-    title: "Performance-First Development",
-    date: "2024-01-05",
-    readTime: "10 min",
-    excerpt: "Why performance should be a primary consideration in every development decision, not an afterthought.",
-    tags: ["performance", "optimization", "web vitals"],
-    published: true,
     content: `# Performance-First Development
 
 In today's fast-paced digital world, performance isn't just a nice-to-have—it's a fundamental requirement that directly impacts user experience, business metrics, and search rankings.
@@ -116,15 +109,15 @@ Continuous performance monitoring using tools like Lighthouse, WebPageTest, and 
 ## Performance Budget
 
 Establishing and maintaining a performance budget ensures that performance remains a priority throughout the development lifecycle.`,
+    date: "2024-01-05",
+    excerpt: "Why performance should be a primary consideration in every development decision, not an afterthought.",
+    published: true,
+    readTime: "10 min",
+    slug: "performance-first-development",
+    tags: ["performance", "optimization", "web vitals"],
+    title: "Performance-First Development",
   },
   {
-    slug: "art-of-code-review",
-    title: "The Art of Code Review",
-    date: "2023-12-28",
-    readTime: "7 min",
-    excerpt: "Best practices for conducting effective code reviews that improve code quality and team collaboration.",
-    tags: ["code review", "collaboration", "best practices"],
-    published: true,
     content: `# The Art of Code Review
 
 Code reviews are one of the most valuable practices in software development, serving as a quality gate, knowledge sharing mechanism, and collaboration tool all in one.
@@ -152,6 +145,13 @@ Leverage automated tools for style checking, testing, and security scanning to f
 ## Learning and Growth
 
 Use code reviews as learning opportunities for both reviewers and authors to share knowledge and improve overall team capabilities.`,
+    date: "2023-12-28",
+    excerpt: "Best practices for conducting effective code reviews that improve code quality and team collaboration.",
+    published: true,
+    readTime: "7 min",
+    slug: "art-of-code-review",
+    tags: ["code review", "collaboration", "best practices"],
+    title: "The Art of Code Review",
   },
 ]
 
@@ -170,7 +170,7 @@ export function getPostBySlug(slug: string): Post | null {
 export function formatDate(dateString: string): string {
   const date = new Date(dateString)
   return date.toLocaleDateString("en-US", {
-    year: "numeric",
     month: "short",
+    year: "numeric",
   })
 }

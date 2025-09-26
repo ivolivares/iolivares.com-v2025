@@ -1,11 +1,11 @@
 "use client"
 
+import { Search } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
-import { CommandPalette } from "./command-palette"
-import { Search } from "lucide-react"
 import { useTranslation } from "@/hooks/use-translation"
+import { CommandPalette } from "./command-palette"
 
 export default function Navigation() {
   const [isDark, setIsDark] = useState(true)
@@ -27,7 +27,7 @@ export default function Navigation() {
 
   const navItems = [
     { href: "/", label: t("nav.home") || "ABOUT" },
-    { href: "/thoughts", label: t("nav.thoughts") || "THOUGHTS", hasNotification: true },
+    { hasNotification: true, href: "/thoughts", label: t("nav.thoughts") || "THOUGHTS" },
     { href: "/talks", label: t("nav.talks") || "TALKS" },
     { href: "/connect", label: t("nav.contact") || "CONTACT" },
   ]

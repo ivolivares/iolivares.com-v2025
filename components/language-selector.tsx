@@ -2,7 +2,7 @@
 
 import { Globe } from "lucide-react"
 import { useState } from "react"
-import { useTranslation } from "@/hooks/use-translation"
+import { Language, useTranslation } from "@/hooks/use-translation"
 
 export function LanguageSelector() {
   const [isOpen, setIsOpen] = useState(false)
@@ -11,11 +11,11 @@ export function LanguageSelector() {
   console.log("[v0] LanguageSelector - language:", language, "setLanguage type:", typeof setLanguage)
 
   const languages = [
-    { code: "en", name: "English", flag: "🇺🇸" },
-    { code: "es", name: "Español", flag: "🇪🇸" },
+    { code: "en", flag: "🇺🇸", name: "English" },
+    { code: "es", flag: "🇪🇸", name: "Español" },
   ]
 
-  const switchLanguage = (newLocale: string) => {
+  const switchLanguage = (newLocale: Language) => {
     console.log("[v0] Switching language to:", newLocale)
     console.log("[v0] setLanguage function:", setLanguage)
     if (typeof setLanguage === "function") {
@@ -55,7 +55,7 @@ export function LanguageSelector() {
             {languages.map((lang) => (
               <button
                 key={lang.code}
-                onClick={() => switchLanguage(lang.code)}
+                onClick={() => switchLanguage(lang.code as unknown as Language)}
                 className={`w-full flex items-center gap-3 px-4 py-2 text-sm text-left hover:bg-muted/50 transition-colors first:rounded-t-md last:rounded-b-md ${
                   language === lang.code ? "text-foreground font-medium" : "text-muted-foreground"
                 }`}

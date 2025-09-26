@@ -1,7 +1,21 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import {
+  Briefcase,
+  Camera,
+  Disc3,
+  ExternalLink,
+  FileText,
+  Home,
+  Layers,
+  Mail,
+  MessageSquare,
+  Mic,
+  Settings,
+  User,
+} from "lucide-react"
 import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
 import {
   CommandDialog,
   CommandEmpty,
@@ -10,20 +24,6 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command"
-import {
-  Home,
-  Briefcase,
-  MessageSquare,
-  Mail,
-  ExternalLink,
-  Layers,
-  Camera,
-  Settings,
-  Mic,
-  User,
-  FileText,
-  Disc3,
-} from "lucide-react"
 
 interface CommandPaletteProps {
   open?: boolean

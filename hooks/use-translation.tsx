@@ -1,11 +1,11 @@
 "use client"
 
-import { createContext, useContext, useState, useEffect, type ReactNode } from "react"
+import { createContext, type ReactNode, useContext, useEffect, useState } from "react"
 
-type Language = "en" | "es"
+export type Language = "en" | "es"
 
 interface Translations {
-  [key: string]: any
+  [key: string]: Language
 }
 
 interface TranslationContextType {
@@ -67,10 +67,11 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
     }
 
     const keys = key.split(".")
-    let value: any = translations
+    let value: Translations = translations
 
     for (const k of keys) {
       if (value && typeof value === "object" && k in value) {
+        // @ts-expect-error
         value = value[k]
       } else {
         console.log(`[v0] Translation key not found: ${key}`)
@@ -87,7 +88,7 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <TranslationContext.Provider value={{ language, setLanguage, t, isLoading }}>
+    <TranslationContext.Provider value={{ isLoading, language, setLanguage, t }}>
       {children}
     </TranslationContext.Provider>
   )
