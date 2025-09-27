@@ -10,7 +10,7 @@ interface Translations {
 
 interface TranslationContextType {
   language: Language
-  setLanguage: (lang: Language) => void
+  setLanguage: (lang: Language, callback?: Function) => void
   t: (key: string) => string
   isLoading: boolean
 }
@@ -32,7 +32,7 @@ export function TranslationProvider({
   // Handle hydration and load language from localStorage
   useEffect(() => {
     setIsHydrated(true)
-    
+
     // Only access localStorage after hydration
     const savedLanguage = localStorage.getItem("language") as Language
     if (savedLanguage && (savedLanguage === "en" || savedLanguage === "es")) {
@@ -68,10 +68,13 @@ export function TranslationProvider({
     loadTranslations()
   }, [language, initialTranslations])
 
-  const setLanguage = (lang: Language) => {
+  const setLanguage = (lang: Language, callback?: Function) => {
     setLanguageState(lang)
     if (isHydrated) {
       localStorage.setItem("language", lang)
+    }
+    if (callback) {
+      callback()
     }
   }
 

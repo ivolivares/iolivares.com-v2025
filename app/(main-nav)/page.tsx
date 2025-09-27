@@ -106,7 +106,16 @@ export default function Home() {
             <div className="space-y-6">
               <h2 className="text-2xl sm:text-3xl font-light">{t("footer.connect")}</h2>
 
-              <p className="text-foreground/70 max-w-2xl leading-relaxed">{t("footer.contactText")}</p>
+              <p className="text-foreground/70 max-w-2xl leading-relaxed">
+                {t("footer.contactText")}
+                {` `}
+                <a
+                  href="https://x.com/intent/follow?screen_name=ivolivares&from=iolivares.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+                >@ivolivares</a>
+              </p>
 
               <div className="space-y-4">
                 {/* Wavy line decoration */}
@@ -115,7 +124,7 @@ export default function Home() {
                 {/* Three links with arrow icons */}
                 <div className="flex flex-wrap gap-6 text-sm">
                   <a
-                    href="https://x.com/ivolivares"
+                    href="https://x.com/intent/follow?screen_name=ivolivares&from=iolivares.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
@@ -167,14 +176,18 @@ export default function Home() {
             </div>
 
             <div className="flex justify-between items-center">
-              <div className="text-center space-y-2">
-                <div className="text-sm text-muted-foreground">{t("footer.copyright")}</div>
-                <div className="text-xs text-muted-foreground/70">{t("footer.madeWith")}</div>
+              <div className="text-sm text-left text-muted-foreground">
+                &copy; Iván Olivares Rojas 2004-{(new Date()).getFullYear()}
+                {` `}
+                {t("footer.copyright")}
               </div>
 
               <div className="flex-shrink-0">
                 <LanguageSelector />
               </div>
+            </div>
+            <div className="flex justify-center items-center">
+              <div className="text-xs text-center w-full text-muted-foreground/70">{t("footer.madeWith")}</div>
             </div>
           </div>
         </footer>

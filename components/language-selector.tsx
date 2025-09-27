@@ -3,12 +3,12 @@
 import { Globe } from "lucide-react"
 import { useState } from "react"
 import { Language, useTranslation } from "@/hooks/use-translation"
+import { useRouter } from "next/navigation"
 
 export function LanguageSelector() {
   const [isOpen, setIsOpen] = useState(false)
   const { language, setLanguage } = useTranslation()
-
-  console.log("[v0] LanguageSelector - language:", language, "setLanguage type:", typeof setLanguage)
+  const router = useRouter()
 
   const languages = [
     { code: "en", flag: "🇺🇸", name: "English" },
@@ -16,14 +16,10 @@ export function LanguageSelector() {
   ]
 
   const switchLanguage = (newLocale: Language) => {
-    console.log("[v0] Switching language to:", newLocale)
-    console.log("[v0] setLanguage function:", setLanguage)
-    if (typeof setLanguage === "function") {
-      setLanguage(newLocale)
+    setLanguage(newLocale, () => {
+      router.refresh()
       setIsOpen(false)
-    } else {
-      console.error("[v0] setLanguage is not a function:", typeof setLanguage)
-    }
+    })
   }
 
   const currentLanguage = languages.find((lang) => lang.code === language) || languages[0]
