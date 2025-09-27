@@ -5,30 +5,28 @@
 
 export function startViewTransition(callback: () => void) {
   // Check if View Transitions API is supported
-  if ('startViewTransition' in document) {
+  if ("startViewTransition" in document) {
     // biome-ignore lint/suspicious/noExplicitAny: View Transitions API is experimental
-    return (document as any).startViewTransition(callback);
+    return (document as any).startViewTransition(callback)
   } else {
     // Fallback for older browsers - just execute the callback
-    callback();
-    return Promise.resolve();
+    callback()
+    return Promise.resolve()
   }
 }
 
 /**
  * Higher-order function to wrap any function with view transitions
  */
-export function withViewTransition<T extends unknown[]>(
-  fn: (...args: T) => void
-) {
+export function withViewTransition<T extends unknown[]>(fn: (...args: T) => void) {
   return (...args: T) => {
-    startViewTransition(() => fn(...args));
-  };
+    startViewTransition(() => fn(...args))
+  }
 }
 
 /**
  * Check if View Transitions API is supported
  */
 export function supportsViewTransitions(): boolean {
-  return typeof document !== 'undefined' && 'startViewTransition' in document;
+  return typeof document !== "undefined" && "startViewTransition" in document
 }

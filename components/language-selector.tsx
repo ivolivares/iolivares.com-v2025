@@ -1,9 +1,9 @@
 "use client"
 
 import { Globe } from "lucide-react"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { Language, useTranslation } from "@/hooks/use-translation"
-import { useRouter } from "next/navigation"
 
 export function LanguageSelector() {
   const [isOpen, setIsOpen] = useState(false)

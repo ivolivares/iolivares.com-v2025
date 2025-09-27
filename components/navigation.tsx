@@ -20,16 +20,16 @@ export default function Navigation() {
     const stored = localStorage.getItem("theme")
     const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches
     const theme = stored || (systemDark ? "dark" : "light")
-    
+
     setIsDark(theme === "dark")
     setMounted(true)
-    
+
     document.documentElement.classList.toggle("dark", theme === "dark")
   }, [])
 
   const toggleTheme = withViewTransition(() => {
     if (!mounted) return
-    
+
     const newTheme = !isDark
     setIsDark(newTheme)
     document.documentElement.classList.toggle("dark", newTheme)

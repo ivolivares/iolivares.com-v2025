@@ -202,10 +202,64 @@
       opacity: 1 !important;
       transform: none !important;
     }
-    
     ::view-transition-old(*),
     ::view-transition-new(*) {
       animation: none !important;
     }
+  }
+
+  /* Theoretically email protection */
+  .email-protection {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+  }
+
+  /* Link Animated */
+  .link-animated {
+    @apply cursor-pointer text-lg relative whitespace-nowrap text-[color:var(--foreground)] before:hidden;
+  }
+  .link-animated::before,
+  .link-animated::after {
+    @apply absolute w-full h-px pointer-events-none left-0 top-full;
+  }
+  .link-animated:hover .link__graphic--stroke path {
+    stroke-dashoffset: 0;
+  }
+  .link-animated::before {
+    @apply content-none;
+  }
+  .link__graphic {
+    @apply absolute pointer-events-none fill-none stroke-[1px] left-0 top-0;
+  }
+  .link__graphic--stroke path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+  /* Scribbled Variant */
+  .link__graphic--scribble {
+    @apply top-full;
+  }
+  .link__graphic--scribble path {
+    @apply transition-[stroke-dashoffset] duration-[0.6s] ease-[cubic-bezier(0.7,0,0.3,1)];
+  }
+  .link-animated:hover .link__graphic--scribble path {
+    @apply ease-[cubic-bezier(0.8,1,0.7,1)] duration-[0.3s];
+  }
+  /* Arc Variant */
+  .link__graphic--arc {
+    @apply left-[-23%] top-[73%];
+  }
+  .link__graphic--arc path {
+    @apply transition-[stroke-dashoffset] duration-[0.4s] ease-[cubic-bezier(0.7,0,0.3,1)];
+  }
+  .link-animated:hover .link__graphic--arc path {
+    @apply ease-[cubic-bezier(0.8,1,0.7,1)] duration-[0.3s];
+  }
+  /* Slide Variant */
+  .link__graphic--slide {
+    @apply top-[-3px] stroke-[2px] transition-transform duration-[0.7s] ease-[cubic-bezier(0,0.25,0.5,1)];
+  }
+  .link-animated:hover .link__graphic--slide {
+    transform: translate3d(-66.6%, 0, 0);
   }
 }

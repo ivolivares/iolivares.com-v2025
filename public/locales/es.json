@@ -9,13 +9,14 @@
     "title": "Soy Iván Olivares — ingeniero de software senior, entusiasta de los vinilos y papá perruno.",
     "newArticle": "Nuevo",
     "articleTitle": "Construyendo mi sitio web v2025 con V0: Reflexiones sobre el uso de IA para prototipado",
-    "currentWork": "Actualmente trabajo como Director de Tecnología en Globant, con base en Santiago, Chile. También disfruto compartir mi conocimiento y experiencias con la comunidad a través de artículos y charlas.",
+    "currentWork": "Actualmente trabajo como Director de Tecnología en {glb}, con base en Santiago, Chile. También disfruto compartir mi conocimiento y experiencias con la comunidad a través de artículos y",
+    "currentWorkEnd": "charlas",
     "background": "Comencé en el mundo del desarrollo en 2004, experimentando con computadoras (rompiendo cosas) y aprendiendo a programar investigando en internet. Con solo 15 años, construí mi primer sitio web — y nunca paré. En 2010, lancé mi primer emprendimiento con mis primeros clientes y me enamoré aún más de la tecnología.",
     "mission": "Mi misión personal es impulsar el mundo hacia adelante construyendo puentes entre las personas y la tecnología."
   },
   "footer": {
     "connect": "¡Conectemos!",
-    "contactText": "Si quieres conversar sobre creación de productos, desarrollo, consultoría o diseño de software, escríbeme a hi@iolivares.com o contáctame en X",
+    "contactText": "Si quieres conversar sobre creación de productos, desarrollo, consultoría o diseño de software, escríbeme a {email} o contáctame en X",
     "followX": "Sígueme en X",
     "collaborateGithub": "Colaboremos en GitHub",
     "loveToTalk": "¿Te gusta conversar?",
@@ -29,7 +30,13 @@
   "connect": {
     "title": "Conectemos",
     "description": "Siempre interesado en nuevas oportunidades, colaboraciones y conversaciones sobre tecnología y diseño de software.",
-    "email": "hi@ivolivares.com",
+    "email": "{email}",
     "elsewhere": "OTROS LUGARES"
+  },
+  "examples": {
+    "welcome": "¡Bienvenido de vuelta, {name}!",
+    "link": "Visita {site} para más información",
+    "messages": "Tienes {count} mensajes nuevos",
+    "post": "Publicado el {date} por {author}"
   }
 }

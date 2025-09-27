@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { Email } from "@/components/email"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import { useTranslation } from "@/hooks/use-translation"
 
@@ -17,16 +18,18 @@ export default function Connect() {
               <h2 className="text-3xl sm:text-4xl font-light">{t("connect.title")}</h2>
 
               <div className="space-y-6">
-                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                  {t("connect.description")}
-                </p>
+                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">{t("connect.description")}</p>
 
                 <div className="space-y-4">
                   <Link
                     href="mailto:test@example.com"
                     className="group flex items-center gap-3 text-foreground hover:text-muted-foreground transition-colors duration-300"
                   >
-                    <span className="text-base sm:text-lg">{t("connect.email")}</span>
+                    <span className="text-base sm:text-lg">
+                      {t("connect.email", {
+                        email: <Email />,
+                      })}
+                    </span>
                     <svg
                       className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
                       fill="none"

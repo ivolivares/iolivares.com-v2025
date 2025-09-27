@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, type ReactNode, useContext, useEffect, useState } from "react"
+import React, { createContext, type ReactNode, useContext, useEffect, useState } from "react"
 
 export type Language = "en" | "es"
 
@@ -11,7 +11,7 @@ interface Translations {
 interface TranslationContextType {
   language: Language
   setLanguage: (lang: Language, callback?: Function) => void
-  t: (key: string) => string
+  t: (key: string, replacements?: Record<string, ReactNode>) => ReactNode
   isLoading: boolean
 }
 
@@ -19,7 +19,7 @@ const TranslationContext = createContext<TranslationContextType | undefined>(und
 
 export function TranslationProvider({
   children,
-  initialTranslations
+  initialTranslations,
 }: {
   children: ReactNode
   initialTranslations?: Translations
@@ -78,10 +78,23 @@ export function TranslationProvider({
     }
   }
 
-  const t = (key: string): string => {
+  const t = (key: string, replacements?: Record<string, ReactNode>): ReactNode => {
     // Return key as fallback during loading or if translation not found
     if (isLoading || !translations) {
-      return key
+      if (!replacements) return key
+      // If replacements provided, still parse the key for placeholders
+      const parts = key.split(/(\{\w+\})/g)
+      return (
+        <>
+          {parts.map((part, index) => {
+            if (part.startsWith("{") && part.endsWith("}")) {
+              const placeholderKey = part.slice(1, -1)
+              return <React.Fragment key={index}>{replacements[placeholderKey] || part}</React.Fragment>
+            }
+            return part
+          })}
+        </>
+      )
     }
 
     const keys = key.split(".")
@@ -91,11 +104,42 @@ export function TranslationProvider({
       if (value && typeof value === "object" && k in value) {
         value = value[k]
       } else {
-        return key
+        if (!replacements) return key
+        // Parse key for placeholders
+        const parts = key.split(/(\{\w+\})/g)
+        return (
+          <>
+            {parts.map((part, index) => {
+              if (part.startsWith("{") && part.endsWith("}")) {
+                const placeholderKey = part.slice(1, -1)
+                return <React.Fragment key={index}>{replacements[placeholderKey] || part}</React.Fragment>
+              }
+              return part
+            })}
+          </>
+        )
       }
     }
 
-    return typeof value === "string" ? value : key
+    const translated = typeof value === "string" ? value : key
+
+    if (!replacements) {
+      return translated
+    }
+
+    // Parse translated string for placeholders
+    const parts = translated.split(/(\{\w+\})/g)
+    return (
+      <>
+        {parts.map((part, index) => {
+          if (part.startsWith("{") && part.endsWith("}")) {
+            const placeholderKey = part.slice(1, -1)
+            return <React.Fragment key={index}>{replacements[placeholderKey] || part}</React.Fragment>
+          }
+          return part
+        })}
+      </>
+    )
   }
 
   return (

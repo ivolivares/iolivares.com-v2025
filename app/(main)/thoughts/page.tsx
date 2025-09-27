@@ -1,8 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { getAllPosts } from "@/lib/markdown"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
+import { getAllPosts } from "@/lib/markdown"
 
 export default function Thoughts() {
   const sectionRef = useScrollReveal()

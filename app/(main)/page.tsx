@@ -1,7 +1,11 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
+import { Email } from "@/components/email"
+import { I18nDemo } from "@/components/i18n-demo"
 import { LanguageSelector } from "@/components/language-selector"
+import { LinkAnimated } from "@/components/link-animated"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import { useTranslation } from "@/hooks/use-translation"
 
@@ -13,7 +17,7 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
       <div className="absolute inset-0 md:hidden">
         <Image
-          src="/me-draw-transparent.png"
+          src="/headshot-drawn.png"
           alt="Iván Olivares Rojas - drawn by Nanobanana (Gemini by Google)"
           fill
           className="object-contain opacity-10"
@@ -51,7 +55,7 @@ export default function Home() {
                 <div className="hidden md:block flex-shrink-0">
                   <Image
                     src="/headshot-drawn.png"
-                    alt="Iván Olivares"
+                    alt="Iván Olivares Rojas - drawn by Nanobanana (Gemini by Google)"
                     width={160}
                     height={160}
                     className="w-32 h-32 object-contain scale-x-[-1] lg:w-full lg:h-96 rounded-none drop-shadow-[0_25px_25px_rgba(0,0,0,0.5)]"
@@ -91,7 +95,25 @@ export default function Home() {
               </div>
 
               <div className="max-w-2xl space-y-6">
-                <p className="text-lg text-foreground/90 leading-relaxed">{t("home.currentWork")}</p>
+                <p className="text-lg text-foreground/90 leading-relaxed">
+                  {t("home.currentWork", {
+                    glb: (
+                      <LinkAnimated
+                        href="https://www.globant.com/?from=iolivares.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        variant="scribble-green"
+                      >
+                        Globant
+                      </LinkAnimated>
+                    ),
+                  })}
+                  {` `}
+                  <LinkAnimated href="/talks" variant="arc">
+                    {t("home.currentWorkEnd")}
+                  </LinkAnimated>
+                  {`.`}
+                </p>
 
                 <p className="text-muted-foreground">{t("home.background")}</p>
 
@@ -107,14 +129,17 @@ export default function Home() {
               <h2 className="text-2xl sm:text-3xl font-light">{t("footer.connect")}</h2>
 
               <p className="text-foreground/70 max-w-2xl leading-relaxed">
-                {t("footer.contactText")}
+                {t("footer.contactText", {
+                  email: <Email />,
+                })}
                 {` `}
-                <a
+                <LinkAnimated
                   href="https://x.com/intent/follow?screen_name=ivolivares&from=iolivares.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-                >@ivolivares</a>
+                >
+                  @ivolivares
+                </LinkAnimated>
               </p>
 
               <div className="space-y-4">
@@ -177,8 +202,8 @@ export default function Home() {
 
             <div className="flex justify-between items-center">
               <div className="text-sm text-left text-muted-foreground">
-                &copy; Iván Olivares Rojas 2004-{(new Date()).getFullYear()}
-                {` `}
+                &copy; 2004-{new Date().getFullYear()} Iván Olivares Rojas
+                {` · `}
                 {t("footer.copyright")}
               </div>
 

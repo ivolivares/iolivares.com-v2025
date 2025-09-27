@@ -38,7 +38,7 @@ export function useScrollReveal(options: ScrollRevealOptions = {}) {
           entry.target.classList.remove("revealed")
         }
       },
-      { threshold, rootMargin }
+      { rootMargin, threshold }
     )
 
     observer.observe(element)

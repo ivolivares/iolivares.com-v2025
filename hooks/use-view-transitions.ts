@@ -35,9 +35,9 @@ export function useViewTransitions() {
   }
 
   return {
-    navigate,
-    replace,
     back,
     forward,
+    navigate,
+    replace,
   }
 }

@@ -1,7 +1,7 @@
-import fs from 'fs'
-import path from 'path'
+import fs from "fs"
+import path from "path"
 
-export type Language = 'en' | 'es'
+export type Language = "en" | "es"
 
 export interface Translations {
   [key: string]: string | Translations
@@ -12,11 +12,11 @@ export interface Translations {
  * Uses synchronous fs on server-side for SSR compatibility and fetch on client-side.
  */
 export function loadTranslations(language: Language): Translations {
-  if (typeof window === 'undefined') {
+  if (typeof window === "undefined") {
     // Server-side: read from file system synchronously for SSR
     try {
-      const filePath = path.join(process.cwd(), 'public', 'locales', `${language}.json`)
-      const data = fs.readFileSync(filePath, 'utf-8')
+      const filePath = path.join(process.cwd(), "public", "locales", `${language}.json`)
+      const data = fs.readFileSync(filePath, "utf-8")
       return JSON.parse(data)
     } catch (error) {
       console.error(`Error loading translations for ${language} on server:`, error)
@@ -25,7 +25,7 @@ export function loadTranslations(language: Language): Translations {
   } else {
     // Client-side: this would be async, but for direct import we need sync
     // For client-side, use the async version or preload
-    throw new Error('Use loadTranslationsAsync for client-side loading')
+    throw new Error("Use loadTranslationsAsync for client-side loading")
   }
 }
 
@@ -33,7 +33,7 @@ export function loadTranslations(language: Language): Translations {
  * Async version for client-side loading
  */
 export async function loadTranslationsAsync(language: Language): Promise<Translations> {
-  if (typeof window === 'undefined') {
+  if (typeof window === "undefined") {
     // Server-side: use sync version
     return loadTranslations(language)
   } else {
@@ -53,6 +53,6 @@ export async function loadTranslationsAsync(language: Language): Promise<Transla
 
 // Export translations object for direct import (preloaded on server-side)
 export const translations: Record<Language, Translations> = {
-  en: typeof window === 'undefined' ? loadTranslations('en') : {},
-  es: typeof window === 'undefined' ? loadTranslations('es') : {},
+  en: typeof window === "undefined" ? loadTranslations("en") : {},
+  es: typeof window === "undefined" ? loadTranslations("es") : {},
 }

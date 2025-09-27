@@ -2,8 +2,8 @@ import type { Metadata, Viewport } from "next"
 import { Raleway } from "next/font/google"
 import type React from "react"
 import "./globals.css"
-import { META_THEME_COLORS, siteConfig } from "@/config/site"
 import { ThemeProvider } from "@/components/theme-provider"
+import { META_THEME_COLORS, siteConfig } from "@/config/site"
 import { TranslationProvider } from "@/hooks/use-translation"
 import { loadTranslations } from "@/lib/translations"
 
@@ -15,12 +15,13 @@ const raleway = Raleway({
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "https://iolivares.com",
+    canonical: siteConfig.url,
   },
+  applicationName: siteConfig.shortName,
   authors: [
     {
-      name: "Iván Olivares Rojas",
-      url: "https://iolivares.com",
+      name: siteConfig.name,
+      url: siteConfig.url,
     },
   ],
   creator: "Iván Olivares Rojas - iolivares.com",
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
     type: "website",
     url: siteConfig.url,
   },
-  publisher: "Iván Olivares Rojas",
+  publisher: "Iván Olivares Rojas - iolivares.com",
   robots: {
     follow: true,
     googleBot: {
@@ -92,15 +93,13 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
   // Load default language translations server-side
-  const initialTranslations = loadTranslations('en')
+  const initialTranslations = loadTranslations("en")
 
   return (
     <html lang="en" className={`${raleway.variable}`} suppressHydrationWarning>
       <body className="font-sans antialiased">
         <ThemeProvider>
-          <TranslationProvider initialTranslations={initialTranslations}>
-            {children}
-          </TranslationProvider>
+          <TranslationProvider initialTranslations={initialTranslations}>{children}</TranslationProvider>
         </ThemeProvider>
       </body>
     </html>
