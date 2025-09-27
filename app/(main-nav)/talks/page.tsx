@@ -2,8 +2,7 @@
 
 import { FileText, Play, User } from "lucide-react"
 import Link from "next/link"
-import { useEffect } from "react"
-import { usePageAnimation } from "@/hooks/use-page-animation"
+import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import { talksData } from "@/lib/talks-data"
 
 export default function TalksPage() {
@@ -17,13 +16,11 @@ export default function TalksPage() {
     schedule,
     latestTalks,
   } = talksData
-  const { sectionRef, animateFadeInUp } = usePageAnimation()
-
-  useEffect(() => animateFadeInUp(), [animateFadeInUp])
+  const sectionRef = useScrollReveal()
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <main ref={sectionRef} className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16 pt-24 pb-16">
+      <main ref={sectionRef} className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16 pt-24 pb-16 page-content scroll-reveal">
         {/* Header */}
         <header className="mb-16">
           <div className="flex items-center justify-between mb-4">

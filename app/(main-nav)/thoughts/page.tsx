@@ -1,35 +1,17 @@
 "use client"
 
 import Link from "next/link"
-import { useEffect, useRef } from "react"
 import { getAllPosts } from "@/lib/markdown"
+import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 
 export default function Thoughts() {
-  const sectionRef = useRef<HTMLElement | null>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-in-up")
-          }
-        })
-      },
-      { threshold: 0.3 }
-    )
-
-    if (sectionRef.current) observer.observe(sectionRef.current)
-
-    return () => observer.disconnect()
-  }, [])
-
+  const sectionRef = useScrollReveal()
   const posts = getAllPosts()
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16 pt-16">
-        <section ref={sectionRef} className="min-h-screen py-20 sm:py-32 opacity-0">
+        <section ref={sectionRef} className="min-h-screen py-20 sm:py-32 page-content scroll-reveal">
           <div className="space-y-12 sm:space-y-16">
             <h2 className="text-3xl sm:text-4xl font-light">Recent Thoughts</h2>
 

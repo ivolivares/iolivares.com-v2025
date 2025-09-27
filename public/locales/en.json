@@ -25,5 +25,11 @@
   "language": {
     "english": "English",
     "spanish": "Español"
+  },
+  "connect": {
+    "title": "Let's Connect",
+    "description": "Always interested in new opportunities, collaborations, and conversations about technology and software design.",
+    "email": "hi@ivolivares.com",
+    "elsewhere": "ELSEWHERE"
   }
 }

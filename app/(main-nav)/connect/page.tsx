@@ -1,26 +1,24 @@
 "use client"
 
 import Link from "next/link"
-import { useEffect } from "react"
-import { usePageAnimation } from "@/hooks/use-page-animation"
+import { useScrollReveal } from "@/hooks/use-scroll-reveal"
+import { useTranslation } from "@/hooks/use-translation"
 
 export default function Connect() {
-  const { sectionRef, animateFadeInUp } = usePageAnimation()
-
-  useEffect(() => animateFadeInUp(), [animateFadeInUp])
+  const sectionRef = useScrollReveal()
+  const { t } = useTranslation()
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16 pt-16">
-        <section ref={sectionRef} className="min-h-screen py-20 sm:py-32 opacity-0">
+        <section ref={sectionRef} className="min-h-screen py-20 sm:py-32 page-content scroll-reveal">
           <div className="grid lg:grid-cols-2 gap-12 sm:gap-16">
             <div className="space-y-6 sm:space-y-8">
-              <h2 className="text-3xl sm:text-4xl font-light">Let's Connect</h2>
+              <h2 className="text-3xl sm:text-4xl font-light">{t("connect.title")}</h2>
 
               <div className="space-y-6">
                 <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                  Always interested in new opportunities, collaborations, and conversations about technology and
-                  software design.
+                  {t("connect.description")}
                 </p>
 
                 <div className="space-y-4">
@@ -28,7 +26,7 @@ export default function Connect() {
                     href="mailto:test@example.com"
                     className="group flex items-center gap-3 text-foreground hover:text-muted-foreground transition-colors duration-300"
                   >
-                    <span className="text-base sm:text-lg">hi@ivolivares.com</span>
+                    <span className="text-base sm:text-lg">{t("connect.email")}</span>
                     <svg
                       className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
                       fill="none"
@@ -43,7 +41,7 @@ export default function Connect() {
             </div>
 
             <div className="space-y-6 sm:space-y-8">
-              <div className="text-sm text-muted-foreground font-mono">ELSEWHERE</div>
+              <div className="text-sm text-muted-foreground font-mono">{t("connect.elsewhere")}</div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[

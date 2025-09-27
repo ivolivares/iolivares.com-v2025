@@ -1,14 +1,12 @@
 "use client"
 
 import { Copy, Info } from "lucide-react"
-import { useEffect, useState } from "react"
-import { usePageAnimation } from "@/hooks/use-page-animation"
+import { useState } from "react"
+import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 
 export default function GivingTalksPage() {
   const [copiedField, setCopiedField] = useState<string | null>(null)
-  const { sectionRef, animateFadeInUp } = usePageAnimation()
-
-  useEffect(() => animateFadeInUp(), [animateFadeInUp])
+  const sectionRef = useScrollReveal()
 
   const copyToClipboard = async (text: string, field: string) => {
     try {
@@ -66,7 +64,7 @@ export default function GivingTalksPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <main ref={sectionRef} className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16 pt-24 pb-16">
+      <main ref={sectionRef} className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16 pt-24 pb-16 page-content scroll-reveal">
         {/* Header */}
         <header className="mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold mb-8 text-balance">Giving Talks</h1>

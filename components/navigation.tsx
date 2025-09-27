@@ -5,21 +5,36 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 import { useTranslation } from "@/hooks/use-translation"
+import { withViewTransition } from "@/lib/view-transitions"
 import { CommandPalette } from "./command-palette"
 
 export default function Navigation() {
-  const [isDark, setIsDark] = useState(true)
+  const [isDark, setIsDark] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const [commandOpen, setCommandOpen] = useState(false)
   const pathname = usePathname()
   const { t } = useTranslation()
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDark)
-  }, [isDark])
+    // Sync with system/localStorage after hydration to prevent flash
+    const stored = localStorage.getItem("theme")
+    const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches
+    const theme = stored || (systemDark ? "dark" : "light")
+    
+    setIsDark(theme === "dark")
+    setMounted(true)
+    
+    document.documentElement.classList.toggle("dark", theme === "dark")
+  }, [])
 
-  const toggleTheme = () => {
-    setIsDark(!isDark)
-  }
+  const toggleTheme = withViewTransition(() => {
+    if (!mounted) return
+    
+    const newTheme = !isDark
+    setIsDark(newTheme)
+    document.documentElement.classList.toggle("dark", newTheme)
+    localStorage.setItem("theme", newTheme ? "dark" : "light")
+  })
 
   const openCommand = () => {
     setCommandOpen(true)

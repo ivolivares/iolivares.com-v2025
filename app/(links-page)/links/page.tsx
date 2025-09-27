@@ -2,11 +2,10 @@
 
 import { Calendar, Code, Facebook, FileText, Github, Instagram, Linkedin, Mail, Twitter } from "lucide-react"
 import Image from "next/image"
-import { useEffect } from "react"
-import { usePageAnimation } from "@/hooks/use-page-animation"
+import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 
 export default function LinksPage() {
-  const { sectionRef, animateFadeInUp } = usePageAnimation()
+  const sectionRef = useScrollReveal()
   const links = [
     {
       className: "col-span-2",
@@ -54,7 +53,7 @@ export default function LinksPage() {
       className: "col-span-2",
       icon: Calendar,
       name: "Talk to me",
-      url: "https://cal.com/ivolivares",
+      url: "https://cal.com/iolivares/15min?from=iolivares.com",
     },
     {
       className: "col-span-1",
@@ -64,11 +63,9 @@ export default function LinksPage() {
     },
   ]
 
-  useEffect(() => animateFadeInUp(), [animateFadeInUp])
-
   return (
     <div className="min-h-screen bg-background px-4 py-8">
-      <main ref={sectionRef} className="max-w-md mx-auto">
+      <main ref={sectionRef} className="max-w-md mx-auto page-content scroll-reveal">
         {/* Profile Section */}
         <div className="text-center mb-8">
           <div className="relative w-24 h-24 mx-auto mb-4">

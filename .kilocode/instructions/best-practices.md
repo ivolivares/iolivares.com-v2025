@@ -575,42 +575,6 @@ function UserProfile({ userId }: { userId: string }) {
 }
 ```
 
-## Testing Best Practices
-
-### Do's ✅
-```typescript
-// Write tests that focus on user behavior
-import { render, screen, userEvent } from '@testing-library/react'
-
-describe('ContactForm', () => {
-  it('should submit form with valid data', async () => {
-    const onSubmit = jest.fn()
-    const user = userEvent.setup()
-    
-    render(<ContactForm onSubmit={onSubmit} />)
-    
-    await user.type(screen.getByLabelText(/name/i), 'John Doe')
-    await user.type(screen.getByLabelText(/email/i), 'john@example.com')
-    await user.click(screen.getByRole('button', { name: /submit/i }))
-    
-    expect(onSubmit).toHaveBeenCalledWith({
-      name: 'John Doe',
-      email: 'john@example.com'
-    })
-  })
-})
-
-// Test error states
-it('should display error message on invalid input', async () => {
-  render(<ContactForm />)
-  
-  const submitButton = screen.getByRole('button', { name: /submit/i })
-  await userEvent.click(submitButton)
-  
-  expect(screen.getByText(/name is required/i)).toBeInTheDocument()
-})
-```
-
 ## Git and Version Control
 
 ### Do's ✅

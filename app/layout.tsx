@@ -3,6 +3,7 @@ import { Raleway } from "next/font/google"
 import type React from "react"
 import "./globals.css"
 import { META_THEME_COLORS, siteConfig } from "@/config/site"
+import { ThemeProvider } from "@/components/theme-provider"
 import { TranslationProvider } from "@/hooks/use-translation"
 
 const raleway = Raleway({
@@ -90,9 +91,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${raleway.variable}`}>
+    <html lang="en" className={`${raleway.variable}`} suppressHydrationWarning>
       <body className="font-sans antialiased">
-        <TranslationProvider>{children}</TranslationProvider>
+        <ThemeProvider>
+          <TranslationProvider>{children}</TranslationProvider>
+        </ThemeProvider>
       </body>
     </html>
   )

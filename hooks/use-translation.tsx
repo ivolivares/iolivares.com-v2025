@@ -5,7 +5,7 @@ import { createContext, type ReactNode, useContext, useEffect, useState } from "
 export type Language = "en" | "es"
 
 interface Translations {
-  [key: string]: Language
+  [key: string]: string | Translations
 }
 
 interface TranslationContextType {
@@ -21,9 +21,13 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>("en")
   const [translations, setTranslations] = useState<Translations>({})
   const [isLoading, setIsLoading] = useState(true)
+  const [isHydrated, setIsHydrated] = useState(false)
 
-  // Load language from localStorage on mount
+  // Handle hydration and load language from localStorage
   useEffect(() => {
+    setIsHydrated(true)
+    
+    // Only access localStorage after hydration
     const savedLanguage = localStorage.getItem("language") as Language
     if (savedLanguage && (savedLanguage === "en" || savedLanguage === "es")) {
       setLanguageState(savedLanguage)
@@ -35,16 +39,14 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
     const loadTranslations = async () => {
       setIsLoading(true)
       try {
-        console.log(`[v0] Loading translations for language: ${language}`)
         const response = await fetch(`/locales/${language}.json`)
         if (!response.ok) {
           throw new Error(`Failed to load translations for ${language}`)
         }
         const data = await response.json()
-        console.log(`[v0] Loaded translations for ${language}:`, Object.keys(data))
         setTranslations(data)
       } catch (error) {
-        console.error(`[v0] Error loading translations for ${language}:`, error)
+        console.error(`Error loading translations for ${language}:`, error)
         setTranslations({})
       } finally {
         setIsLoading(false)
@@ -55,36 +57,30 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
   }, [language])
 
   const setLanguage = (lang: Language) => {
-    console.log(`[v0] Setting language to: ${lang}`)
     setLanguageState(lang)
-    localStorage.setItem("language", lang)
+    if (isHydrated) {
+      localStorage.setItem("language", lang)
+    }
   }
 
   const t = (key: string): string => {
-    if (isLoading) {
-      console.log(`[v0] Translation requested while loading: ${key}`)
+    // Return key as fallback during loading or if translation not found
+    if (isLoading || !translations) {
       return key
     }
 
     const keys = key.split(".")
-    let value: Translations = translations
+    let value: string | Translations = translations
 
     for (const k of keys) {
       if (value && typeof value === "object" && k in value) {
-        // @ts-expect-error
         value = value[k]
       } else {
-        console.log(`[v0] Translation key not found: ${key}`)
         return key
       }
     }
 
-    if (typeof value === "string") {
-      return value
-    }
-
-    console.log(`[v0] Translation value is not a string for key: ${key}`)
-    return key
+    return typeof value === "string" ? value : key
   }
 
   return (

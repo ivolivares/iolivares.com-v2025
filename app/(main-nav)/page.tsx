@@ -1,16 +1,13 @@
 "use client"
 
 import Image from "next/image"
-import { useEffect } from "react"
 import { LanguageSelector } from "@/components/language-selector"
-import { usePageAnimation } from "@/hooks/use-page-animation"
+import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import { useTranslation } from "@/hooks/use-translation"
 
 export default function Home() {
   const { t } = useTranslation()
-  const { sectionRef, animateFadeInUp } = usePageAnimation()
-
-  useEffect(() => animateFadeInUp(), [animateFadeInUp])
+  const headerRef = useScrollReveal()
 
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
@@ -25,7 +22,7 @@ export default function Home() {
       </div>
 
       <main className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 pt-16 relative z-10">
-        <header ref={sectionRef} className="min-h-screen flex items-center opacity-0">
+        <header ref={headerRef} className="min-h-screen flex items-center page-content scroll-reveal">
           <div className="w-full">
             <div className="flex-1 space-y-8">
               <div className="flex items-center gap-8">
@@ -53,7 +50,7 @@ export default function Home() {
                 </div>
                 <div className="hidden md:block flex-shrink-0">
                   <Image
-                    src="/me-draw-transparent.png"
+                    src="/headshot-drawn.png"
                     alt="Iván Olivares"
                     width={160}
                     height={160}
@@ -150,7 +147,7 @@ export default function Home() {
                     {t("footer.collaborateGithub")}
                   </a>
                   <a
-                    href="https://cal.com/ivolivares"
+                    href="https://cal.com/iolivares/15min?from=iolivares.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
