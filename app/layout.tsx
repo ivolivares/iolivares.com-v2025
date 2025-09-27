@@ -5,6 +5,7 @@ import "./globals.css"
 import { META_THEME_COLORS, siteConfig } from "@/config/site"
 import { ThemeProvider } from "@/components/theme-provider"
 import { TranslationProvider } from "@/hooks/use-translation"
+import { loadTranslations } from "@/lib/translations"
 
 const raleway = Raleway({
   display: "swap",
@@ -85,16 +86,21 @@ export const viewport: Viewport = {
   width: "device-width",
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  // Load default language translations server-side
+  const initialTranslations = loadTranslations('en')
+
   return (
     <html lang="en" className={`${raleway.variable}`} suppressHydrationWarning>
       <body className="font-sans antialiased">
         <ThemeProvider>
-          <TranslationProvider>{children}</TranslationProvider>
+          <TranslationProvider initialTranslations={initialTranslations}>
+            {children}
+          </TranslationProvider>
         </ThemeProvider>
       </body>
     </html>

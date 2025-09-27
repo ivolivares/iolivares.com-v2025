@@ -4,8 +4,11 @@ import { notFound } from "next/navigation"
 import { MarkdownRenderer } from "@/components/markdown-renderer"
 import { formatDate, getPostBySlug } from "@/lib/markdown"
 
-export default function ThoughtPost({ params }: { params: { slug: string } }) {
-  const post = getPostBySlug(params.slug)
+export const revalidate = 3600
+
+export default async function ThoughtPost({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = getPostBySlug(slug)
 
   if (!post) {
     notFound()

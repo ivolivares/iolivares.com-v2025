@@ -17,10 +17,16 @@ interface TranslationContextType {
 
 const TranslationContext = createContext<TranslationContextType | undefined>(undefined)
 
-export function TranslationProvider({ children }: { children: ReactNode }) {
+export function TranslationProvider({
+  children,
+  initialTranslations
+}: {
+  children: ReactNode
+  initialTranslations?: Translations
+}) {
   const [language, setLanguageState] = useState<Language>("en")
-  const [translations, setTranslations] = useState<Translations>({})
-  const [isLoading, setIsLoading] = useState(true)
+  const [translations, setTranslations] = useState<Translations>(initialTranslations || {})
+  const [isLoading, setIsLoading] = useState(!initialTranslations)
   const [isHydrated, setIsHydrated] = useState(false)
 
   // Handle hydration and load language from localStorage
@@ -36,6 +42,12 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
 
   // Load translations when language changes
   useEffect(() => {
+    if (initialTranslations && language === "en") {
+      // Already have initial translations for default language
+      setIsLoading(false)
+      return
+    }
+
     const loadTranslations = async () => {
       setIsLoading(true)
       try {
@@ -54,7 +66,7 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
     }
 
     loadTranslations()
-  }, [language])
+  }, [language, initialTranslations])
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang)
