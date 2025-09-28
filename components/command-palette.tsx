@@ -59,15 +59,15 @@ export function CommandPalette({ open: controlledOpen, onOpenChange }: CommandPa
   }
 
   const Commands = [
-    { icon: Home, label: t("commandPalette.commands.about")?.toString(), route: "/" },
+    { icon: Home, label: t("commandPalette.commands.about"), route: "/" },
     // { icon: MessageSquare, label: "Thoughts", route: "/thoughts" },
-    { icon: Mic, label: t("commandPalette.commands.talks")?.toString(), route: "/talks" },
-    { icon: User, label: t("commandPalette.commands.givingTalks")?.toString(), route: "/giving-talks" },
-    { icon: Mail, label: t("commandPalette.commands.connect")?.toString(), route: "/connect" },
-    { icon: ExternalLink, label: t("commandPalette.commands.links")?.toString(), route: "/links" },
+    { icon: Mic, label: t("commandPalette.commands.talks"), route: "/talks" },
+    { icon: User, label: t("commandPalette.commands.givingTalks"), route: "/giving-talks" },
+    { icon: Mail, label: t("commandPalette.commands.connect"), route: "/connect" },
+    { icon: ExternalLink, label: t("commandPalette.commands.links"), route: "/links" },
     // { icon: Layers, label: "Stack", route: "/stack" },
     // { icon: Camera, label: "Photographs", route: "/photographs" },
-    { icon: LaptopMinimal, label: t("commandPalette.commands.uses")?.toString(), route: "/uses" },
+    { icon: LaptopMinimal, label: t("commandPalette.commands.uses"), route: "/uses" },
     // { icon: FileText, label: "Resume", route: "/resume" },
     // { icon: Disc3, label: "Vinyls", route: "/vinyls" },
   ]
@@ -83,7 +83,7 @@ export function CommandPalette({ open: controlledOpen, onOpenChange }: CommandPa
             return (
               <CommandItem key={index} onSelect={() => runCommand(() => router.push(item.route))}>
                 <Icon className="mr-2 h-4 w-4" />
-                <span>{item.label}</span>
+                <span>{item.label?.toString()}</span>
               </CommandItem>
             )
           })}

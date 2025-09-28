@@ -38,8 +38,12 @@ export default function TalksPage() {
                 <thead>
                   <tr className="border-b border-border">
                     <th className="text-left py-3 px-2 text-sm font-medium text-muted-foreground">{t("talks.date")}</th>
-                    <th className="text-left py-3 px-2 text-sm font-medium text-muted-foreground">{t("talks.event")}</th>
-                    <th className="text-left py-3 px-2 text-sm font-medium text-muted-foreground">{t("talks.location")}</th>
+                    <th className="text-left py-3 px-2 text-sm font-medium text-muted-foreground">
+                      {t("talks.event")}
+                    </th>
+                    <th className="text-left py-3 px-2 text-sm font-medium text-muted-foreground">
+                      {t("talks.location")}
+                    </th>
                     <th className="text-left py-3 px-2 text-sm font-medium text-muted-foreground">{t("talks.talk")}</th>
                     <th className="text-left py-3 px-2 text-sm font-medium text-muted-foreground">{t("talks.link")}</th>
                   </tr>
