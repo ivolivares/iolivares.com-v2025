@@ -185,83 +185,84 @@
               "description": "Productivity and Shortcuts in the next level."
             }
           }
-        }
-      },
-      "gitHosting": {
-        "title": "Git, Building, Hosting, Monitoring",
-        "items": {
-          "github": {
-            "name": "GitHub",
-            "description": "Always a Github Fan!"
-          },
-          "posthog": {
-            "name": "PostHog",
-            "description": "Metrics, metrics, metrics. You can't improve what you don't measure."
-          },
-          "cloudflare": {
-            "name": "Cloudflare",
-            "description": "Always my first layer and the secret to scale without surprises in your billing."
+        },
+        "gitHosting": {
+          "title": "Git, Building, Hosting, Monitoring",
+          "items": {
+            "github": {
+              "name": "GitHub",
+              "description": "Always a Github Fan!"
+            },
+            "posthog": {
+              "name": "PostHog",
+              "description": "Metrics, metrics, metrics. You can't improve what you don't measure."
+            },
+            "cloudflare": {
+              "name": "Cloudflare",
+              "description": "Always my first layer and the secret to scale without surprises in your billing."
+            }
+          }
+        },
+        "automation": {
+          "title": "Automation and Domotics (IoT)",
+          "items": {
+            "googleHomeMini": {
+              "name": "Google Home Mini",
+              "description": "Ok Google, ask to Alexa about Siri jokes."
+            },
+            "philipsHueLights": {
+              "name": "Philips HUE Lights",
+              "description": "Since 2016, using this IoT amazing lights."
+            },
+            "philipsHuePlaySync": {
+              "name": "Philips HUE Play Lights + Sync Box",
+              "description": "Cinema experience and music/video sync just for fun and rock."
+            }
+          }
+        },
+        "music": {
+          "title": "Music System",
+          "items": {
+            "audioTechnicaTurntable": {
+              "name": "Audio-Technica AT-LP120XUSB",
+              "description": "This is a beautiful, dynamic and amazing turntable."
+            },
+            "yamahaReceiver": {
+              "name": "Yamaha RX-385 Receiver",
+              "description": "The power of Yamaha + the collections of this nice receiver to connect everything."
+            },
+            "samsonSpeakers": {
+              "name": "Samson Media ONE 4a",
+              "description": "Yes, I need better speakers but this one works until now to listen good music on Vinyls."
+            }
+          }
+        },
+        "misc": {
+          "title": "Misc. Items",
+          "items": {
+            "microsoftArchMouse": {
+              "name": "Microsoft Arch Mouse",
+              "description": "My mouse backup, when I need to charge the Apple's one, I always have this amazing mouse ready."
+            },
+            "thuleBackpack": {
+              "name": "Thule Construct 24L Blue Laptop Backpack",
+              "description": "My favorite awesome tech backpack. I Love this brand."
+            },
+            "appleWatchSeries10": {
+              "name": "Apple Watch Series 10",
+              "description": "Yep, another Apple product, but the best smartwatch for Apple Ecosystem."
+            },
+            "boseEarbuds": {
+              "name": "Bose QuietComfort Ultra Earbuds 2nd Gen",
+              "description": "I'm sorry Apple, but in sound and quality Bose are the #1."
+            },
+            "boseHeadphones": {
+              "name": "Bose QuietComfort Ultra Headphones",
+              "description": "My favorites after suffer the Apple Airpods Max deception. Bose QC, the best Headphones ever."
+            }
           }
         }
-      },
-      "automation": {
-        "title": "Automation and Domotics (IoT)",
-        "items": {
-          "googleHomeMini": {
-            "name": "Google Home Mini",
-            "description": "Ok Google, ask to Alexa about Siri jokes."
-          },
-          "philipsHueLights": {
-            "name": "Philips HUE Lights",
-            "description": "Since 2016, using this IoT amazing lights."
-          },
-          "philipsHuePlaySync": {
-            "name": "Philips HUE Play Lights + Sync Box",
-            "description": "Cinema experience and music/video sync just for fun and rock."
-          }
-        }
-      },
-      "music": {
-        "title": "Music System",
-        "items": {
-          "audioTechnicaTurntable": {
-            "name": "Audio-Technica AT-LP120XUSB",
-            "description": "This is a beautiful, dynamic and amazing turntable."
-          },
-          "yamahaReceiver": {
-            "name": "Yamaha RX-385 Receiver",
-            "description": "The power of Yamaha + the collections of this nice receiver to connect everything."
-          },
-          "samsonSpeakers": {
-            "name": "Samson Media ONE 4a",
-            "description": "Yes, I need better speakers but this one works until now to listen good music on Vinyls."
-          }
-        }
-      },
-      "misc": {
-        "title": "Misc. Items",
-        "items": {
-          "microsoftArchMouse": {
-            "name": "Microsoft Arch Mouse",
-            "description": "My mouse backup, when I need to charge the Apple's one, I always have this amazing mouse ready."
-          },
-          "thuleBackpack": {
-            "name": "Thule Construct 24L Blue Laptop Backpack",
-            "description": "My favorite awesome tech backpack. I Love this brand."
-          },
-          "appleWatchSeries10": {
-            "name": "Apple Watch Series 10",
-            "description": "Yep, another Apple product, but the best smartwatch for Apple Ecosystem."
-          },
-          "boseEarbuds": {
-            "name": "Bose QuietComfort Ultra Earbuds 2nd Gen",
-            "description": "I'm sorry Apple, but in sound and quality Bose are the #1."
-          },
-          "boseHeadphones": {
-            "name": "Bose QuietComfort Ultra Headphones",
-            "description": "My favorites after suffer the Apple Airpods Max deception. Bose QC, the best Headphones ever."
-          }
-        }
+      }
     }
   },
   "links": {
@@ -291,5 +292,4 @@
       "uses": "Uses"
     }
   }
-}
 }
