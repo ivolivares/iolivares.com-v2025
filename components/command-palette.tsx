@@ -7,6 +7,7 @@ import {
   ExternalLink,
   FileText,
   Home,
+  LaptopMinimal,
   Layers,
   Mail,
   MessageSquare,
@@ -55,60 +56,35 @@ export function CommandPalette({ open: controlledOpen, onOpenChange }: CommandPa
     command()
   }
 
+  const Commands = [
+    { icon: Home, label: "About", route: "/" },
+    // { icon: MessageSquare, label: "Thoughts", route: "/thoughts" },
+    { icon: Mic, label: "Talks", route: "/talks" },
+    { icon: User, label: "Giving Talks", route: "/giving-talks" },
+    { icon: Mail, label: "Connect", route: "/connect" },
+    { icon: ExternalLink, label: "Links", route: "/links" },
+    // { icon: Layers, label: "Stack", route: "/stack" },
+    // { icon: Camera, label: "Photographs", route: "/photographs" },
+    { icon: LaptopMinimal, label: "Uses", route: "/uses" },
+    // { icon: FileText, label: "Resume", route: "/resume" },
+    // { icon: Disc3, label: "Vinyls", route: "/vinyls" },
+  ]
+
   return (
     <CommandDialog open={open} onOpenChange={setOpen}>
       <CommandInput placeholder="Type a command or search..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Navigation">
-          <CommandItem onSelect={() => runCommand(() => router.push("/"))}>
-            <Home className="mr-2 h-4 w-4" />
-            <span>About</span>
-          </CommandItem>
-          <CommandItem onSelect={() => runCommand(() => router.push("/work"))}>
-            <Briefcase className="mr-2 h-4 w-4" />
-            <span>Work</span>
-          </CommandItem>
-          <CommandItem onSelect={() => runCommand(() => router.push("/thoughts"))}>
-            <MessageSquare className="mr-2 h-4 w-4" />
-            <span>Thoughts</span>
-          </CommandItem>
-          <CommandItem onSelect={() => runCommand(() => router.push("/talks"))}>
-            <Mic className="mr-2 h-4 w-4" />
-            <span>Talks</span>
-          </CommandItem>
-          <CommandItem onSelect={() => runCommand(() => router.push("/giving-talks"))}>
-            <User className="mr-2 h-4 w-4" />
-            <span>Giving Talks</span>
-          </CommandItem>
-          <CommandItem onSelect={() => runCommand(() => router.push("/connect"))}>
-            <Mail className="mr-2 h-4 w-4" />
-            <span>Contact</span>
-          </CommandItem>
-          <CommandItem onSelect={() => runCommand(() => router.push("/links"))}>
-            <ExternalLink className="mr-2 h-4 w-4" />
-            <span>Links</span>
-          </CommandItem>
-          <CommandItem onSelect={() => runCommand(() => router.push("/stack"))}>
-            <Layers className="mr-2 h-4 w-4" />
-            <span>Stack</span>
-          </CommandItem>
-          <CommandItem onSelect={() => runCommand(() => router.push("/photographs"))}>
-            <Camera className="mr-2 h-4 w-4" />
-            <span>Photographs</span>
-          </CommandItem>
-          <CommandItem onSelect={() => runCommand(() => router.push("/uses"))}>
-            <Settings className="mr-2 h-4 w-4" />
-            <span>Uses</span>
-          </CommandItem>
-          <CommandItem onSelect={() => runCommand(() => router.push("/resume"))}>
-            <FileText className="mr-2 h-4 w-4" />
-            <span>Resume</span>
-          </CommandItem>
-          <CommandItem onSelect={() => runCommand(() => router.push("/vinyls"))}>
-            <Disc3 className="mr-2 h-4 w-4" />
-            <span>Vinyls</span>
-          </CommandItem>
+          {Commands.map((item, index) => {
+            const Icon = item.icon
+            return (
+              <CommandItem key={index} onSelect={() => runCommand(() => router.push(item.route))}>
+                <Icon className="mr-2 h-4 w-4" />
+                <span>{item.label}</span>
+              </CommandItem>
+            )
+          })}
         </CommandGroup>
       </CommandList>
     </CommandDialog>

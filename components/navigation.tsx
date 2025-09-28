@@ -41,10 +41,10 @@ export default function Navigation() {
   }
 
   const navItems = [
-    { href: "/", label: t("nav.home") || "ABOUT" },
-    { hasNotification: true, href: "/thoughts", label: t("nav.thoughts") || "THOUGHTS" },
+    { hasNotification: false, href: "/", label: t("nav.home") || "ABOUT" },
+    // { hasNotification: true, href: "/thoughts", label: t("nav.thoughts") || "THOUGHTS" },
     { href: "/talks", label: t("nav.talks") || "TALKS" },
-    { href: "/connect", label: t("nav.contact") || "CONTACT" },
+    { href: "/connect", label: t("nav.contact") || "CONNECT" },
   ]
 
   return (

@@ -3,7 +3,7 @@
     "home": "HOME",
     "thoughts": "THOUGHTS",
     "talks": "TALKS",
-    "contact": "CONTACT"
+    "contact": "CONNECT"
   },
   "home": {
     "title": "I'm Iván Olivares — a senior software engineer, vinyl enthusiast, and dog dad.",
@@ -14,6 +14,15 @@
     "background": "I started in the development world in 2004, experimenting with computers (often breaking things) and learning to program by researching online. At just 15, I built my first website — and never stopped. In 2010, I launched my first entrepreneurial venture with my first clients, and fell even more in love with technology.",
     "mission": "My personal mission is to push the world forward by building bridges between people and technology."
   },
+  "talks": {
+    "pageTitle": "Talks",
+    "pageSubtitle": "Conferences, Podcasts, Streams, Meetups and more.",
+    "givingTalksLabel": "Speaker Info",
+    "latestTalksTitle": "Latest Talks",
+    "scheduleTitle": "Next talks",
+    "talkVideo": "Video",
+    "talkSlides": "Slides"
+  },
   "footer": {
     "connect": "Let's connect!",
     "contactText": "If you'd like to chat about building products, development, consulting, or software design, get in touch at {email} or reach out to me on X",
@@ -21,7 +30,8 @@
     "collaborateGithub": "Let's collaborate on GitHub",
     "loveToTalk": "Love to talk?",
     "copyright": "Some contents are copyrighted.",
-    "madeWith": "Vibecoded using v0.dev from 🇨🇱"
+    "creativeCommons": "Where no copyright is indicated, the contents are available under {license}",
+    "madeWith": "Vibecoded using {v0link} from 🇨🇱"
   },
   "language": {
     "english": "English",

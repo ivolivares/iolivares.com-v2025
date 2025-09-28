@@ -1,0 +1,90 @@
+[
+  {
+    "video": "https://youtu.be/JhokA9fWVo0",
+    "slides": null,
+    "lang": "en",
+    "title": "Building the Next Generation of Airlines Websites",
+    "description": "Talk about the future of the airlines, we need to understand the present. Today, large airlines have legacy systems that become an obstacle in the evolution of their business, this based mainly on the highly complex processes that they inherited from that, bringing a long onboarding for new developers and high complexity for new features with a long time to market, in many cases due to technical debt that accumulates in each «digital evolution». In this talk, you will see the challenge that Globant stars in 2019 to create a 100% digital airline, a project where Next.js was the key tech-enabler to an accelerated launch.",
+    "location": "NextJS Conf 2020",
+    "thumbnail": "https://res.cloudinary.com/iolivares-photos/image/upload/c_fill,w_800,g_face/v1638394849/io-dot-com/conferences/nextjsconf2020_thumb_hgcztp.jpg",
+    "date": "2020-11-07",
+    "duration": "25:18"
+  },
+  {
+    "video": "https://youtu.be/JhokA9fWVo0",
+    "slides": null,
+    "lang": "es",
+    "title": "Construyendo la próxima generación de sitios web de aerolíneas",
+    "description": "Para hablar sobre el futuro de las aerolíneas, necesitamos entender el presente. Hoy en día, las grandes aerolíneas tienen sistemas heredados que se convierten en un obstáculo en la evolución de su negocio, esto se basa principalmente en los procesos altamente complejos que heredaron de eso, trayendo una larga incorporación para los nuevos desarrolladores y una alta complejidad para nuevas características con mucho tiempo para comercializar, en muchos casos debido a la deuda técnica que acumula en cada «evolución digital». En esta charla, verá el desafío de que Globant Stars en 2019 para crear una aerolínea 100% digital, un proyecto donde Next.js fue el entablador de tecnología clave para un lanzamiento acelerado.",
+    "location": "NextJS Conf 2020",
+    "thumbnail": "https://res.cloudinary.com/iolivares-photos/image/upload/c_fill,w_800,g_face/v1638394849/io-dot-com/conferences/nextjsconf2020_thumb_hgcztp.jpg",
+    "date": "2020-11-07",
+    "duration": "25:18"
+  },
+  {
+    "video": "https://youtu.be/VMUMJadTauc",
+    "slides": null,
+    "lang": "en",
+    "title": "Web Performance 101 in 2021",
+    "description": "A talk that explains the current state (in 2021) of the web Performance and seeks to raise a proposal to concentrate to start measuring and not lose the focus on trying to correct ISSUES that take a long time to correct and add little impact or value our users.",
+    "location": "Globant Tech Talk",
+    "thumbnail": "https://res.cloudinary.com/iolivares-photos/image/upload/c_fill,w_800,g_face/v1638394849/io-dot-com/conferences/webperf101_thumb_a4ltwt.jpg",
+    "date": "2021-02-09",
+    "duration": "01:04:12"
+  },
+  {
+    "title": "Web Performance 101 en el 2021",
+    "slides": null,
+    "description": "Una charla que explica el estado actual (en el 2021) del web performance y busca plantear una propuesta de donde concentrarnos para empezar a medir y no perder el foco en intentar corregir issues que toman mucho tiempo de corregir y agregan poco impacto o valor nuestros usuarios.",
+    "lang": "es",
+    "location": "Globant Tech Talk",
+    "thumbnail": "https://res.cloudinary.com/iolivares-photos/image/upload/c_fill,w_800,g_face/v1638394849/io-dot-com/conferences/webperf101_thumb_a4ltwt.jpg",
+    "date": "2021-02-09",
+    "duration": "01:04:12",
+    "video": "https://youtu.be/VMUMJadTauc"
+  },
+  {
+    "title": "Observability 101: Monitoring your app is not about devops",
+    "slides": null,
+    "description": "You build your app, you get to production and everything stopped working without explanation. What are you doing? In addition to an apology for meme «This is fine», thinking about observability is what you will learn in this talk.",
+    "lang": "en",
+    "location": "WebConf LATAM 2021",
+    "thumbnail": "https://res.cloudinary.com/iolivares-photos/image/upload/c_fill,w_800,g_face/v1638394849/io-dot-com/conferences/webconf2021_thumb_xmc5nj.jpg",
+    "date": "2021-08-23",
+    "duration": "18:32",
+    "video": "https://youtu.be/cKZcAnA35To"
+  },
+  {
+    "title": "Observability 101: Monitorear tu app no es solo cosa de devops",
+    "slides": null,
+    "description": "Construyes tu app, llegas a producción y todo dejó de funcionar sin explicación. ¿Qué haces? Además de una apología al meme «This is fine», pensar en observabilidad es lo que aprenderás en esta charla.",
+    "lang": "es",
+    "location": "WebConf LATAM 2021",
+    "thumbnail": "https://res.cloudinary.com/iolivares-photos/image/upload/c_fill,w_800,g_face/v1638394849/io-dot-com/conferences/webconf2021_thumb_xmc5nj.jpg",
+    "date": "2021-08-23",
+    "duration": "18:32",
+    "video": "https://youtu.be/cKZcAnA35To"
+  },
+  {
+    "title": "Interview with \"Conversando Con Globers\" (CCG) Season 1 BonusTrack",
+    "slides": null,
+    "description": "Bonus Track of the #1 season of «Conversando con Globers». Vodcast where Fabian Urrutia and Matías Rolón generate spaces to learn more about Globant's culture by the hand of who live and enjoy it.",
+    "lang": "en",
+    "location": "Conversando con Globers",
+    "thumbnail": "https://res.cloudinary.com/iolivares-photos/image/upload/c_fill,w_800,g_face/v1639416921/io-dot-com/conferences/ccg-season1-bt_thumb_a8ze2u.jpg",
+    "date": "2021-02-02",
+    "duration": "43:10",
+    "video": "https://youtu.be/oZO8nrradp4"
+  },
+  {
+    "title": "Entrevista en \"Conversando Con Globers\" (CCG) Temporada 1 BonusTrack",
+    "slides": null,
+    "description": "Bonus Track de la Temporada #1 de «Conversando Con Globers». Programa donde Fabian Urrutia y Matías Rolón generan espacios para conocer más de la cultura de Globant de la mano de quiénes la viven y disfrutan.",
+    "lang": "es",
+    "location": "Conversando con Globers",
+    "thumbnail": "https://res.cloudinary.com/iolivares-photos/image/upload/c_fill,w_800,g_face/v1639416921/io-dot-com/conferences/ccg-season1-bt_thumb_a8ze2u.jpg",
+    "date": "2021-02-02",
+    "duration": "43:10",
+    "video": "https://youtu.be/oZO8nrradp4"
+  }
+]
