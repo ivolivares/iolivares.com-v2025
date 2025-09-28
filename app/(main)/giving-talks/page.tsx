@@ -1,9 +1,9 @@
 "use client"
 
 import { ArrowLeft, Copy, Info } from "lucide-react"
+import Link from "next/link"
 import { useState } from "react"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
-import Link from "next/link"
 
 export default function GivingTalksPage() {
   const [copiedField, setCopiedField] = useState<string | null>(null)
@@ -91,7 +91,9 @@ export default function GivingTalksPage() {
           <h1 className="text-4xl sm:text-5xl font-bold mb-8 text-balance">Giving Talks</h1>
 
           <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-            Hey! My name is <strong>Iván Olivares</strong>. Passionate developer living in Santiago, Chile. I am focusing on many areas of technology but I love Media & Streaming Industry from tech side I love to work with Frontend technologies like like React, Next.js, TypeScript, Tailwind, among others.
+            Hey! My name is <strong>Iván Olivares</strong>. Passionate developer living in Santiago, Chile. I am
+            focusing on many areas of technology but I love Media & Streaming Industry from tech side I love to work
+            with Frontend technologies like like React, Next.js, TypeScript, Tailwind, among others.
           </p>
 
           <div className="mb-12">
@@ -122,7 +124,7 @@ export default function GivingTalksPage() {
                       >
                         {info.value}
                       </Link>
-                    ): (
+                    ) : (
                       <>
                         {info.label === "Introduction" ? (
                           <p className="text-sm leading-relaxed max-w-lg">{info.value}</p>

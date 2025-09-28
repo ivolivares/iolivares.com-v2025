@@ -1,10 +1,18 @@
 "use client"
 
-import { Calendar, Code, FileText, Mail, Linkedin } from "lucide-react"
+import {
+  SiApplemusic,
+  SiFacebook,
+  SiGithub,
+  SiInstagram,
+  SiSoundcloud,
+  SiSpotify,
+  SiX,
+} from "@icons-pack/react-simple-icons"
+import { Calendar, Code, FileText, Linkedin, Mail } from "lucide-react"
 import Image from "next/image"
-import { useScrollReveal } from "@/hooks/use-scroll-reveal"
-import { SiX, SiGithub, SiInstagram, SiFacebook, SiSoundcloud, SiApplemusic, SiSpotify } from "@icons-pack/react-simple-icons"
 import Link from "next/link"
+import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 
 export default function LinksPage() {
   const sectionRef = useScrollReveal()
@@ -89,11 +97,17 @@ export default function LinksPage() {
         {/* Profile Section */}
         <div className="text-center mb-8">
           <div className="relative w-24 h-24 mx-auto mb-4">
-            <Image src="/headshot-drawn.png" alt="Iván Olivares Rojas - drawn by Nanobanana (Gemini by Google)" fill className="rounded-full object-cover" />
+            <Image
+              src="/headshot-drawn.png"
+              alt="Iván Olivares Rojas - drawn by Nanobanana (Gemini by Google)"
+              fill
+              className="rounded-full object-cover"
+            />
           </div>
           <h1 className="text-xl font-semibold text-foreground mb-2">Iván Olivares Rojas</h1>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Here are links to other platforms where you can find me. Might not be active on all of them. Not promising anything.
+            Here are links to other platforms where you can find me. Might not be active on all of them. Not promising
+            anything.
           </p>
         </div>
 

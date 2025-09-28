@@ -1,12 +1,12 @@
 "use client"
 
+import { SiInstagram, SiX } from "@icons-pack/react-simple-icons"
+import { Linkedin } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 import { LinkAnimated } from "@/components/link-animated"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import { useTranslation } from "@/hooks/use-translation"
-import Link from "next/link"
-import { Linkedin } from "lucide-react"
-import { SiInstagram, SiX } from "@icons-pack/react-simple-icons"
 
 export default function Home() {
   const { t } = useTranslation()
