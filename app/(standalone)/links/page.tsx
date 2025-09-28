@@ -13,56 +13,58 @@ import { Calendar, Code, FileText, Linkedin, Mail } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
+import { useTranslation } from "@/hooks/use-translation"
 
 export default function LinksPage() {
+  const { t } = useTranslation()
   const sectionRef = useScrollReveal()
   const links = [
     {
       className: "col-span-2",
       icon: Code,
-      name: "My website",
+      name: t("links.myWebsite"),
       url: "/",
     },
     {
       className: "col-span-1",
       icon: SiX,
-      name: "Twitter",
+      name: t("links.twitter"),
       url: "https://x.com/ivolivares?from=iolivares.com",
     },
     {
       className: "col-span-1",
       icon: SiGithub,
-      name: "GitHub",
+      name: t("links.github"),
       url: "https://github.com/ivolivares?from=iolivares.com",
     },
     {
       className: "col-span-2",
       icon: Linkedin,
-      name: "LinkedIn",
+      name: t("links.linkedin"),
       url: "https://linkedin.com/in/ivanolivaresrojas?from=iolivares.com",
     },
     {
       className: "col-span-2",
       icon: SiInstagram,
-      name: "Instagram",
+      name: t("links.instagram"),
       url: "https://instagram.com/ivolivares?from=iolivares.com",
     },
     {
       className: "col-span-1",
       icon: SiFacebook,
-      name: "Facebook",
+      name: t("links.facebook"),
       url: "https://fb.me/ivolivares?from=iolivares.com",
     },
     {
       className: "col-span-1",
       icon: Mail,
-      name: "Email",
+      name: t("links.email"),
       url: "mailto:hi+fromlinkpage@iolivares.com?subject=Contact+from+iolivares.com/links",
     },
     {
       className: "col-span-2",
       icon: Calendar,
-      name: "Talk to me",
+      name: t("links.talkToMe"),
       url: "https://cal.com/iolivares/15min?from=iolivares.com",
     },
     // {
@@ -74,19 +76,19 @@ export default function LinksPage() {
     {
       className: "col-span-1",
       icon: SiSoundcloud,
-      name: "SoundCloud",
+      name: t("links.soundcloud"),
       url: "https://soundcloud.com/djmaxis?from=iolivares.com",
     },
     {
       className: "col-span-1",
       icon: SiSpotify,
-      name: "Spotify",
+      name: t("links.spotify"),
       url: "https://open.spotify.com/artist/3cePcnUC1QKI8iX4zf0aQO?si=RdfawXEgTB68o5vz-mlO0g&from=iolivares.com",
     },
     {
       className: "col-span-1",
       icon: SiApplemusic,
-      name: "Apple Music",
+      name: t("links.appleMusic"),
       url: "https://music.apple.com/us/artist/dj-maxis/1661169599?from=iolivares.com",
     },
   ]
@@ -106,8 +108,7 @@ export default function LinksPage() {
           </div>
           <h1 className="text-xl font-semibold text-foreground mb-2">Iván Olivares Rojas</h1>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Here are links to other platforms where you can find me. Might not be active on all of them. Not promising
-            anything.
+            {t("links.description")}
           </p>
         </div>
 

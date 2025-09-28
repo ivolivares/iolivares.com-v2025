@@ -25,6 +25,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command"
+import { useTranslation } from "@/hooks/use-translation"
 
 interface CommandPaletteProps {
   open?: boolean
@@ -34,6 +35,7 @@ interface CommandPaletteProps {
 export function CommandPalette({ open: controlledOpen, onOpenChange }: CommandPaletteProps) {
   const [internalOpen, setInternalOpen] = useState(false)
   const router = useRouter()
+  const { t } = useTranslation()
 
   // Use controlled state if provided, otherwise use internal state
   const open = controlledOpen !== undefined ? controlledOpen : internalOpen
@@ -57,25 +59,25 @@ export function CommandPalette({ open: controlledOpen, onOpenChange }: CommandPa
   }
 
   const Commands = [
-    { icon: Home, label: "About", route: "/" },
+    { icon: Home, label: t("commandPalette.commands.about")?.toString(), route: "/" },
     // { icon: MessageSquare, label: "Thoughts", route: "/thoughts" },
-    { icon: Mic, label: "Talks", route: "/talks" },
-    { icon: User, label: "Giving Talks", route: "/giving-talks" },
-    { icon: Mail, label: "Connect", route: "/connect" },
-    { icon: ExternalLink, label: "Links", route: "/links" },
+    { icon: Mic, label: t("commandPalette.commands.talks")?.toString(), route: "/talks" },
+    { icon: User, label: t("commandPalette.commands.givingTalks")?.toString(), route: "/giving-talks" },
+    { icon: Mail, label: t("commandPalette.commands.connect")?.toString(), route: "/connect" },
+    { icon: ExternalLink, label: t("commandPalette.commands.links")?.toString(), route: "/links" },
     // { icon: Layers, label: "Stack", route: "/stack" },
     // { icon: Camera, label: "Photographs", route: "/photographs" },
-    { icon: LaptopMinimal, label: "Uses", route: "/uses" },
+    { icon: LaptopMinimal, label: t("commandPalette.commands.uses")?.toString(), route: "/uses" },
     // { icon: FileText, label: "Resume", route: "/resume" },
     // { icon: Disc3, label: "Vinyls", route: "/vinyls" },
   ]
 
   return (
     <CommandDialog open={open} onOpenChange={setOpen}>
-      <CommandInput placeholder="Type a command or search..." />
+      <CommandInput placeholder={t("commandPalette.placeholder")?.toString()} />
       <CommandList>
-        <CommandEmpty>No results found.</CommandEmpty>
-        <CommandGroup heading="Navigation">
+        <CommandEmpty>{t("commandPalette.empty")}</CommandEmpty>
+        <CommandGroup heading={t("commandPalette.heading")}>
           {Commands.map((item, index) => {
             const Icon = item.icon
             return (

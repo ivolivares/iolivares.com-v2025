@@ -31,10 +31,10 @@
   },
   "giving-talks": {
     "backToTalks": "Volver a las charlas que he dado",
-    "title": "Dar Charlas",
-    "description": "¡Hola! Mi nombre es <strong>Iván Olivares</strong>. Desarrollador apasionado viviendo en Santiago, Chile. Me enfoco en muchas áreas de la tecnología pero me encanta la Industria de Medios y Streaming desde el lado técnico. Me encanta trabajar con tecnologías Frontend como React, Next.js, TypeScript, Tailwind, entre otros.",
-    "breakNotice": "Actualmente estoy tomando un descanso en dar charlas.",
-    "informationTitle": "Información",
+    "title": "¿Buscas speaker para tu charla?",
+    "description": "¡Hola! Mi nombre es {name}. Desarrollador apasionado viviendo en Santiago, Chile. Me enfoco en diferentes áreas de la tecnología pero me encanta la Industria de Medios y Streaming. Me encanta trabajar con tecnologías del ecosistema JS como React, Next.js, TypeScript, NodeJS, entre otros.",
+    "breakNotice": "Actualmente estoy tomando un descanso de dar charlas.",
+    "informationTitle": "Mi información como Speaker",
     "informationDescription": "Puedes usar la siguiente información para presentarme:",
     "copied": "¡Copiado!",
     "introduction": "Un ingeniero de software apasionado y emprendedor. Actualmente trabajando como Director de Tecnología para Globant en el Media & Entertainment AI Studio. Le encanta construir usando las últimas tecnologías. Principalmente enfocado en el ecosistema JS.",
@@ -80,12 +80,6 @@
       "appleMusic": "Apple Music",
       "facebook": "Facebook"
     }
-  },
-  "examples": {
-    "welcome": "¡Bienvenido de vuelta, {name}!",
-    "link": "Visita {site} para más información",
-    "messages": "Tienes {count} mensajes nuevos",
-    "post": "Publicado el {date} por {author}"
   },
   "uses": {
     "title": "Lo que uso en tecnología y para programar.",
@@ -269,6 +263,33 @@
           }
         }
       }
+    }
+  },
+  "links": {
+    "myWebsite": "Mi sitio web",
+    "twitter": "Twitter",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "email": "E-Mail",
+    "talkToMe": "Hablemos 15min?",
+    "soundcloud": "SoundCloud",
+    "spotify": "Spotify",
+    "appleMusic": "Apple Music",
+    "description": "Aquí están los enlaces a otras plataformas donde puedes encontrarme. Puede que no esté activo en todas. No prometo nada."
+  },
+  "commandPalette": {
+    "placeholder": "Escriba lo que está buscando...",
+    "empty": "No se encontraron resultados.",
+    "heading": "Navegación",
+    "commands": {
+      "about": "Acerca de",
+      "talks": "Charlas",
+      "givingTalks": "Información como Speaker",
+      "connect": "Conectemos",
+      "links": "Enlaces",
+      "uses": "Lo que uso"
     }
   }
 }

@@ -3,6 +3,7 @@
 import { ArrowLeft, Copy, Info } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
+import { siteConfig } from "@/config/site"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import { useTranslation } from "@/hooks/use-translation"
 
@@ -94,7 +95,11 @@ export default function GivingTalksPage() {
         <header className="mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold mb-8 text-balance">{t("giving-talks.title")}</h1>
 
-          <p className="text-lg text-muted-foreground mb-8 leading-relaxed">{t("giving-talks.description")}</p>
+          <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+            {t("giving-talks.description", {
+              name: <strong>{siteConfig.name}</strong>,
+            })}
+          </p>
 
           <div className="mb-12">
             <div className="flex items-start gap-3 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">

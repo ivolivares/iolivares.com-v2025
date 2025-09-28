@@ -31,10 +31,10 @@
   },
   "giving-talks": {
     "backToTalks": "Back to talks I have given",
-    "title": "Giving Talks",
-    "description": "Hey! My name is <strong>Iván Olivares</strong>. Passionate developer living in Santiago, Chile. I am focusing on many areas of technology but I love Media & Streaming Industry from tech side I love to work with Frontend technologies like like React, Next.js, TypeScript, Tailwind, among others.",
+    "title": "Are you looking for Speaker for your talk?",
+    "description": "Hey! My name is {name}. Passionate developer living in Santiago, Chile. I am focusing on different areas of technology but I love Media & Streaming Industry from tech side I love to work with technologies from the JS Ecosystem like React, Next.js, TypeScript, Node.JS, among others.",
     "breakNotice": "I am currently taking a break on giving talks.",
-    "informationTitle": "Information",
+    "informationTitle": "My Info as Speaker",
     "informationDescription": "You can use the following information to present me:",
     "copied": "Copied!",
     "introduction": "A passionate software engineer and entrepreneur. Currently working as Tech Director for Globant in the Media & Entertainment AI Studio. Loves to build using the latest technologies. Mainly focused in the JS Ecosystem.",
@@ -262,7 +262,34 @@
             "description": "My favorites after suffer the Apple Airpods Max deception. Bose QC, the best Headphones ever."
           }
         }
-      }
+    }
+  },
+  "links": {
+    "myWebsite": "My website",
+    "twitter": "Twitter",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "email": "Email",
+    "talkToMe": "Let's Talk",
+    "soundcloud": "SoundCloud",
+    "spotify": "Spotify",
+    "appleMusic": "Apple Music",
+    "description": "Here are links to other platforms where you can find me. Might not be active on all of them. Not promising anything."
+  },
+  "commandPalette": {
+    "placeholder": "Type a command or search...",
+    "empty": "No results found.",
+    "heading": "Navigation",
+    "commands": {
+      "about": "About",
+      "talks": "Talks",
+      "givingTalks": "Giving Talks",
+      "connect": "Connect",
+      "links": "Links",
+      "uses": "Uses"
     }
   }
+}
 }
