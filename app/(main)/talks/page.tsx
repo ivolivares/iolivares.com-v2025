@@ -24,7 +24,7 @@ export default function TalksPage() {
               className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               <User className="w-4 h-4" />
-              Speaker info
+              {t("talks.givingTalksLabel")}
             </Link>
           </div>
           <p className="text-lg text-muted-foreground">{t("talks.pageSubtitle")}</p>
@@ -37,11 +37,11 @@ export default function TalksPage() {
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="border-b border-border">
-                    <th className="text-left py-3 px-2 text-sm font-medium text-muted-foreground">Date</th>
-                    <th className="text-left py-3 px-2 text-sm font-medium text-muted-foreground">Event</th>
-                    <th className="text-left py-3 px-2 text-sm font-medium text-muted-foreground">Location</th>
-                    <th className="text-left py-3 px-2 text-sm font-medium text-muted-foreground">Talk</th>
-                    <th className="text-left py-3 px-2 text-sm font-medium text-muted-foreground">Link</th>
+                    <th className="text-left py-3 px-2 text-sm font-medium text-muted-foreground">{t("talks.date")}</th>
+                    <th className="text-left py-3 px-2 text-sm font-medium text-muted-foreground">{t("talks.event")}</th>
+                    <th className="text-left py-3 px-2 text-sm font-medium text-muted-foreground">{t("talks.location")}</th>
+                    <th className="text-left py-3 px-2 text-sm font-medium text-muted-foreground">{t("talks.talk")}</th>
+                    <th className="text-left py-3 px-2 text-sm font-medium text-muted-foreground">{t("talks.link")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -83,7 +83,7 @@ export default function TalksPage() {
                   >
                     <Image
                       src={talk.thumbnail || "/placeholder.svg"}
-                      alt={`${talk.title} presentation thumbnail`}
+                      alt={`${talk.title} ${t("talks.presentationThumbnail")}`}
                       width={200}
                       height={120}
                       priority={false}
@@ -106,7 +106,7 @@ export default function TalksPage() {
                             className="flex items-center gap-1 text-blue-400 hover:text-blue-300 transition-colors"
                           >
                             <FileText className="w-4 h-4" />
-                            Slides
+                            {t("talks.talkSlides")}
                           </Link>
                         )}
                         <Link
@@ -114,7 +114,7 @@ export default function TalksPage() {
                           className="flex items-center gap-1 text-blue-400 hover:text-blue-300 transition-colors"
                         >
                           <Play className="w-4 h-4" />
-                          Video
+                          {t("talks.talkVideo")}
                         </Link>
                       </div>
                     </div>

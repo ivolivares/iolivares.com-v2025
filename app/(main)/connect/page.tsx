@@ -3,64 +3,66 @@
 import Link from "next/link"
 import { Email } from "@/components/email"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
+import { useTranslation } from "@/hooks/use-translation"
 
 export default function Connect() {
+  const { t } = useTranslation()
   const sectionRef = useScrollReveal()
 
   const socialLinks = [
     {
       color: "from-gray-900 to-gray-700",
       handle: "@ivolivares",
-      name: "GitHub",
+      name: t("connect.socialLinks.github")?.toString(),
       size: "large",
       url: "https://github.com/ivolivares?from=iolivares.com",
     },
     {
       color: "from-blue-300 to-blue-500",
       handle: "@ivolivares",
-      name: "Twitter",
+      name: t("connect.socialLinks.twitter")?.toString(),
       size: "medium",
       url: "https://x.com/ivolivares?from=iolivares.com",
     },
     {
       color: "from-blue-600 to-blue-700",
       handle: "ivanolivaresrojas",
-      name: "LinkedIn",
+      name: t("connect.socialLinks.linkedIn")?.toString(),
       size: "medium",
       url: "https://www.linkedin.com/in/ivanolivaresrojas/?from=iolivares.com",
     },
     {
       color: "from-pink-500 via-red-500 to-yellow-500",
       handle: "@ivolivares",
-      name: "Instagram",
+      name: t("connect.socialLinks.instagram")?.toString(),
       size: "medium",
       url: "https://instagram.com/ivolivares?from=iolivares.com",
     },
     {
       color: "from-orange-500 to-orange-600",
       handle: "djmaxis",
-      name: "SoundCloud",
+      name: t("connect.socialLinks.soundCloud")?.toString(),
       size: "small",
       url: "https://soundcloud.com/djmaxis?from=iolivares.com",
     },
     {
       color: "from-green-500 to-green-600",
       handle: "DJ Maxis",
-      name: "Spotify",
+      name: t("connect.socialLinks.spotify")?.toString(),
       size: "medium",
       url: "https://open.spotify.com/artist/3cePcnUC1QKI8iX4zf0aQO?si=RdfawXEgTB68o5vz-mlO0g&from=iolivares.com",
     },
     {
       color: "from-gray-800 to-gray-900",
       handle: "DJ Maxis",
-      name: "Apple Music",
+      name: t("connect.socialLinks.appleMusic")?.toString(),
       size: "medium",
       url: "https://music.apple.com/us/artist/dj-maxis/1661169599?from=iolivares.com",
     },
     {
       color: "from-blue-600 to-blue-800",
       handle: "@ivolivares",
-      name: "Facebook",
+      name: t("connect.socialLinks.facebook")?.toString(),
       size: "small",
       url: "https://fb.me/ivolivares?from=iolivares.com",
     },
@@ -85,10 +87,9 @@ export default function Connect() {
         <section className="min-h-screen py-20 sm:py-32">
           <div className="space-y-12 sm:space-y-16">
             <div className="text-center space-y-6">
-              <h2 className="text-4xl sm:text-5xl font-light text-balance">Let's Connect</h2>
+              <h2 className="text-4xl sm:text-5xl font-light text-balance">{t("connect.title")}</h2>
               <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto text-pretty">
-                Always interested in new opportunities, collaborations, and conversations about technology and software
-                design.
+                {t("connect.description")}
               </p>
 
               <div className="pt-4">
@@ -100,7 +101,7 @@ export default function Connect() {
             </div>
 
             <div className="space-y-8">
-              <div className="text-sm text-muted-foreground font-mono text-center">ELSEWHERE</div>
+              <div className="text-sm text-muted-foreground font-mono text-center">{t("connect.elsewhere")}</div>
 
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[120px] sm:auto-rows-[140px]">
                 {socialLinks.map((social) => (

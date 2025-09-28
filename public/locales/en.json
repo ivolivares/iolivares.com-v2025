@@ -21,7 +21,35 @@
     "latestTalksTitle": "Latest Talks",
     "scheduleTitle": "Next talks",
     "talkVideo": "Video",
-    "talkSlides": "Slides"
+    "talkSlides": "Slides",
+    "date": "Date",
+    "event": "Event",
+    "location": "Location",
+    "talk": "Talk",
+    "link": "Link",
+    "presentationThumbnail": "presentation thumbnail"
+  },
+  "giving-talks": {
+    "backToTalks": "Back to talks I have given",
+    "title": "Giving Talks",
+    "description": "Hey! My name is <strong>Iván Olivares</strong>. Passionate developer living in Santiago, Chile. I am focusing on many areas of technology but I love Media & Streaming Industry from tech side I love to work with Frontend technologies like like React, Next.js, TypeScript, Tailwind, among others.",
+    "breakNotice": "I am currently taking a break on giving talks.",
+    "informationTitle": "Information",
+    "informationDescription": "You can use the following information to present me:",
+    "copied": "Copied!",
+    "introduction": "A passionate software engineer and entrepreneur. Currently working as Tech Director for Globant in the Media & Entertainment AI Studio. Loves to build using the latest technologies. Mainly focused in the JS Ecosystem.",
+    "copyToClipboard": "Copy to clipboard",
+    "speakerInfo": {
+      "name": "Name",
+      "avatar": "Avatar",
+      "introduction": "Introduction",
+      "location": "Location",
+      "company": "Company",
+      "website": "Website",
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn"
+    }
   },
   "footer": {
     "connect": "Let's connect!",
@@ -41,7 +69,17 @@
     "title": "Let's Connect",
     "description": "Always interested in new opportunities, collaborations, and conversations about technology and software design.",
     "email": "{email}",
-    "elsewhere": "ELSEWHERE"
+    "elsewhere": "ELSEWHERE",
+    "socialLinks": {
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "linkedIn": "LinkedIn",
+      "instagram": "Instagram",
+      "soundCloud": "SoundCloud",
+      "spotify": "Spotify",
+      "appleMusic": "Apple Music",
+      "facebook": "Facebook"
+    }
   },
   "uses": {
     "title": "My tools, gear and apps.",
