@@ -2,28 +2,26 @@
 
 import Link from "next/link"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
+import { useTranslation } from "@/hooks/use-translation"
 
 export default function UsesPage() {
   const sectionRef = useScrollReveal()
+  const { t } = useTranslation()
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <main ref={sectionRef} className="container mx-auto px-4 py-16 max-w-6xl scroll-reveal">
         <div className="mb-16">
-          <h1 className="text-4xl font-bold mb-6 text-balance">My tools, gear and apps.</h1>
-          <p className="text-lg text-muted-foreground mb-4">
-            This is my list of goodies that I use for code and life. Full transparency, some of these links can contain
-            referrals. I love integrate gadgets and use together, commonly for very development to use about ecosystems
-            of technology and why this matters for privacy.
-          </p>
+          <h1 className="text-4xl font-bold mb-6 text-balance">{t("uses.title")}</h1>
+          <p className="text-lg text-muted-foreground mb-4">{t("uses.description1")}</p>
           <p className="text-muted-foreground mb-8">
-            If you want to know more about my experience with some specific gadget, just tweet me{" "}
+            {t("uses.description2")}{" "}
             <Link href="#" className="text-primary hover:underline">
               @ivolivares
             </Link>
           </p>
           <p className="text-sm text-muted-foreground mb-12">
-            Checkout this and more ones at{" "}
+            {t("uses.description3")}{" "}
             <Link
               href="https://uses.tech"
               target="_blank"
@@ -38,7 +36,7 @@ export default function UsesPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Hardware Section */}
           <section>
-            <h2 className="text-2xl font-semibold mb-6">Hardware</h2>
+            <h2 className="text-2xl font-semibold mb-6">{t("uses.sections.hardware.title")}</h2>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start space-y-2">
                 <div>
@@ -48,23 +46,20 @@ export default function UsesPage() {
                     className="font-semibold hover:underline"
                     rel="noopener noreferrer"
                   >
-                    💻 Apple Mac Mini M2 Pro 2023.
+                    {t("uses.sections.hardware.items.appleMacMini.name")}
                   </Link>{" "}
-                  <p className="text-muted-foreground">
-                    Because Apple Computers are the best machines ever made, change my mind.
-                  </p>
+                  <p className="text-muted-foreground">{t("uses.sections.hardware.items.appleMacMini.description")}</p>
                 </div>
               </li>
               <li className="flex items-start space-y-2">
                 <div>
-                  🖥️{" "}
                   <Link
                     href="https://link.iolivares.com/dellp2414h-amzn"
                     target="_blank"
                     className="font-semibold hover:underline"
                     rel="noopener noreferrer"
                   >
-                    Dell P2414H
+                    {t("uses.sections.hardware.items.dellMonitor.name")}
                   </Link>
                   {" + "}
                   <Link
@@ -73,9 +68,11 @@ export default function UsesPage() {
                     className="font-semibold hover:underline"
                     rel="noopener noreferrer"
                   >
-                    Samsung C24F390 Monitor.
+                    {t("uses.sections.hardware.items.samsunMonitor.name")}
                   </Link>{" "}
-                  <p className="text-muted-foreground">Dell's monitor is the best! Curved monitors are overrated.</p>
+                  <p className="text-muted-foreground">
+                    {t("uses.sections.hardware.items.dellSamsungMonitors.description")}
+                  </p>
                 </div>
               </li>
               <li className="flex items-start space-y-2">
@@ -86,9 +83,9 @@ export default function UsesPage() {
                     className="font-semibold hover:underline"
                     rel="noopener noreferrer"
                   >
-                    🔊 Bose Companion 2 Series III Speakers.
+                    {t("uses.sections.hardware.items.boseSpeakers.name")}
                   </Link>{" "}
-                  <p className="text-muted-foreground">I really love the sound of this speakers.</p>
+                  <p className="text-muted-foreground">{t("uses.sections.hardware.items.boseSpeakers.description")}</p>
                 </div>
               </li>
               <li className="flex items-start space-y-2">
@@ -99,9 +96,9 @@ export default function UsesPage() {
                     className="font-semibold hover:underline"
                     rel="noopener noreferrer"
                   >
-                    🎧 Samson Go Mic Connect.
+                    {t("uses.sections.hardware.items.samsonMic.name")}
                   </Link>{" "}
-                  <p className="text-muted-foreground">Not bad for a USB mic.</p>
+                  <p className="text-muted-foreground">{t("uses.sections.hardware.items.samsonMic.description")}</p>
                 </div>
               </li>
               <li className="flex items-start space-y-2">
@@ -112,9 +109,11 @@ export default function UsesPage() {
                     className="font-semibold hover:underline"
                     rel="noopener noreferrer"
                   >
-                    📹 Logitech C920 HD Pro Webcam.
+                    {t("uses.sections.hardware.items.logitechWebcam.name")}
                   </Link>{" "}
-                  <p className="text-muted-foreground">Solid quality for less than a hundred bucks.</p>
+                  <p className="text-muted-foreground">
+                    {t("uses.sections.hardware.items.logitechWebcam.description")}
+                  </p>
                 </div>
               </li>
               <li className="flex items-start space-y-2">
@@ -125,9 +124,9 @@ export default function UsesPage() {
                     className="font-semibold hover:underline"
                     rel="noopener noreferrer"
                   >
-                    🔌 Tobenone USB-C Dock Station.
+                    {t("uses.sections.hardware.items.tobenoneDock.name")}
                   </Link>{" "}
-                  <p className="text-muted-foreground">This is my secret to connect everything without problems.</p>
+                  <p className="text-muted-foreground">{t("uses.sections.hardware.items.tobenoneDock.description")}</p>
                 </div>
               </li>
               <li className="flex items-start space-y-2">
@@ -138,11 +137,9 @@ export default function UsesPage() {
                     className="font-semibold hover:underline"
                     rel="noopener noreferrer"
                   >
-                    📱 Apple iPad Mini + Apple Pencil.
+                    {t("uses.sections.hardware.items.appleIpadMini.name")}
                   </Link>{" "}
-                  <p className="text-muted-foreground">
-                    iPad's are the best table to take notes, drawing my idea and read some book works perfectly.
-                  </p>
+                  <p className="text-muted-foreground">{t("uses.sections.hardware.items.appleIpadMini.description")}</p>
                 </div>
               </li>
               <li className="flex items-start space-y-2">
@@ -153,12 +150,9 @@ export default function UsesPage() {
                     className="font-semibold hover:underline"
                     rel="noopener noreferrer"
                   >
-                    💺 ErgoFoam Fit Mesh.
+                    {t("uses.sections.hardware.items.ergofoamChair.name")}
                   </Link>{" "}
-                  <p className="text-muted-foreground">
-                    After 5 unsuccessful purchases of <span className="italic">gamer chairs</span>. The best is an
-                    ergonomic chair and this is the best.
-                  </p>
+                  <p className="text-muted-foreground">{t("uses.sections.hardware.items.ergofoamChair.description")}</p>
                 </div>
               </li>
               <li className="flex items-start space-y-2">
@@ -169,9 +163,9 @@ export default function UsesPage() {
                     className="font-semibold hover:underline"
                     rel="noopener noreferrer"
                   >
-                    👨‍💻 Ergonomic Stand desk.
+                    {t("uses.sections.hardware.items.ergonomicDesk.name")}
                   </Link>{" "}
-                  <p className="text-muted-foreground">Because stand-up meetings should be stand-up.</p>
+                  <p className="text-muted-foreground">{t("uses.sections.hardware.items.ergonomicDesk.description")}</p>
                 </div>
               </li>
               <li className="flex items-start space-y-2">
@@ -182,9 +176,11 @@ export default function UsesPage() {
                     className="font-semibold hover:underline"
                     rel="noopener noreferrer"
                   >
-                    📱 iPhone 14 Pro Max.
+                    {t("uses.sections.hardware.items.iphone14ProMax.name")}
                   </Link>{" "}
-                  <p className="text-muted-foreground">iPhone always, the ecosystem matters.</p>
+                  <p className="text-muted-foreground">
+                    {t("uses.sections.hardware.items.iphone14ProMax.description")}
+                  </p>
                 </div>
               </li>
               <li className="flex items-start space-y-2">
@@ -195,9 +191,9 @@ export default function UsesPage() {
                     className="font-semibold hover:underline"
                     rel="noopener noreferrer"
                   >
-                    📷 Canon Rebel EOS T5.
+                    {t("uses.sections.hardware.items.canonCamera.name")}
                   </Link>{" "}
-                  <p className="text-muted-foreground">My first camera, I love Canon.</p>
+                  <p className="text-muted-foreground">{t("uses.sections.hardware.items.canonCamera.description")}</p>
                 </div>
               </li>
             </ul>
@@ -205,7 +201,7 @@ export default function UsesPage() {
 
           {/* Software & Apps Section */}
           <section>
-            <h2 className="text-2xl font-semibold mb-6">Software & Apps</h2>
+            <h2 className="text-2xl font-semibold mb-6">{t("uses.sections.software.title")}</h2>
             <ul className="space-y-4 text-sm">
               <li>
                 <Link
@@ -214,9 +210,9 @@ export default function UsesPage() {
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
                 >
-                  iTerm2
+                  {t("uses.sections.software.items.iterm2.name")}
                 </Link>
-                <p className="text-muted-foreground">The best terminal for Mac OS.</p>
+                <p className="text-muted-foreground">{t("uses.sections.software.items.iterm2.description")}</p>
               </li>
               <li>
                 <Link
@@ -225,11 +221,9 @@ export default function UsesPage() {
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
                 >
-                  Zsh + OhMyZsh
+                  {t("uses.sections.software.items.zshOhmyzsh.name")}
                 </Link>
-                <p className="text-muted-foreground">
-                  Zsh, well configured is one of the things if you can use OhMyZsh?
-                </p>
+                <p className="text-muted-foreground">{t("uses.sections.software.items.zshOhmyzsh.description")}</p>
               </li>
               <li>
                 <Link
@@ -238,9 +232,9 @@ export default function UsesPage() {
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
                 >
-                  Squoosh
+                  {t("uses.sections.software.items.squoosh.name")}
                 </Link>
-                <p className="text-muted-foreground">Performance matters.</p>
+                <p className="text-muted-foreground">{t("uses.sections.software.items.squoosh.description")}</p>
               </li>
               <li>
                 <Link
@@ -249,9 +243,9 @@ export default function UsesPage() {
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
                 >
-                  1Password
+                  {t("uses.sections.software.items.onepassword.name")}
                 </Link>
-                <p className="text-muted-foreground">The best cross-platform security service.</p>
+                <p className="text-muted-foreground">{t("uses.sections.software.items.onepassword.description")}</p>
               </li>
               <li>
                 <Link
@@ -260,15 +254,13 @@ export default function UsesPage() {
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
                 >
-                  Dub
+                  {t("uses.sections.software.items.dub.name")}
                 </Link>
-                <p className="text-muted-foreground">
-                  Links. Links. Links. Tracking conversion of every click and referrals management.
-                </p>
+                <p className="text-muted-foreground">{t("uses.sections.software.items.dub.description")}</p>
               </li>
             </ul>
 
-            <h3 className="text-xl font-semibold mt-8 mb-4">IDE & Extensions</h3>
+            <h3 className="text-xl font-semibold mt-8 mb-4">{t("uses.sections.software.ideExtensions.title")}</h3>
             <ul className="space-y-4 text-sm">
               <li>
                 <Link
@@ -277,9 +269,11 @@ export default function UsesPage() {
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
                 >
-                  VS Code
+                  {t("uses.sections.software.ideExtensions.items.vscode.name")}
                 </Link>
-                <p className="text-muted-foreground">Yes, in 2022 Microsoft has the best IDE.</p>
+                <p className="text-muted-foreground">
+                  {t("uses.sections.software.ideExtensions.items.vscode.description")}
+                </p>
               </li>
               <li>
                 <Link
@@ -288,9 +282,11 @@ export default function UsesPage() {
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
                 >
-                  Dracula Theme
+                  {t("uses.sections.software.ideExtensions.items.draculaTheme.name")}
                 </Link>
-                <p className="text-muted-foreground">For VSCode, is a nice dark theme.</p>
+                <p className="text-muted-foreground">
+                  {t("uses.sections.software.ideExtensions.items.draculaTheme.description")}
+                </p>
               </li>
               <li>
                 <Link
@@ -299,9 +295,11 @@ export default function UsesPage() {
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
                 >
-                  Dash Mono Font
+                  {t("uses.sections.software.ideExtensions.items.dashMonoFont.name")}
                 </Link>
-                <p className="text-muted-foreground">The always font for coding ever.</p>
+                <p className="text-muted-foreground">
+                  {t("uses.sections.software.ideExtensions.items.dashMonoFont.description")}
+                </p>
               </li>
               <li>
                 <Link
@@ -310,16 +308,18 @@ export default function UsesPage() {
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
                 >
-                  Raycast
+                  {t("uses.sections.software.ideExtensions.items.raycast.name")}
                 </Link>
-                <p className="text-muted-foreground">Productivity and Shortcuts in the next level.</p>
+                <p className="text-muted-foreground">
+                  {t("uses.sections.software.ideExtensions.items.raycast.description")}
+                </p>
               </li>
             </ul>
           </section>
 
           {/* Git, Building, Hosting, Monitoring Section */}
           <section>
-            <h2 className="text-2xl font-semibold mb-6">Git, Building, Hosting, Monitoring</h2>
+            <h2 className="text-2xl font-semibold mb-6">{t("uses.sections.gitHosting.title")}</h2>
             <ul className="space-y-4 text-sm">
               <li>
                 <Link
@@ -328,9 +328,9 @@ export default function UsesPage() {
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
                 >
-                  GitHub
+                  {t("uses.sections.gitHosting.items.github.name")}
                 </Link>
-                <p className="text-muted-foreground">Preferred by me over other services.</p>
+                <p className="text-muted-foreground">{t("uses.sections.gitHosting.items.github.description")}</p>
               </li>
               <li>
                 <Link
@@ -339,11 +339,9 @@ export default function UsesPage() {
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
                 >
-                  PostHog
+                  {t("uses.sections.gitHosting.items.posthog.name")}
                 </Link>
-                <p className="text-muted-foreground">
-                  Metrics, metrics, metrics. You can't improve what you don't measure.
-                </p>
+                <p className="text-muted-foreground">{t("uses.sections.gitHosting.items.posthog.description")}</p>
               </li>
               <li>
                 <Link
@@ -352,18 +350,16 @@ export default function UsesPage() {
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
                 >
-                  Cloudflare
+                  {t("uses.sections.gitHosting.items.cloudflare.name")}
                 </Link>
-                <p className="text-muted-foreground">
-                  Always my first layer and the secret to scale without surprises in your billing.
-                </p>
+                <p className="text-muted-foreground">{t("uses.sections.gitHosting.items.cloudflare.description")}</p>
               </li>
             </ul>
           </section>
 
           {/* Automation and Domotics (IoT) Section */}
           <section>
-            <h2 className="text-2xl font-semibold mb-6">Automation and Domotics (IoT)</h2>
+            <h2 className="text-2xl font-semibold mb-6">{t("uses.sections.automation.title")}</h2>
             <ul className="space-y-4 text-sm">
               <li>
                 <Link
@@ -372,9 +368,11 @@ export default function UsesPage() {
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
                 >
-                  Google Home Mini
+                  {t("uses.sections.automation.items.googleHomeMini.name")}
                 </Link>
-                <p className="text-muted-foreground">Ok Google, ask to Alexa about Siri jokes.</p>
+                <p className="text-muted-foreground">
+                  {t("uses.sections.automation.items.googleHomeMini.description")}
+                </p>
               </li>
               <li>
                 <Link
@@ -383,9 +381,11 @@ export default function UsesPage() {
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
                 >
-                  Philips HUE Lights
+                  {t("uses.sections.automation.items.philipsHueLights.name")}
                 </Link>
-                <p className="text-muted-foreground">Since 2016, using this IoT amazing lights.</p>
+                <p className="text-muted-foreground">
+                  {t("uses.sections.automation.items.philipsHueLights.description")}
+                </p>
               </li>
               <li>
                 <Link
@@ -394,16 +394,18 @@ export default function UsesPage() {
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
                 >
-                  Philips HUE Play Lights + Sync Box
+                  {t("uses.sections.automation.items.philipsHuePlaySync.name")}
                 </Link>
-                <p className="text-muted-foreground">Cinema experience and music/video sync just for fun and rock.</p>
+                <p className="text-muted-foreground">
+                  {t("uses.sections.automation.items.philipsHuePlaySync.description")}
+                </p>
               </li>
             </ul>
           </section>
 
           {/* Music System Section */}
           <section>
-            <h2 className="text-2xl font-semibold mb-6">Music System</h2>
+            <h2 className="text-2xl font-semibold mb-6">{t("uses.sections.music.title")}</h2>
             <ul className="space-y-4 text-sm">
               <li>
                 <Link
@@ -412,9 +414,11 @@ export default function UsesPage() {
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
                 >
-                  Audio-Technica AT-LP120XUSB
+                  {t("uses.sections.music.items.audioTechnicaTurntable.name")}
                 </Link>
-                <p className="text-muted-foreground">This is a beautiful, dynamic and amazing turntable.</p>
+                <p className="text-muted-foreground">
+                  {t("uses.sections.music.items.audioTechnicaTurntable.description")}
+                </p>
               </li>
               <li>
                 <Link
@@ -423,11 +427,9 @@ export default function UsesPage() {
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
                 >
-                  Yamaha RX-385 Receiver
+                  {t("uses.sections.music.items.yamahaReceiver.name")}
                 </Link>
-                <p className="text-muted-foreground">
-                  The power of Yamaha + the collections of this nice receiver to connect everything.
-                </p>
+                <p className="text-muted-foreground">{t("uses.sections.music.items.yamahaReceiver.description")}</p>
               </li>
               <li>
                 <Link
@@ -436,18 +438,16 @@ export default function UsesPage() {
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
                 >
-                  Samson Media ONE 4a
+                  {t("uses.sections.music.items.samsonSpeakers.name")}
                 </Link>
-                <p className="text-muted-foreground">
-                  Yes, I need better speakers but this one works until now to listen good music on Vinyls.
-                </p>
+                <p className="text-muted-foreground">{t("uses.sections.music.items.samsonSpeakers.description")}</p>
               </li>
             </ul>
           </section>
 
           {/* Misc. Items Section */}
           <section>
-            <h2 className="text-2xl font-semibold mb-6">Misc. Items</h2>
+            <h2 className="text-2xl font-semibold mb-6">{t("uses.sections.misc.title")}</h2>
             <ul className="space-y-4 text-sm">
               <li>
                 <Link
@@ -456,11 +456,9 @@ export default function UsesPage() {
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
                 >
-                  Microsoft Arch Mouse
+                  {t("uses.sections.misc.items.microsoftArchMouse.name")}
                 </Link>
-                <p className="text-muted-foreground">
-                  My mouse backup, when I need to charge the Apple's one, I always have this amazing mouse ready.
-                </p>
+                <p className="text-muted-foreground">{t("uses.sections.misc.items.microsoftArchMouse.description")}</p>
               </li>
               <li>
                 <Link
@@ -469,9 +467,9 @@ export default function UsesPage() {
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
                 >
-                  Thule Construct 24L Blue Laptop Backpack
+                  {t("uses.sections.misc.items.thuleBackpack.name")}
                 </Link>
-                <p className="text-muted-foreground">Primary awesome tech backpack.</p>
+                <p className="text-muted-foreground">{t("uses.sections.misc.items.thuleBackpack.description")}</p>
               </li>
               <li>
                 <Link
@@ -480,11 +478,9 @@ export default function UsesPage() {
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
                 >
-                  Apple Watch Series 10
+                  {t("uses.sections.misc.items.appleWatchSeries10.name")}
                 </Link>
-                <p className="text-muted-foreground">
-                  Yep, another Apple product, but the best smartwatch for Apple Ecosystem.
-                </p>
+                <p className="text-muted-foreground">{t("uses.sections.misc.items.appleWatchSeries10.description")}</p>
               </li>
               <li>
                 <Link
@@ -493,9 +489,9 @@ export default function UsesPage() {
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
                 >
-                  Bose QuietComfort Ultra Earbuds 2nd Gen
+                  {t("uses.sections.misc.items.boseEarbuds.name")}
                 </Link>
-                <p className="text-muted-foreground">I'm sorry Apple, but in sound and quality Bose are the #1.</p>
+                <p className="text-muted-foreground">{t("uses.sections.misc.items.boseEarbuds.description")}</p>
               </li>
               <li>
                 <Link
@@ -504,11 +500,9 @@ export default function UsesPage() {
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
                 >
-                  Bose QuietComfort Ultra Headphones
+                  {t("uses.sections.misc.items.boseHeadphones.name")}
                 </Link>
-                <p className="text-muted-foreground">
-                  My favorites after suffer the Apple Airpods Max deception. Bose QC, the best Headphones ever.
-                </p>
+                <p className="text-muted-foreground">{t("uses.sections.misc.items.boseHeadphones.description")}</p>
               </li>
             </ul>
           </section>

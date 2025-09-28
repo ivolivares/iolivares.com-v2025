@@ -42,5 +42,189 @@
     "description": "Always interested in new opportunities, collaborations, and conversations about technology and software design.",
     "email": "{email}",
     "elsewhere": "ELSEWHERE"
+  },
+  "uses": {
+    "title": "My tools, gear and apps.",
+    "description1": "This is my list of goodies that I use for code and life. Full transparency, some of these links can contain referrals. I love integrate gadgets and use together, commonly for very development to use about ecosystems of technology.",
+    "description2": "If you want to know more about my experience with some specific gadget, just tweet me:",
+    "description3": "Checkout this and more ones at",
+    "sections": {
+      "hardware": {
+        "title": "Hardware",
+        "items": {
+          "appleMacMini": {
+            "name": "💻 Apple Mac Mini M2 Pro 2023.",
+            "description": "Because Apple Computers are the best machines ever made, change my mind."
+          },
+          "dellMonitor": {
+            "name": "🖥️ Dell P2414H"
+          },
+          "samsunMonitor": {
+            "name": "Samsung C24F390 Monitor."
+          },
+          "dellSamsungMonitors": {
+            "description": "Dell's monitor is the best! Curved monitors are overrated."
+          },
+          "boseSpeakers": {
+            "name": "🔊 Bose Companion 2 Series III Speakers.",
+            "description": "I really love the sound of this speakers."
+          },
+          "samsonMic": {
+            "name": "🎧 Samson Go Mic Connect.",
+            "description": "Not bad for a USB mic."
+          },
+          "logitechWebcam": {
+            "name": "📹 Logitech C920 HD Pro Webcam.",
+            "description": "Solid quality for less than a hundred bucks."
+          },
+          "tobenoneDock": {
+            "name": "🔌 Tobenone USB-C Dock Station.",
+            "description": "This is my secret to connect everything without problems."
+          },
+          "appleIpadMini": {
+            "name": "📱 Apple iPad Mini + Apple Pencil.",
+            "description": "iPad's are the best table to take notes, drawing my idea and read some book works perfectly."
+          },
+          "ergofoamChair": {
+            "name": "💺 ErgoFoam Fit Mesh.",
+            "description": "After 5 unsuccessful purchases of gamer chairs. The best is an ergonomic chair and this is the best."
+          },
+          "ergonomicDesk": {
+            "name": "👨‍💻 Ergonomic Stand desk.",
+            "description": "Because stand-up meetings should be stand-up."
+          },
+          "iphone14ProMax": {
+            "name": "📱 iPhone 14 Pro Max.",
+            "description": "iPhone always, the ecosystem matters."
+          },
+          "canonCamera": {
+            "name": "📷 Canon Rebel EOS T5.",
+            "description": "My first pro camera, I love Canon."
+          }
+        }
+      },
+      "software": {
+        "title": "Software & Apps",
+        "items": {
+          "iterm2": {
+            "name": "iTerm2",
+            "description": "The best terminal for Mac OS."
+          },
+          "zshOhmyzsh": {
+            "name": "Zsh + OhMyZsh",
+            "description": "Zsh, well configured is one of the things if you can use OhMyZsh?"
+          },
+          "squoosh": {
+            "name": "Squoosh",
+            "description": "Performance matters."
+          },
+          "onepassword": {
+            "name": "1Password",
+            "description": "The best cross-platform security service."
+          },
+          "dub": {
+            "name": "Dub",
+            "description": "Links. Links. Links. Tracking conversion of every click and referrals management."
+          }
+        },
+        "ideExtensions": {
+          "title": "IDE & Extensions",
+          "items": {
+            "vscode": {
+              "name": "VS Code",
+              "description": "Yes, in 2022 Microsoft has the best IDE."
+            },
+            "draculaTheme": {
+              "name": "Dracula Theme",
+              "description": "For VSCode, is a nice dark theme."
+            },
+            "dashMonoFont": {
+              "name": "Dash Mono Font",
+              "description": "The always font for coding ever."
+            },
+            "raycast": {
+              "name": "Raycast",
+              "description": "Productivity and Shortcuts in the next level."
+            }
+          }
+        }
+      },
+      "gitHosting": {
+        "title": "Git, Building, Hosting, Monitoring",
+        "items": {
+          "github": {
+            "name": "GitHub",
+            "description": "Always a Github Fan!"
+          },
+          "posthog": {
+            "name": "PostHog",
+            "description": "Metrics, metrics, metrics. You can't improve what you don't measure."
+          },
+          "cloudflare": {
+            "name": "Cloudflare",
+            "description": "Always my first layer and the secret to scale without surprises in your billing."
+          }
+        }
+      },
+      "automation": {
+        "title": "Automation and Domotics (IoT)",
+        "items": {
+          "googleHomeMini": {
+            "name": "Google Home Mini",
+            "description": "Ok Google, ask to Alexa about Siri jokes."
+          },
+          "philipsHueLights": {
+            "name": "Philips HUE Lights",
+            "description": "Since 2016, using this IoT amazing lights."
+          },
+          "philipsHuePlaySync": {
+            "name": "Philips HUE Play Lights + Sync Box",
+            "description": "Cinema experience and music/video sync just for fun and rock."
+          }
+        }
+      },
+      "music": {
+        "title": "Music System",
+        "items": {
+          "audioTechnicaTurntable": {
+            "name": "Audio-Technica AT-LP120XUSB",
+            "description": "This is a beautiful, dynamic and amazing turntable."
+          },
+          "yamahaReceiver": {
+            "name": "Yamaha RX-385 Receiver",
+            "description": "The power of Yamaha + the collections of this nice receiver to connect everything."
+          },
+          "samsonSpeakers": {
+            "name": "Samson Media ONE 4a",
+            "description": "Yes, I need better speakers but this one works until now to listen good music on Vinyls."
+          }
+        }
+      },
+      "misc": {
+        "title": "Misc. Items",
+        "items": {
+          "microsoftArchMouse": {
+            "name": "Microsoft Arch Mouse",
+            "description": "My mouse backup, when I need to charge the Apple's one, I always have this amazing mouse ready."
+          },
+          "thuleBackpack": {
+            "name": "Thule Construct 24L Blue Laptop Backpack",
+            "description": "My favorite awesome tech backpack. I Love this brand."
+          },
+          "appleWatchSeries10": {
+            "name": "Apple Watch Series 10",
+            "description": "Yep, another Apple product, but the best smartwatch for Apple Ecosystem."
+          },
+          "boseEarbuds": {
+            "name": "Bose QuietComfort Ultra Earbuds 2nd Gen",
+            "description": "I'm sorry Apple, but in sound and quality Bose are the #1."
+          },
+          "boseHeadphones": {
+            "name": "Bose QuietComfort Ultra Headphones",
+            "description": "My favorites after suffer the Apple Airpods Max deception. Bose QC, the best Headphones ever."
+          }
+        }
+      }
+    }
   }
 }
