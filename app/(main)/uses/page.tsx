@@ -59,7 +59,7 @@ export default function UsesPage() {
                 <div>
                   🖥️{" "}
                   <Link
-                    href="https://www.amazon.com/Dell-Screen-LED-Lit-Monitor-P2419H/dp/B07F8XZN69?from=iolivares.com"
+                    href="https://link.iolivares.com/dellp2414h-amzn"
                     target="_blank"
                     className="font-semibold hover:underline"
                     rel="noopener noreferrer"
@@ -68,7 +68,7 @@ export default function UsesPage() {
                   </Link>
                   {" + "}
                   <Link
-                    href="https://www.amazon.com/Samsung-LC24F390FHNXZA-24-inch-Monitor-FreeSync/dp/B01CX26WPY?from=iolivares.com"
+                    href="https://link.iolivares.com/smsngc4f390-amzn"
                     target="_blank"
                     className="font-semibold hover:underline"
                     rel="noopener noreferrer"
@@ -81,7 +81,7 @@ export default function UsesPage() {
               <li className="flex items-start space-y-2">
                 <div>
                   <Link
-                    href="https://www.bose.com/en_us/products/speakers/stereo_speakers/companion-2-series-iii-multimedia-speaker-system.html?from=iolivares.com"
+                    href="https://link.iolivares.com/bosecomp2seriesIII-amzn"
                     target="_blank"
                     className="font-semibold hover:underline"
                     rel="noopener noreferrer"
@@ -94,7 +94,7 @@ export default function UsesPage() {
               <li className="flex items-start space-y-2">
                 <div>
                   <Link
-                    href="http://www.samsontech.com/samson/products/microphones/usb-microphones/gomicconnect/?from=iolivares.com"
+                    href="https://link.iolivares.com/samsongomic-amzn"
                     target="_blank"
                     className="font-semibold hover:underline"
                     rel="noopener noreferrer"
@@ -107,7 +107,7 @@ export default function UsesPage() {
               <li className="flex items-start space-y-2">
                 <div>
                   <Link
-                    href="https://www.amazon.com/gp/product/B085TFF7M1/?from=iolivares.com"
+                    href="https://link.iolivares.com/logitechc920-amzn"
                     target="_blank"
                     className="font-semibold hover:underline"
                     rel="noopener noreferrer"
@@ -120,7 +120,7 @@ export default function UsesPage() {
               <li className="flex items-start space-y-2">
                 <div>
                   <Link
-                    href="https://www.amazon.com/Estaci%C3%B3n-acoplamiento-Monitor-pantalla-Ethernet/dp/B088D5436G?ref_=ast_sto_dp&from=iolivares.com"
+                    href="https://link.iolivares.com/tobenonedock-amzn"
                     target="_blank"
                     className="font-semibold hover:underline"
                     rel="noopener noreferrer"
@@ -133,7 +133,7 @@ export default function UsesPage() {
               <li className="flex items-start space-y-2">
                 <div>
                   <Link
-                    href="https://www.apple.com/ipad-mini/?from=iolivares.com"
+                    href="https://link.iolivares.com/ipadmini-amzn"
                     target="_blank"
                     className="font-semibold hover:underline"
                     rel="noopener noreferrer"
@@ -148,7 +148,7 @@ export default function UsesPage() {
               <li className="flex items-start space-y-2">
                 <div>
                   <Link
-                    href="https://bookstore.cl/silla-ergohuman/silla-ergohuman-fit-mesh-58.html?from=iolivares.com"
+                    href="https://link.iolivares.com/ergofoamseat-amazn"
                     target="_blank"
                     className="font-semibold hover:underline"
                     rel="noopener noreferrer"
@@ -164,7 +164,7 @@ export default function UsesPage() {
               <li className="flex items-start space-y-2">
                 <div>
                   <Link
-                    href="https://ergonomics.cl/products/escritorio-electrico-avanzado?variant=36498974441621&from=iolivares.com"
+                    href="https://link.iolivares.com/standdesk-ergonomics"
                     target="_blank"
                     className="font-semibold hover:underline"
                     rel="noopener noreferrer"
@@ -177,7 +177,7 @@ export default function UsesPage() {
               <li className="flex items-start space-y-2">
                 <div>
                   <Link
-                    href="https://www.apple.com/iphone/?from=iolivares.com"
+                    href="https://link.iolivares.com/iphone14promax-amzn"
                     target="_blank"
                     className="font-semibold hover:underline"
                     rel="noopener noreferrer"
@@ -190,7 +190,7 @@ export default function UsesPage() {
               <li className="flex items-start space-y-2">
                 <div>
                   <Link
-                    href="https://www.cla.canon.com/cla/es/support/consumer/cameras/eos_cameras/eos_rebel_t5?from=iolivares.com"
+                    href="https://link.iolivares.com/canoneost5-amzn"
                     target="_blank"
                     className="font-semibold hover:underline"
                     rel="noopener noreferrer"
@@ -253,6 +253,19 @@ export default function UsesPage() {
                 </Link>
                 <p className="text-muted-foreground">The best cross-platform security service.</p>
               </li>
+              <li>
+                <Link
+                  href="https://refer.dub.co/ivan-olivares-r?from=iolivares.com"
+                  target="_blank"
+                  className="font-semibold hover:underline"
+                  rel="noopener noreferrer"
+                >
+                  Dub
+                </Link>
+                <p className="text-muted-foreground">
+                  Links. Links. Links. Tracking conversion of every click and referrals management.
+                </p>
+              </li>
             </ul>
 
             <h3 className="text-xl font-semibold mt-8 mb-4">IDE & Extensions</h3>
@@ -292,7 +305,7 @@ export default function UsesPage() {
               </li>
               <li>
                 <Link
-                  href="https://raycast.com/?via=iolivares-dot-com&from=iolivares.com"
+                  href="https://link.iolivares.com/raycast"
                   target="_blank"
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
@@ -354,7 +367,7 @@ export default function UsesPage() {
             <ul className="space-y-4 text-sm">
               <li>
                 <Link
-                  href="https://store.google.com/us/product/google_nest_mini?from=iolivares.com"
+                  href="https://link.iolivares.com/googlehomemini-amzn"
                   target="_blank"
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
@@ -365,7 +378,7 @@ export default function UsesPage() {
               </li>
               <li>
                 <Link
-                  href="https://www.philips-hue.com/en-hk/products/smart-lightbulbs?from=iolivares.com"
+                  href="https://link.iolivares.com/philipshue-amzn"
                   target="_blank"
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
@@ -376,7 +389,7 @@ export default function UsesPage() {
               </li>
               <li>
                 <Link
-                  href="https://www.philips-hue.com/en-hk/explore-hue/propositions/entertainment/sync-with-tv?from=iolivares.com"
+                  href="https://amzn.to/470rsWY?from=iolivares.com"
                   target="_blank"
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
@@ -394,7 +407,7 @@ export default function UsesPage() {
             <ul className="space-y-4 text-sm">
               <li>
                 <Link
-                  href="https://www.audio-technica.com/es-us/at-lp120xusb?from=iolivares.com"
+                  href="https://amzn.to/4874HSw?from=iolivares.com"
                   target="_blank"
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
@@ -405,7 +418,7 @@ export default function UsesPage() {
               </li>
               <li>
                 <Link
-                  href="https://www.amazon.com/Yamaha-RX-396-Stereo-Receiver/dp/B0006IJHEQ?from=iolivares.com"
+                  href="https://amzn.to/475WVWX?from=iolivares.com"
                   target="_blank"
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
@@ -418,7 +431,7 @@ export default function UsesPage() {
               </li>
               <li>
                 <Link
-                  href="http://www.samsontech.com/samson/products/studio-monitors/media-one/mediaone4a?from=iolivares.com"
+                  href="https://amzn.to/46MUf08?from=iolivares.com"
                   target="_blank"
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
@@ -438,7 +451,7 @@ export default function UsesPage() {
             <ul className="space-y-4 text-sm">
               <li>
                 <Link
-                  href="https://www.microsoft.com/en-us/d/microsoft-arc-mouse-black/8mwhbv8qvskr?from=iolivares.com"
+                  href="https://amzn.to/4nXEKth?from=iolivares.com"
                   target="_blank"
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
@@ -451,7 +464,7 @@ export default function UsesPage() {
               </li>
               <li>
                 <Link
-                  href="https://www.thule.com/en-us/backpacks/laptop-backpacks/thule-construct-backpack-24l-_-3205352?from=iolivares.com"
+                  href="https://amzn.to/4gObH9d?from=iolivares.com"
                   target="_blank"
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
@@ -462,7 +475,7 @@ export default function UsesPage() {
               </li>
               <li>
                 <Link
-                  href="https://www.apple.com/watch/?from=iolivares.com"
+                  href="https://amzn.to/4nsymdC?from=iolivares.com"
                   target="_blank"
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
@@ -475,7 +488,7 @@ export default function UsesPage() {
               </li>
               <li>
                 <Link
-                  href="https://www.bose.com/p/earbuds/bose-quietcomfort-ultra-earbuds-2nd-gen/QCUE2-HEADPHONEIN.html?from=iolivares.com"
+                  href="https://amzn.to/3VFb1t2?from=iolivares.com"
                   target="_blank"
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
@@ -486,7 +499,7 @@ export default function UsesPage() {
               </li>
               <li>
                 <Link
-                  href="https://www.bose.com/p/headphones/bose-quietcomfort-ultra-headphones/QCUH-HEADPHONEARN.html?from=iolivares.com"
+                  href="https://amzn.to/42Chs3Z?from=iolivares.com"
                   target="_blank"
                   className="font-semibold hover:underline"
                   rel="noopener noreferrer"
@@ -494,7 +507,7 @@ export default function UsesPage() {
                   Bose QuietComfort Ultra Headphones
                 </Link>
                 <p className="text-muted-foreground">
-                  My favorites after suffer the Apple Airpods Max. Bose QC, the best Headphones ever.
+                  My favorites after suffer the Apple Airpods Max deception. Bose QC, the best Headphones ever.
                 </p>
               </li>
             </ul>
