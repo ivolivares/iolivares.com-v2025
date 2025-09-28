@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next"
 import { Raleway } from "next/font/google"
 import type React from "react"
 import "./globals.css"
+import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import { META_THEME_COLORS, siteConfig } from "@/config/site"
 import { TranslationProvider } from "@/hooks/use-translation"
@@ -101,6 +102,7 @@ export default async function RootLayout({
         <ThemeProvider>
           <TranslationProvider initialTranslations={initialTranslations}>{children}</TranslationProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
