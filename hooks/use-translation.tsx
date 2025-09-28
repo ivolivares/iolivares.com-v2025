@@ -44,6 +44,7 @@ export function TranslationProvider({
   useEffect(() => {
     if (initialTranslations && language === "en") {
       // Already have initial translations for default language
+      setTranslations(initialTranslations)
       setIsLoading(false)
       return
     }
