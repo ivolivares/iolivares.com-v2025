@@ -5,8 +5,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.1.9-38B2AC?style=flat-square&logo=tailwind-css)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fivolivares%2Fiolivares.com-v2025)
+![Deploy with Railway](https://img.shields.io/badge/Railway-131415?style=for-the-badge&logo=railway&logoColor=white)
 
 A modern, multilingual personal website built with Next.js 15, showcasing professional work, thoughts, talks, and personal interests. This is Iván Olivares' personal website for 2025, featuring a clean design and comprehensive content management system.
 
