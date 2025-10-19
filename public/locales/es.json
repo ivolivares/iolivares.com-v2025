@@ -32,12 +32,12 @@
   "giving-talks": {
     "backToTalks": "Volver a las charlas que he dado",
     "title": "¿Buscas speaker para tu charla?",
-    "description": "¡Hola! Mi nombre es {name}. Desarrollador apasionado viviendo en Santiago, Chile. Me enfoco en diferentes áreas de la tecnología pero me encanta la Industria de Medios y Streaming. Me encanta trabajar con tecnologías del ecosistema JS como React, Next.js, TypeScript, NodeJS, entre otros.",
+    "description": "¡Hola! Mi nombre es {name}. Desarrollador apasionado viviendo en Santiago, Chile. Me enfoco en diferentes áreas de la tecnología pero me apasiona principalmente la industria del Streaming. Disfruto de explorar tecnologías del ecosistema JS como React, Next.js, TypeScript, NodeJS, entre otros.",
     "breakNotice": "Actualmente estoy tomando un descanso de dar charlas.",
     "informationTitle": "Mi información como Speaker",
     "informationDescription": "Puedes usar la siguiente información para presentarme:",
     "copied": "¡Copiado!",
-    "introduction": "Un ingeniero de software apasionado y emprendedor. Actualmente trabajando como Director de Tecnología para Globant en el Media & Entertainment AI Studio. Le encanta construir usando las últimas tecnologías. Principalmente enfocado en el ecosistema JS.",
+    "introduction": "Iván es un software developer y emprendedor apasionado, actualmente Tech Director en Globant dentro del Media & Entertainment AI Studio. Con más de 15 años de experiencia, disfruta construir productos digitales explorando el ecosistema JavaScript, la nube y la inteligencia artificial. Comparte sus ideas, artículos y proyectos personales en iolivares.com, donde promueve la innovación y el aprendizaje continuo.",
     "copyToClipboard": "Copiar al portapapeles",
     "speakerInfo": {
       "name": "Nombre",
