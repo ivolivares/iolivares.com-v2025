@@ -2,6 +2,7 @@
 
 import {
   SiApplemusic,
+  SiBluesky,
   SiFacebook,
   SiGithub,
   SiInstagram,
@@ -41,11 +42,18 @@ export default function LinksPage() {
       url: "https://github.com/ivolivares?from=iolivares.com",
     },
     {
-      className: "col-span-2",
+      className: "col-span-1",
       color: "from-blue-600 to-blue-700",
       icon: Linkedin,
       name: t("links.linkedin"),
       url: "https://linkedin.com/in/ivanolivaresrojas?from=iolivares.com",
+    },
+    {
+      className: "col-span-1",
+      color: "from-sky-400 to-sky-600",
+      icon: SiBluesky,
+      name: t("links.bluesky"),
+      url: "https://bsky.app/profile/ivolivares.bsky.social?from=iolivares.com",
     },
     {
       className: "col-span-2",
