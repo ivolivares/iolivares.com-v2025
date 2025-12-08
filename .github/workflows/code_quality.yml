@@ -34,7 +34,7 @@ jobs:
           version: latest
 
       - name: Run Biome
-        run: biome ci .
+        run: pnpm run check
       # - name: Unit & Integration tests
       #   run: pnpm test
       # - name: Smoke & Acceptance tests
