@@ -142,6 +142,49 @@ export default function Connect() {
                     </div>
                   </Link>
                 ))}
+
+                {/* MediaCreators Card */}
+                <Link
+                  href="https://mediacreators.io/?from=iolivares.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="col-span-2 sm:col-span-3 lg:col-span-4 row-span-1 p-6 sm:p-8 group relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#6800ba] via-[#a800eb] to-[#01ffc2] hover:scale-[1.02] transition-all duration-300 hover:shadow-xl"
+                >
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
+                  <div className="relative h-full flex items-center justify-between text-white">
+                    <div className="flex flex-col sm:flex-row gap-4 sm:items-center w-full justify-between">
+                      <div className="space-y-1">
+                        <div className="text-xl sm:text-2xl font-semibold">MediaCreators</div>
+                        <div className="text-white/90 text-sm sm:text-base">Follow my co-founder journey here</div>
+                      </div>
+
+                      <div className="hidden sm:block">
+                        <span className="inline-flex items-center justify-center rounded-full bg-[#a800eb]/80 px-4 py-2 text-sm font-medium text-white group-hover:bg-[#6800ba]/80 transition-colors duration-300">
+                          Check it out
+                          <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M17 8l4 4m0 0l-4 4m4-4H3"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="absolute top-4 right-4 sm:hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <svg className="w-5 h-5 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>

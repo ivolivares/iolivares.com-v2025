@@ -21,6 +21,14 @@ export default function LinksPage() {
   const sectionRef = useScrollReveal()
   const links = [
     {
+      className: "col-span-3",
+      color: "from-[#6800ba] via-[#a800eb] to-[#01ffc2]",
+      description: "Follow my co-founder journey here",
+      icon: Code, // Placeholder
+      name: "MediaCreators",
+      url: "https://mediacreators.io/?from=iolivares.com",
+    },
+    {
       className: "col-span-2",
       color: "from-gray-900 to-gray-700",
       icon: Code,
@@ -132,6 +140,34 @@ export default function LinksPage() {
         {/* Links Grid */}
         <div className="grid grid-cols-3 gap-3">
           {links.map((link) => {
+            if (link.description) {
+              return (
+                <Link
+                  key={link.name?.toString()}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${link.className} group relative overflow-hidden rounded-xl bg-gradient-to-r ${link.color} hover:scale-[1.02] transition-all duration-300 hover:shadow-xl p-4 flex flex-col items-center justify-center gap-2`}
+                >
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
+                  <div className="relative flex flex-col items-center justify-center gap-1 text-white text-center">
+                    <span className="text-lg font-bold">{link.name}</span>
+                    <span className="text-sm font-medium text-white/90">{link.description}</span>
+                  </div>
+                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <svg className="w-5 h-5 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
+                  </div>
+                </Link>
+              )
+            }
+
             const Icon = link.icon
             return (
               <Link

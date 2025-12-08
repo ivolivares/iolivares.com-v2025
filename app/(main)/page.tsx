@@ -106,6 +106,16 @@ export default function Home() {
                         Globant
                       </LinkAnimated>
                     ),
+                    mediacreators: (
+                      <LinkAnimated
+                        href="https://mediacreators.io/?from=iolivares.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        variant="scribble-mediacreators"
+                      >
+                        MediaCreators
+                      </LinkAnimated>
+                    ),
                   })}
                   {` `}
                   <LinkAnimated href="/talks" variant="arc">
@@ -115,6 +125,39 @@ export default function Home() {
                 </p>
                 <p className="text-muted-foreground">{t("home.background")}</p>
                 <p className="text-muted-foreground">{t("home.mission")}</p>
+
+                <div className="pt-4">
+                  <div className="relative group overflow-hidden rounded-2xl border-2 border-border hover:border-[#FA05F1] transition-all duration-300">
+                    <Link
+                      href="https://mediacreators.io/?from=iolivares.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block p-6 sm:p-8"
+                    >
+                      <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center justify-between">
+                        <div className="space-y-2">
+                          <h3 className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-[#6800ba] to-[#01ffc2]">
+                            {t("home.startup.title")}
+                          </h3>
+                          <p className="text-muted-foreground max-w-md">{t("home.startup.description")}</p>
+                        </div>
+                        <div className="flex-shrink-0">
+                          <span className="inline-flex items-center justify-center rounded-full bg-[#FA05F1]/10 px-4 py-2 text-sm font-medium text-[#FA05F1] group-hover:bg-[#FA05F1] group-hover:text-white transition-colors duration-300">
+                            {t("home.startup.cta")}
+                            <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"
+                              />
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

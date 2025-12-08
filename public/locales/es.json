@@ -9,10 +9,15 @@
     "title": "Soy Iván Olivares — ingeniero de software senior, entusiasta de los vinilos y papá perruno.",
     "newArticle": "Nuevo",
     "articleTitle": "Construyendo mi sitio web v2025 con V0: Reflexiones sobre el uso de IA para prototipado",
-    "currentWork": "Actualmente trabajo como Director de Tecnología en {glb}, con base en Santiago, Chile. También disfruto compartir mi conocimiento y experiencias con la comunidad a través de artículos y",
+    "currentWork": "Actualmente trabajo como Director de Tecnología en {glb}, con base en Santiago, Chile. Soy también cofundador de {startup}, una plataforma que permite a creadores lanzar sus propios servicios de streaming. También disfruto compartir mi conocimiento y experiencias con la comunidad a través de artículos y",
     "currentWorkEnd": "charlas",
     "background": "Comencé en el mundo del desarrollo en 2004, experimentando con computadoras (rompiendo cosas) y aprendiendo a programar investigando en internet. Con solo 15 años, construí mi primer sitio web — y nunca paré. En 2010, lancé mi primer emprendimiento con mis primeros clientes y me enamoré aún más de la tecnología.",
-    "mission": "Mi misión personal es impulsar el mundo hacia adelante construyendo puentes entre las personas y la tecnología."
+    "mission": "Mi misión personal es impulsar el mundo hacia adelante construyendo puentes entre las personas y la tecnología.",
+    "startup": {
+      "title": "Crea Tu Propio Imperio de Streaming",
+      "description": "MediaCreators es la plataforma todo-en-uno para que creadores lancen su propio servicio de streaming OTT de marca blanca. Monetización con IA, integración multiplataforma y sin necesidad de código.",
+      "cta": "Ver MediaCreators.io"
+    }
   },
   "talks": {
     "pageTitle": "Charlas",
