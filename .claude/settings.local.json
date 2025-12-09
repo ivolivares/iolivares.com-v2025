@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(pnpm list:*)",
+      "Bash(cat:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm run type-check:*)",
+      "Bash(pnpm run typecheck:*)",
+      "Bash(pnpm run build)",
+      "Bash(pnpm check:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

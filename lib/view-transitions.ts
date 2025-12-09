@@ -3,16 +3,20 @@
  * Provides fallback for browsers that don't support the API
  */
 
+type ViewTransitionCallback = () => void | Promise<void>
+
 export function startViewTransition(callback: () => void) {
   // Check if View Transitions API is supported
   if ("startViewTransition" in document) {
-    // biome-ignore lint/suspicious/noExplicitAny: View Transitions API is experimental
-    return (document as any).startViewTransition(callback)
-  } else {
-    // Fallback for older browsers - just execute the callback
-    callback()
-    return Promise.resolve()
+    // TypeScript doesn't yet have complete types for the View Transitions API
+    const doc = document as Document & {
+      startViewTransition: (cb: ViewTransitionCallback) => { finished: Promise<void> }
+    }
+    return doc.startViewTransition(callback)
   }
+  // Fallback for older browsers - just execute the callback
+  callback()
+  return undefined
 }
 
 /**

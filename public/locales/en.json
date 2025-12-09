@@ -34,6 +34,12 @@
     "link": "Link",
     "presentationThumbnail": "presentation thumbnail"
   },
+  "thoughts": {
+    "pageTitle": "Recent Thoughts",
+    "noPostsMessage": "No posts found, please back later.",
+    "readMoreCta": "Read more",
+    "backButton": "Back to thoughts"
+  },
   "giving-talks": {
     "backToTalks": "Back to talks I have given",
     "title": "Are you looking for Speaker for your talk?",
@@ -96,52 +102,52 @@
         "title": "Hardware",
         "items": {
           "appleMacMini": {
-            "name": "💻 Apple Mac Mini M2 Pro 2023.",
+            "name": "💻 Apple Mac Mini M2 Pro 2023",
             "description": "Because Apple Computers are the best machines ever made, change my mind."
           },
           "dellMonitor": {
             "name": "🖥️ Dell P2414H"
           },
           "samsunMonitor": {
-            "name": "Samsung C24F390 Monitor."
+            "name": "Samsung C24F390 Monitor"
           },
           "dellSamsungMonitors": {
             "description": "Dell's monitor is the best! Curved monitors are overrated."
           },
           "boseSpeakers": {
-            "name": "🔊 Bose Companion 2 Series III Speakers.",
+            "name": "🔊 Bose Companion 2 Series III Speakers",
             "description": "I really love the sound of this speakers."
           },
           "samsonMic": {
-            "name": "🎧 Samson Go Mic Connect.",
+            "name": "🎧 Samson Go Mic Connect",
             "description": "Not bad for a USB mic."
           },
           "logitechWebcam": {
-            "name": "📹 Logitech C920 HD Pro Webcam.",
+            "name": "📹 Logitech C920 HD Pro Webcam",
             "description": "Solid quality for less than a hundred bucks."
           },
           "tobenoneDock": {
-            "name": "🔌 Tobenone USB-C Dock Station.",
+            "name": "🔌 Tobenone USB-C Dock Station",
             "description": "This is my secret to connect everything without problems."
           },
           "appleIpadMini": {
-            "name": "📱 Apple iPad Mini + Apple Pencil.",
+            "name": "📱 Apple iPad Mini + Apple Pencil",
             "description": "iPad's are the best table to take notes, drawing my idea and read some book works perfectly."
           },
           "ergofoamChair": {
-            "name": "💺 ErgoFoam Fit Mesh.",
+            "name": "💺 ErgoFoam Fit Mesh",
             "description": "After 5 unsuccessful purchases of gamer chairs. The best is an ergonomic chair and this is the best."
           },
           "ergonomicDesk": {
-            "name": "👨‍💻 Ergonomic Stand desk.",
+            "name": "👨‍💻 Ergonomic Stand desk",
             "description": "Because stand-up meetings should be stand-up."
           },
           "iphone14ProMax": {
-            "name": "📱 iPhone 14 Pro Max.",
+            "name": "📱 iPhone 14 Pro Max",
             "description": "iPhone always, the ecosystem matters."
           },
           "canonCamera": {
-            "name": "📷 Canon Rebel EOS T5.",
+            "name": "📷 Canon Rebel EOS T5",
             "description": "My first pro camera, I love Canon."
           }
         }

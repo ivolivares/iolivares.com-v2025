@@ -115,6 +115,9 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
   }
@@ -126,17 +129,17 @@
     navigation: auto;
   }
 
-  /* Page content transitions */
-  .page-content {
-    view-transition-name: main-content;
+  /* Custom animations */
+  @keyframes fade-out {
+    to {
+      opacity: 0;
+    }
   }
 
-  ::view-transition-old(main-content) {
-    animation: slide-out 0.3s ease-out;
-  }
-
-  ::view-transition-new(main-content) {
-    animation: slide-in 0.3s ease-out;
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
   }
 
   @keyframes slide-out {

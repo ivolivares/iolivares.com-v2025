@@ -60,7 +60,7 @@ export function CommandPalette({ open: controlledOpen, onOpenChange }: CommandPa
 
   const Commands = [
     { icon: Home, label: t("commandPalette.commands.about"), route: "/" },
-    // { icon: MessageSquare, label: "Thoughts", route: "/thoughts" },
+    { icon: MessageSquare, label: "Thoughts", route: "/thoughts" },
     { icon: Mic, label: t("commandPalette.commands.talks"), route: "/talks" },
     { icon: User, label: t("commandPalette.commands.givingTalks"), route: "/giving-talks" },
     { icon: Mail, label: t("commandPalette.commands.connect"), route: "/connect" },
