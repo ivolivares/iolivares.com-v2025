@@ -5,6 +5,7 @@ import { useState } from "react"
 import { TableOfContents } from "@/components/table-of-contents"
 import type { TOCItem } from "@/lib/notion"
 import { cn } from "@/lib/utils"
+import { useTranslation } from "@/hooks/use-translation"
 
 interface CollapsibleTOCProps {
   toc: TOCItem[]
@@ -13,6 +14,7 @@ interface CollapsibleTOCProps {
 
 export function CollapsibleTOC({ toc, defaultOpen = false }: CollapsibleTOCProps) {
   const [isOpen, setIsOpen] = useState(defaultOpen)
+  const { t } = useTranslation()
 
   if (!toc || toc.length === 0) {
     return null
@@ -27,7 +29,9 @@ export function CollapsibleTOC({ toc, defaultOpen = false }: CollapsibleTOCProps
         aria-expanded={isOpen}
         aria-controls="mobile-toc-content"
       >
-        <span className="text-sm font-semibold text-foreground uppercase tracking-wide">Table of Contents</span>
+        <span className="text-sm font-semibold text-foreground uppercase tracking-wide">
+          {t("thoughts.tocTitleCollapsible")}
+        </span>
         {isOpen ? (
           <ChevronUp className="w-4 h-4 text-muted-foreground" />
         ) : (

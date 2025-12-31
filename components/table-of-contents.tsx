@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import type { TOCItem } from "@/lib/notion"
 import { cn } from "@/lib/utils"
+import { useTranslation } from "@/hooks/use-translation"
 
 interface TableOfContentsProps {
   toc: TOCItem[]
@@ -11,6 +12,7 @@ interface TableOfContentsProps {
 
 export function TableOfContents({ toc, className }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>("")
+  const { t } = useTranslation()
 
   useEffect(() => {
     // Track which heading is currently in view using Intersection Observer
@@ -83,7 +85,9 @@ export function TableOfContents({ toc, className }: TableOfContentsProps) {
 
   return (
     <nav className={cn("toc", className)} aria-label="Table of contents">
-      <h2 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wide">On this page</h2>
+      <h2 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wide">
+        {t("thoughts.tocTitle")}
+      </h2>
       {renderTOCItems(toc)}
     </nav>
   )

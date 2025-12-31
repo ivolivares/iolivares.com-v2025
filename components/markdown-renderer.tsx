@@ -49,12 +49,12 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
           },
           // Custom heading styles with IDs for anchor linking
           h1: ({ children, id }) => (
-            <h1 id={id} className="text-3xl font-light mb-6 text-foreground scroll-mt-20">
+            <h1 id={id} className="text-3xl font-bold mb-6 text-foreground scroll-mt-20">
               {children}
             </h1>
           ),
           h2: ({ children, id }) => (
-            <h2 id={id} className="text-2xl font-light mb-4 mt-8 text-foreground scroll-mt-20">
+            <h2 id={id} className="text-2xl font-bold mb-4 mt-8 text-foreground scroll-mt-20">
               {children}
             </h2>
           ),
@@ -113,7 +113,7 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
             </pre>
           ),
           // Custom list styles
-          ul: ({ children }) => <ul className="mb-6 space-y-2 text-foreground">{children}</ul>,
+          ul: ({ children }) => <ul className="mb-6 pl-4 space-y-2 text-foreground list-disc list-outside block">{children}</ul>,
         }}
       >
         {content}

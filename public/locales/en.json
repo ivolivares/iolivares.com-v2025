@@ -38,7 +38,9 @@
     "pageTitle": "Recent Thoughts",
     "noPostsMessage": "No posts found, please back later.",
     "readMoreCta": "Read more",
-    "backButton": "Back to thoughts"
+    "backButton": "Back to thoughts",
+    "tocTitle": "On this page",
+    "tocTitleCollapsible": "Table of Contents"
   },
   "giving-talks": {
     "backToTalks": "Back to talks I have given",

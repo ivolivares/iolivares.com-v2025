@@ -38,7 +38,9 @@
     "pageTitle": "Ideas recientes",
     "noPostsMessage": "No se encontraron publicaciones, por favor regrese más tarde.",
     "readMoreCta": "Leer más",
-    "backButton": "Volver a la lista de ideas"
+    "backButton": "Volver a la lista de ideas",
+    "tocTitle": "En esta página",
+    "tocTitleCollapsible": "Tabla de contenidos"
   },
   "giving-talks": {
     "backToTalks": "Volver a las charlas que he dado",
