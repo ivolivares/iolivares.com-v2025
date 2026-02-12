@@ -45,12 +45,12 @@
   "giving-talks": {
     "backToTalks": "Back to talks I have given",
     "title": "Are you looking for Speaker for your talk?",
-    "description": "Hey! My name is {name}. Passionate developer living in Santiago, Chile. I am focusing on different areas of technology but I love Media & Streaming Industry from tech side I love to work with technologies from the JS Ecosystem like React, Next.js, TypeScript, Node.JS, among others.",
+    "description": "Hey! My name is {name}. Passionate developer living in Santiago, Chile. I am focusing on different areas of technology but I love Media & Streaming Industry and work with technologies from the JS ecosystem like React, Next.js, TypeScript, Node.JS, among others.",
     "breakNotice": "I am currently taking a break on giving talks.",
     "informationTitle": "My Info as Speaker",
     "informationDescription": "You can use the following information to present me:",
     "copied": "Copied!",
-    "introduction": "Iván is a passionate software engineer and entrepreneur, currently working as Tech Director at Globant within the Media & Entertainment AI Studio. With over 15 years of experience, he enjoys building digital products while exploring the JavaScript ecosystem, cloud technologies, and artificial intelligence. He shares his ideas, articles, and personal projects at iolivares.com, fostering innovation and continuous learning.",
+    "introduction": "Iván is a passionate software engineer and entrepreneur, currently co-founder of MediaCreators and working as Tech Director at Globant. With over 15 years of experience, he enjoys building digital products while exploring the JavaScript ecosystem, media streaming technologies, and artificial intelligence. He shares his ideas, articles, and personal projects at iolivares.com, fostering innovation and continuous learning.",
     "copyToClipboard": "Copy to clipboard",
     "speakerInfo": {
       "name": "Name",
