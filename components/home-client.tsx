@@ -39,14 +39,14 @@ export function HomeClient({ latestPosts }: HomeClientProps) {
           <div className="w-full">
             <div className="flex-1 space-y-8">
               <div className="flex items-center gap-8">
-                <div className="flex flex-col gap-10">
-                  <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light leading-tight">{t("home.title")}</h1>
+                <div className="flex flex-col gap-6 sm:gap-10">
+                  <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light leading-tight text-balance">{t("home.title")}</h1>
                   {latestPost && (
                     <Link
                       href={`/thoughts/${latestPost.slug}`}
-                      className="inline-flex items-center gap-3 group hover:opacity-80 transition-opacity border-primary-foreground border-2 rounded-3xl px-2.5 py-1"
+                      className="inline-flex items-center gap-2 sm:gap-3 group hover:opacity-80 transition-opacity border-primary-foreground border-2 rounded-3xl px-2.5 py-1 text-balance"
                     >
-                      <span className="bg-emerald-400 text-white dark:text-black text-xs font-medium rounded rounded-3xl py-px px-2">
+                      <span className="bg-emerald-400 text-white dark:text-black text-xs font-medium rounded rounded-3xl min-w-20 sm:min-w-auto text-center py-px px-2">
                         {t("home.newArticle")}
                       </span>
                       <span className="text-muted-foreground text-sm group-hover:text-foreground transition-colors">
@@ -69,11 +69,11 @@ export function HomeClient({ latestPosts }: HomeClientProps) {
                       rel="noopener noreferrer"
                       className="block"
                     >
-                      <div className="flex flex-col sm:flex-row gap-2 items-start sm:items-center justify-between">
-                        <h3 className="text-xl font-semibold">
+                      <div className="flex flex-col sm:flex-row gap-2 items-start sm:items-center justify-between border-2 sm:border-0 border-primary-foreground rounded-3xl py-6 sm:py-0">
+                        <h3 className="text-xl font-semibold self-center sm:self-auto">
                           {t("home.startup.title")}
                         </h3>
-                        <div className="flex-shrink-0">
+                        <div className="flex-shrink-0 self-center sm:self-auto">
                           <span className="inline-flex items-center justify-center rounded-full bg-[#00e5b0] dark:bg-[#00e5b0]/10 px-4 py-2 text-sm font-medium text-black dark:text-[#00e5b0] group-hover:bg-[#00e5b0] group-hover:text-black transition-colors duration-300">
                             {t("home.startup.cta")}
                             <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -133,7 +133,7 @@ export function HomeClient({ latestPosts }: HomeClientProps) {
               </div>
 
               <div className="max-w-2xl space-y-6">
-                <p className="text-lg text-foreground/90 leading-relaxed">
+                <p className="text-lg text-foreground/90 leading-relaxed text-balance">
                   {t("home.currentWork", {
                     glb: (
                       <LinkAnimated
@@ -167,8 +167,8 @@ export function HomeClient({ latestPosts }: HomeClientProps) {
                     ),
                   })}
                 </p>
-                <p className="text-muted-foreground">{t("home.background")}</p>
-                <p className="text-muted-foreground">{t("home.mission")}</p>
+                <p className="text-muted-foreground text-balance">{t("home.background")}</p>
+                <p className="text-muted-foreground text-balance">{t("home.mission")}</p>
               </div>
             </div>
           </div>

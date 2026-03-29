@@ -14,7 +14,7 @@ export function Footer() {
         <div className="space-y-6">
           <h2 className="text-2xl sm:text-3xl font-light">{t("footer.connect")}</h2>
 
-          <p className="text-foreground/70 max-w-2xl leading-relaxed">
+          <p className="text-foreground/70 max-w-2xl leading-relaxed text-balance">
             {t("footer.contactText", {
               email: <Email />,
             })}
