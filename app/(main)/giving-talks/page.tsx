@@ -81,7 +81,7 @@ export default function GivingTalksPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <main ref={sectionRef} className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16 pt-24 pb-16 page-content scroll-reveal">
+      <main ref={sectionRef} className="max-w-4xl mx-auto px-1 sm:px-4 lg:px-16 pt-4 sm:pt-8 lg:pt-16 page-content scroll-reveal">
         {/* Back Link */}
         <Link
           href="/talks"

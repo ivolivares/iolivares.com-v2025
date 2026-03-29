@@ -10,7 +10,7 @@ export default async function Thoughts() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16 pt-16">
+      <main className="max-w-4xl mx-auto px-1 sm:px-8 lg:px-16 pt-16">
         <ThoughtsList posts={posts} />
       </main>
     </div>

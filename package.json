@@ -84,6 +84,8 @@
     "next": "16.1.6",
     "next-themes": "latest",
     "notion-to-md": "^3.1.9",
+    "posthog-js": "^1.364.1",
+    "posthog-node": "^5.28.8",
     "react": "^19.2.4",
     "react-day-picker": "9.8.0",
     "react-dom": "^19.2.4",

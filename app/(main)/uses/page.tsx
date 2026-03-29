@@ -10,7 +10,7 @@ export default function UsesPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <main ref={sectionRef} className="container mx-auto px-4 py-16 max-w-6xl scroll-reveal">
+      <main ref={sectionRef} className="container mx-auto px-1 sm:px-4 lg:px-16 pt-4 sm:pt-8 lg:pt-16 max-w-6xl scroll-reveal">
         <div className="mb-16">
           <h1 className="text-4xl font-bold mb-6 text-balance">{t("uses.title")}</h1>
           <p className="text-lg text-muted-foreground mb-4">{t("uses.description1")}</p>

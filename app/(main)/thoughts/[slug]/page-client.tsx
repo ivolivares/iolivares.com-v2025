@@ -28,7 +28,7 @@ export function PageClient({ post, slug, isDraftMode }: PageClientProps) {
     <ViewTransition>
       <div className="min-h-screen bg-background text-foreground">
         {/* Main Content */}
-        <main className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 pt-16">
+        <main className="max-w-7xl mx-auto px-1 sm:px-4 lg:px-16 pt-4 sm:pt-8 lg:pt-16">
           <div className="lg:grid lg:grid-cols-[1fr_300px] lg:gap-12 xl:gap-16">
             {/* Article Content */}
             <article className="max-w-3xl">

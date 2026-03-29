@@ -6,6 +6,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { META_THEME_COLORS, siteConfig } from "@/config/site"
 import { TranslationProvider } from "@/hooks/use-translation"
 import { loadTranslations } from "@/lib/translations"
+import { PostHogProvider } from "@/components/posthog-provider"
+import { PostHogPageView } from "@/components/posthog-pageview"
 
 const raleway = Raleway({
   display: "swap",
@@ -83,7 +85,7 @@ export const viewport: Viewport = {
     { color: META_THEME_COLORS.light, media: "(prefers-color-scheme: light)" },
     { color: META_THEME_COLORS.dark, media: "(prefers-color-scheme: dark)" },
   ],
-  userScalable: true,
+  userScalable: false,
   width: "device-width",
 }
 
@@ -98,9 +100,14 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`${raleway.variable}`} suppressHydrationWarning>
       <body className="font-sans antialiased">
-        <ThemeProvider>
-          <TranslationProvider initialTranslations={initialTranslations}>{children}</TranslationProvider>
-        </ThemeProvider>
+        <PostHogProvider>
+          <ThemeProvider>
+            <TranslationProvider initialTranslations={initialTranslations}>
+              {children}
+            </TranslationProvider>
+            <PostHogPageView />
+          </ThemeProvider>
+        </PostHogProvider>
       </body>
     </html>
   )
