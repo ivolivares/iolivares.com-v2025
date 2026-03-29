@@ -11,9 +11,9 @@ const linkAnimatedVariants = cva("link__graphic link__graphic--stroke ", {
     variant: {
       arc: "link__graphic--arc stroke-black dark:stroke-foreground",
       default: "link__graphic--slide",
-      scribble: "link__graphic--scribble stroke-black",
+      scribble: "link__graphic--scribble stroke-black dark:stroke-white",
       "scribble-green": "link__graphic--scribble stroke-[#bfd732]",
-      "scribble-mediacreators": "link__graphic--scribble stroke-[#FA05F1]",
+      "scribble-mediacreators": "link__graphic--scribble stroke-[#00e5b0]",
       slide: "link__graphic--slide",
     },
   },

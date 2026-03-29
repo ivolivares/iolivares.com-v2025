@@ -30,27 +30,27 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
       },
       {
         sizes: "1024x1024",
-        src: "/io-1024x1024.png",
+        src: "/io-1024.png",
         type: "image/png",
       },
       {
         sizes: "1536x1536",
-        src: "/io-1536x1536.png",
+        src: "/io-1536.png",
         type: "image/png",
       },
       {
         sizes: "2048x2048",
-        src: "/io-2048x2048.png",
+        src: "/io-2048.png",
         type: "image/png",
       },
       {
         sizes: "2560x2560",
-        src: "/io-2560x2560.png",
+        src: "/io-2560.png",
         type: "image/png",
       },
       {
         sizes: "3072x3072",
-        src: "/io-3072x3072.png",
+        src: "/io-3072.png",
         type: "image/png",
       },
     ],

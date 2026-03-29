@@ -7,15 +7,15 @@
   },
   "home": {
     "title": "I'm Iván Olivares — a senior software engineer, vinyl enthusiast, and dog dad.",
-    "newArticle": "New",
+    "newArticle": "New post",
     "articleTitle": "Building my v2025 website with V0: Thoughts on using AI for prototyping and shipping",
-    "currentWork": "I'm currently working as a Tech Director at {glb}, based in Santiago, Chile. I'm also the co-founder of {mediacreators}, a platform enabling creators to launch their own streaming services. I also enjoy sharing my knowledge and insights with the community through articles and",
-    "currentWorkEnd": "talks",
+    "currentWork": "I'm currently working as a Tech Director at {glb}, based in Santiago, Chile. I'm also the co-founder of {mediacreators}, The Creator Business OS. I also enjoy sharing my knowledge and insights with the community {thoughts} and {talks}.",
+    "currentWorkTalks": "through talks",
+    "currentWorkThoughts": "with my thoughts",
     "background": "I started in the development world in 2004, experimenting with computers (often breaking things) and learning to program by researching online. At just 15, I built my first website — and never stopped. In 2010, I launched my first entrepreneurial venture with my first clients, and fell even more in love with technology.",
-    "mission": "My personal mission is to push the world forward by building bridges between people and technology.",
+    "mission": "My personal mission is to build the digital infrastructure of the future for creators, giving them the tools to control their own business.",
     "startup": {
-      "title": "MediaCreators",
-      "description": "The all-in-one platform for creators to launch their own branded OTT streaming service.",
+      "title": "🚀 Introducing: MediaCreators",
       "cta": "Follow my co-founder journey"
     }
   },

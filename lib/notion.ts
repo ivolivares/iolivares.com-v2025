@@ -275,6 +275,53 @@ export const getNotionPostBySlug = cache(async (slug: string, includeDrafts = fa
   }
 })
 
+export async function getLatestNotionPostsMetadata(): Promise<{ en: NotionPostMetadata | null; es: NotionPostMetadata | null }> {
+  if (!process.env.NOTION_DATABASE_ID || !process.env.NOTION_TOKEN) {
+    console.warn("Missing NOTION_DATABASE_ID or NOTION_TOKEN env variables")
+    return { en: null, es: null }
+  }
+
+  try {
+    const notion = getNotionClient()
+    const dataSourceId = normalizeNotionId(process.env.NOTION_DATABASE_ID)
+
+    const response = await notion.dataSources.query({
+      data_source_id: dataSourceId,
+      filter: {
+        property: "Status",
+        status: {
+          equals: "Published",
+        },
+      },
+      sorts: [
+        {
+          direction: "descending",
+          property: "Date",
+        },
+      ],
+    })
+
+    let latestEn: NotionPostMetadata | null = null
+    let latestEs: NotionPostMetadata | null = null
+
+    for (const page of response.results) {
+      const metadata = getPageMetaData(page as NotionPage)
+      if (!latestEn && metadata.language === "en") {
+        latestEn = metadata
+      }
+      if (!latestEs && metadata.language === "es") {
+        latestEs = metadata
+      }
+      if (latestEn && latestEs) break
+    }
+
+    return { en: latestEn, es: latestEs }
+  } catch (error) {
+    console.error("Error fetching latest Notion posts metadata:", error)
+    return { en: null, es: null }
+  }
+}
+
 function getPageMetaData(page: NotionPage): NotionPostMetadata {
   const properties = page.properties
 
