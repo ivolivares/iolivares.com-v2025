@@ -81,7 +81,7 @@
     "input-otp": "1.4.1",
     "lucide-react": "^0.454.0",
     "mdast-util-to-string": "^4.0.0",
-    "next": "16.1.6",
+    "next": "16.1.7",
     "next-themes": "latest",
     "notion-to-md": "^3.1.9",
     "posthog-js": "^1.364.1",
