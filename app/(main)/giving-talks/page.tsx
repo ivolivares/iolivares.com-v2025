@@ -50,8 +50,8 @@ export default function GivingTalksPage() {
     {
       field: "company",
       label: t("giving-talks.speakerInfo.company"),
-      url: "https://www.globant.com?from=iolivares.com",
-      value: "Globant",
+      url: "https://mediacreators.io?from=iolivares.com",
+      value: "MediaCreators",
     },
     {
       field: "website",

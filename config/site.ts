@@ -1,5 +1,5 @@
 export const siteConfig = {
-  description: "Iván Olivares — a senior software engineer, vinyl enthusiast, and dog dad.",
+  description: "Iván Olivares — co-founder, software engineer, vinyl enthusiast, and dog dad.",
   keywords: [
     "Iván Olivares",
     "Iván Olivares Rojas",
@@ -7,7 +7,9 @@ export const siteConfig = {
     "Olivares Rojas",
     "io.com",
     "iolivares.com",
-    "Senior Software Engineer",
+    "Co-founder",
+    "Software Engineer",
+    "MediaCreators",
   ],
   links: {
     github: "https://github.com/ivolivares",

@@ -135,16 +135,6 @@ export function HomeClient({ latestPosts }: HomeClientProps) {
               <div className="max-w-2xl space-y-6">
                 <p className="text-lg text-foreground/90 leading-relaxed text-balance">
                   {t("home.currentWork", {
-                    glb: (
-                      <LinkAnimated
-                        href="https://www.globant.com/?from=iolivares.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        variant="scribble-green"
-                      >
-                        Globant
-                      </LinkAnimated>
-                    ),
                     mediacreators: (
                       <LinkAnimated
                         href="https://mediacreators.io/?from=iolivares.com"
