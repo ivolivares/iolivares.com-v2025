@@ -1,10 +1,16 @@
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare"
+
+if (process.env.NODE_ENV === "development") {
+  initOpenNextCloudflareForDev()
+}
+
 /** @type {import("next").NextConfig} */
 const nextConfig = {
   experimental: {
     viewTransition: true,
   },
   images: {
-    formats: ["image/avif", "image/webp"],
+    unoptimized: true,
     remotePatterns: [
       {
         hostname: "i.scdn.co", // Spotify Album Art

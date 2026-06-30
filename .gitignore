@@ -28,3 +28,7 @@ yarn-error.log*
 next-env.d.ts
 
 /.npm-only-allow
+
+# cloudflare
+/.open-next/
+/.wrangler/

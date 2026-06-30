@@ -1,0 +1,54 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "iolivares-dot-com",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-04-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "NEXT_INC_CACHE_KV",
+      "id": "3b4945b4a21f4600aba0e4573efae645"
+    }
+  ],
+  "vars": {
+    "NEXT_PUBLIC_POSTHOG_TOKEN": "phc_9aA1LgjqHexvljElyfkFEUeKKiAvvTESNqX3oWplIyf",
+    "NEXT_PUBLIC_POSTHOG_HOST": "https://us.i.posthog.com"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "iolivares-dot-com"
+    }
+  ],
+  "env": {
+    "preview": {
+      "name": "iolivares-dot-com-preview",
+      "routes": [
+        {
+          "pattern": "preview.iolivares.com",
+          "custom_domain": true
+        }
+      ],
+      "vars": {
+        "NEXT_PUBLIC_POSTHOG_TOKEN": "phc_9aA1LgjqHexvljElyfkFEUeKKiAvvTESNqX3oWplIyf",
+        "NEXT_PUBLIC_POSTHOG_HOST": "https://us.i.posthog.com"
+      },
+      "kv_namespaces": [
+        {
+          "binding": "NEXT_INC_CACHE_KV",
+          "id": "c277fa45472747cd962eb98f57239910"
+        }
+      ],
+      "services": [
+        {
+          "binding": "WORKER_SELF_REFERENCE",
+          "service": "iolivares-dot-com-preview"
+        }
+      ]
+    }
+  }
+}
