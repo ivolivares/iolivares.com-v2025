@@ -22,7 +22,7 @@ export default function LinksPage() {
   const links = [
     {
       className: "col-span-3",
-      color: "from-[#6800ba] via-[#a800eb] to-[#01ffc2]",
+      color: "from-[#9E7AFF] via-[#FF3E7F] to-[#00e5b0]",
       description: "Follow my co-founder journey here",
       icon: Code, // Placeholder
       name: "MediaCreators",

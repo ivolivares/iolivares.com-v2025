@@ -148,7 +148,7 @@ export default function Connect() {
                   href="https://mediacreators.io/?from=iolivares.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="col-span-2 sm:col-span-3 lg:col-span-4 row-span-1 p-6 sm:p-8 group relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#6800ba] via-[#a800eb] to-[#01ffc2] hover:scale-[1.02] transition-all duration-300 hover:shadow-xl"
+                  className="col-span-2 sm:col-span-3 lg:col-span-4 row-span-1 p-6 sm:p-8 group relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#9E7AFF] via-[#FF3E7F] to-[#00e5b0] hover:scale-[1.02] transition-all duration-300 hover:shadow-xl"
                 >
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
                   <div className="relative h-full flex items-center justify-between text-white">
@@ -159,7 +159,7 @@ export default function Connect() {
                       </div>
 
                       <div className="hidden sm:block">
-                        <span className="inline-flex items-center justify-center rounded-full bg-[#a800eb]/80 px-4 py-2 text-sm font-medium text-white group-hover:bg-[#6800ba]/80 transition-colors duration-300">
+                        <span className="inline-flex items-center justify-center rounded-full bg-[#00e5b0]/90 px-4 py-2 text-sm font-medium text-black group-hover:bg-[#00e5b0] transition-colors duration-300">
                           Check it out
                           <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path

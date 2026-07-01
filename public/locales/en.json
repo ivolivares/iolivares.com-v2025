@@ -13,11 +13,7 @@
     "currentWorkTalks": "through talks",
     "currentWorkThoughts": "with my thoughts",
     "background": "I started in the development world in 2004, experimenting with computers (often breaking things) and learning to program by researching online. At just 15, I built my first website — and never stopped. In 2010, I launched my first entrepreneurial venture with my first clients, and fell even more in love with technology.",
-    "mission": "My personal mission is to build the digital infrastructure of the future for creators, giving them the tools to control their own business.",
-    "startup": {
-      "title": "🚀 Introducing: MediaCreators",
-      "cta": "Follow my co-founder journey"
-    }
+    "mission": "My personal mission is to build the digital infrastructure of the future for creators, giving them the tools to control their own business."
   },
   "talks": {
     "pageTitle": "Talks",

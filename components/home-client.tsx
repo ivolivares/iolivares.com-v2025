@@ -62,33 +62,6 @@ export function HomeClient({ latestPosts }: HomeClientProps) {
                       </svg>
                     </Link>
                   )}
-                  <div className="relative group overflow-hidden transition-all duration-300">
-                    <Link
-                      href="https://mediacreators.io/?from=iolivares.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block"
-                    >
-                      <div className="flex flex-col sm:flex-row gap-2 items-start sm:items-center justify-between border-2 sm:border-0 border-primary-foreground rounded-3xl py-6 sm:py-0">
-                        <h3 className="text-xl font-semibold self-center sm:self-auto">
-                          {t("home.startup.title")}
-                        </h3>
-                        <div className="flex-shrink-0 self-center sm:self-auto">
-                          <span className="inline-flex items-center justify-center rounded-full bg-[#00e5b0] dark:bg-[#00e5b0]/10 px-4 py-2 text-sm font-medium text-black dark:text-[#00e5b0] group-hover:bg-[#00e5b0] group-hover:text-black transition-colors duration-300">
-                            {t("home.startup.cta")}
-                            <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M17 8l4 4m0 0l-4 4m4-4H3"
-                              />
-                            </svg>
-                          </span>
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
                 </div>
                 <div className="hidden md:block flex-shrink-0">
                   <Image
