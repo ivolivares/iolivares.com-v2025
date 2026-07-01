@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { Email } from "@/components/email"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
@@ -66,6 +67,14 @@ export default function Connect() {
       size: "small",
       url: "https://fb.me/ivolivares?from=iolivares.com",
     },
+    {
+      color: "from-[#1a1a2e] to-[#0a1024]",
+      handle: "The Creator Business OS",
+      icon: "/mediacreators-icon.png",
+      name: "MediaCreators",
+      size: "medium",
+      url: "https://mediacreators.io/?from=iolivares.com",
+    },
   ]
 
   const getSizeClasses = (size: string) => {
@@ -116,6 +125,15 @@ export default function Connect() {
                     <div className="relative h-full flex flex-col justify-between text-white">
                       <div className="flex-1 flex items-center justify-center">
                         <div className="text-center space-y-2">
+                          {"icon" in social && (
+                            <Image
+                              src={social.icon as string}
+                              alt=""
+                              width={48}
+                              height={48}
+                              className="mx-auto brightness-0 invert"
+                            />
+                          )}
                           <div
                             className={`font-semibold ${social.size === "large" ? "text-2xl sm:text-3xl" : social.size === "medium" ? "text-lg sm:text-xl" : "text-base sm:text-lg"}`}
                           >
@@ -142,49 +160,6 @@ export default function Connect() {
                     </div>
                   </Link>
                 ))}
-
-                {/* MediaCreators Card */}
-                <Link
-                  href="https://mediacreators.io/?from=iolivares.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="col-span-2 sm:col-span-3 lg:col-span-4 row-span-1 p-6 sm:p-8 group relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#9E7AFF] via-[#FF3E7F] to-[#00e5b0] hover:scale-[1.02] transition-all duration-300 hover:shadow-xl"
-                >
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
-                  <div className="relative h-full flex items-center justify-between text-white">
-                    <div className="flex flex-col sm:flex-row gap-4 sm:items-center w-full justify-between">
-                      <div className="space-y-1">
-                        <div className="text-xl sm:text-2xl font-semibold">MediaCreators</div>
-                        <div className="text-white/90 text-sm sm:text-base">Follow my co-founder journey here</div>
-                      </div>
-
-                      <div className="hidden sm:block">
-                        <span className="inline-flex items-center justify-center rounded-full bg-[#00e5b0]/90 px-4 py-2 text-sm font-medium text-black group-hover:bg-[#00e5b0] transition-colors duration-300">
-                          Check it out
-                          <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M17 8l4 4m0 0l-4 4m4-4H3"
-                            />
-                          </svg>
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="absolute top-4 right-4 sm:hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <svg className="w-5 h-5 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                </Link>
               </div>
             </div>
           </div>
