@@ -22,7 +22,7 @@ export default function LinksPage() {
   const links = [
     {
       className: "col-span-3",
-      color: "from-[#1a1a2e] to-[#0a1024]",
+      color: "from-[#1a1a2e] to-[#0a1024] border border-[#00e5b0]/40",
       icon: "/mediacreators-icon.png",
       name: "MediaCreators",
       url: "https://mediacreators.io/?from=iolivares.com",

@@ -12,17 +12,25 @@ export default function Connect() {
 
   const socialLinks = [
     {
+      color: "from-[#1a1a2e] to-[#0a1024] border border-[#00e5b0]/40",
+      handle: "The Creator Business OS",
+      icon: "/mediacreators-icon.png",
+      name: "MediaCreators",
+      size: "large",
+      url: "https://mediacreators.io/?from=iolivares.com",
+    },
+    {
       color: "from-gray-900 to-gray-700",
       handle: "@ivolivares",
       name: t("connect.socialLinks.github")?.toString(),
-      size: "large",
+      size: "small",
       url: "https://github.com/ivolivares?from=iolivares.com",
     },
     {
       color: "from-blue-300 to-blue-500",
       handle: "@ivolivares",
       name: t("connect.socialLinks.twitter")?.toString(),
-      size: "medium",
+      size: "small",
       url: "https://x.com/ivolivares?from=iolivares.com",
     },
     {
@@ -66,14 +74,6 @@ export default function Connect() {
       name: t("connect.socialLinks.facebook")?.toString(),
       size: "small",
       url: "https://fb.me/ivolivares?from=iolivares.com",
-    },
-    {
-      color: "from-[#1a1a2e] to-[#0a1024]",
-      handle: "The Creator Business OS",
-      icon: "/mediacreators-icon.png",
-      name: "MediaCreators",
-      size: "medium",
-      url: "https://mediacreators.io/?from=iolivares.com",
     },
   ]
 
