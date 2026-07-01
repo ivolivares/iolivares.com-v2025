@@ -6,7 +6,7 @@
     "contact": "CONECTEMOS"
   },
   "home": {
-    "title": "Soy Iván Olivares — cofundador, ingeniero de software, entusiasta de los vinilos y papá perruno.",
+    "title": "Co-fundador en MediaCreators, ingeniero de software, entusiasta de los vinilos y padre perruno.",
     "newArticle": "Nuevo post",
     "articleTitle": "Construyendo mi sitio web v2025 con V0: Reflexiones sobre el uso de IA para prototipado",
     "currentWork": "Soy cofundador de {mediacreators}, The Creator Business OS, con base en Santiago, Chile. Con más de 20 años de experiencia construyendo productos digitales, disfruto compartir mi conocimiento y experiencias con la comunidad {thoughts} y {talks}.",
@@ -68,7 +68,8 @@
     "loveToTalk": "¿Te gusta conversar?",
     "copyright": "Algunos contenidos con derechos de reservados.",
     "creativeCommons": "Donde no se indique copyright, los contenidos están disponibles bajo una licencia {license}",
-    "madeWith": "Vibecodeado usando {v0link} desde 🇨🇱"
+    "madeWith": "Vibecodeado usando {multipleToolsLink} desde 🇨🇱",
+    "multipleToolsLinkLabel": "múltiples herramientas de IA"
   },
   "language": {
     "english": "English",

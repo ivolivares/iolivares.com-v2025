@@ -102,14 +102,12 @@ export function Footer() {
         <div className="flex justify-center items-center">
           <div className="text-xs text-center w-full text-muted-foreground/70">
             {t("footer.madeWith", {
-              v0link: (
+              multipleToolsLink: (
                 <Link
-                  href="https://v0.app?from=iolivares.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/uses"
                   className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  v0.app
+                  {t("footer.multipleToolsLinkLabel")}
                 </Link>
               ),
             })}

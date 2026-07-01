@@ -27,13 +27,6 @@ export default function Connect() {
       url: "https://github.com/ivolivares?from=iolivares.com",
     },
     {
-      color: "from-blue-300 to-blue-500",
-      handle: "@ivolivares",
-      name: t("connect.socialLinks.twitter")?.toString(),
-      size: "small",
-      url: "https://x.com/ivolivares?from=iolivares.com",
-    },
-    {
       color: "from-blue-600 to-blue-700",
       handle: "ivanolivaresrojas",
       name: t("connect.socialLinks.linkedIn")?.toString(),
@@ -41,11 +34,11 @@ export default function Connect() {
       url: "https://www.linkedin.com/in/ivanolivaresrojas/?from=iolivares.com",
     },
     {
-      color: "from-pink-500 via-red-500 to-yellow-500",
+      color: "from-blue-300 to-blue-500",
       handle: "@ivolivares",
-      name: t("connect.socialLinks.instagram")?.toString(),
+      name: t("connect.socialLinks.twitter")?.toString(),
       size: "small",
-      url: "https://instagram.com/ivolivares?from=iolivares.com",
+      url: "https://x.com/ivolivares?from=iolivares.com",
     },
     {
       color: "from-blue-600 to-blue-800",
@@ -55,11 +48,25 @@ export default function Connect() {
       url: "https://fb.me/ivolivares?from=iolivares.com",
     },
     {
+      color: "from-green-500 to-green-600",
+      handle: "DJ Maxis",
+      name: t("connect.socialLinks.spotify")?.toString(),
+      size: "small",
+      url: "https://open.spotify.com/artist/3cePcnUC1QKI8iX4zf0aQO?si=RdfawXEgTB68o5vz-mlO0g&from=iolivares.com",
+    },
+    {
       color: "from-orange-500 to-orange-600",
       handle: "djmaxis",
       name: t("connect.socialLinks.soundCloud")?.toString(),
-      size: "medium",
+      size: "large",
       url: "https://soundcloud.com/djmaxis?from=iolivares.com",
+    },
+    {
+      color: "from-pink-500 via-red-500 to-yellow-500",
+      handle: "@ivolivares",
+      name: t("connect.socialLinks.instagram")?.toString(),
+      size: "small",
+      url: "https://instagram.com/ivolivares?from=iolivares.com",
     },
     {
       color: "from-gray-800 to-gray-900",
@@ -67,13 +74,6 @@ export default function Connect() {
       name: t("connect.socialLinks.appleMusic")?.toString(),
       size: "small",
       url: "https://music.apple.com/us/artist/dj-maxis/1661169599?from=iolivares.com",
-    },
-    {
-      color: "from-green-500 to-green-600",
-      handle: "DJ Maxis",
-      name: t("connect.socialLinks.spotify")?.toString(),
-      size: "small",
-      url: "https://open.spotify.com/artist/3cePcnUC1QKI8iX4zf0aQO?si=RdfawXEgTB68o5vz-mlO0g&from=iolivares.com",
     },
   ]
 
