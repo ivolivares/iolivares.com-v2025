@@ -23,14 +23,14 @@ export default function Connect() {
       color: "from-gray-900 to-gray-700",
       handle: "@ivolivares",
       name: t("connect.socialLinks.github")?.toString(),
-      size: "small",
+      size: "medium",
       url: "https://github.com/ivolivares?from=iolivares.com",
     },
     {
       color: "from-blue-300 to-blue-500",
       handle: "@ivolivares",
       name: t("connect.socialLinks.twitter")?.toString(),
-      size: "small",
+      size: "medium",
       url: "https://x.com/ivolivares?from=iolivares.com",
     },
     {
@@ -80,7 +80,7 @@ export default function Connect() {
   const getSizeClasses = (size: string) => {
     switch (size) {
       case "large":
-        return "col-span-2 lg:col-span-3 row-span-2 p-8"
+        return "col-span-2 row-span-2 p-8"
       case "medium":
         return "col-span-1 row-span-2 p-6"
       case "small":
