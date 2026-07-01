@@ -22,9 +22,8 @@ export default function LinksPage() {
   const links = [
     {
       className: "col-span-3",
-      color: "from-[#6800ba] via-[#a800eb] to-[#01ffc2]",
-      description: "Follow my co-founder journey here",
-      icon: Code, // Placeholder
+      color: "from-[#1a1a2e] to-[#0a1024] border border-[#00e5b0]/40",
+      icon: "/mediacreators-icon.png",
       name: "MediaCreators",
       url: "https://mediacreators.io/?from=iolivares.com",
     },
@@ -178,7 +177,11 @@ export default function LinksPage() {
               >
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
                 <div className="relative flex flex-col items-center justify-center gap-2 text-white">
-                  <Icon className="w-6 h-6" />
+                  {typeof Icon === "string" ? (
+                    <Image src={Icon} alt="" width={32} height={32} className="brightness-0 invert" />
+                  ) : (
+                    <Icon className="w-6 h-6" />
+                  )}
                   <span className="text-sm font-medium text-center">{link.name}</span>
                 </div>
                 {link.url !== "/" && (

@@ -6,18 +6,14 @@
     "contact": "CONECTEMOS"
   },
   "home": {
-    "title": "Soy Iván Olivares — ingeniero de software senior, entusiasta de los vinilos y papá perruno.",
+    "title": "Co-fundador en MediaCreators, ingeniero de software, entusiasta de los vinilos y padre perruno.",
     "newArticle": "Nuevo post",
     "articleTitle": "Construyendo mi sitio web v2025 con V0: Reflexiones sobre el uso de IA para prototipado",
-    "currentWork": "Actualmente trabajo como Director de Tecnología en {glb}, con base en Santiago, Chile. Soy también cofundador de {mediacreators}, The Creator Business OS. También disfruto compartir mi conocimiento y experiencias con la comunidad {thoughts} y {talks}.",
+    "currentWork": "Soy cofundador de {mediacreators}, The Creator Business OS, con base en Santiago, Chile. Con más de 20 años de experiencia construyendo productos digitales, disfruto compartir mi conocimiento y experiencias con la comunidad {thoughts} y {talks}.",
     "currentWorkTalks": "a través de charlas",
     "currentWorkThoughts": "con mis ideas",
     "background": "Comencé en el mundo del desarrollo en 2004, experimentando con computadoras (rompiendo cosas) y aprendiendo a programar investigando en internet. Con solo 15 años, construí mi primer sitio web — y nunca paré. En 2010, lancé mi primer emprendimiento con mis primeros clientes y me enamoré aún más de la tecnología.",
-    "mission": "Mi misión personal es construir la infraestructura digital del futuro para los creadores, dándoles las herramientas para controlar su propio negocio.",
-    "startup": {
-      "title": "🚀 Presentando: MediaCreators",
-      "cta": "Sigue mi viaje como cofundador"
-    }
+    "mission": "Mi misión personal es construir la infraestructura digital del futuro para los creadores, dándoles las herramientas para controlar su propio negocio."
   },
   "talks": {
     "pageTitle": "Charlas",
@@ -50,7 +46,7 @@
     "informationTitle": "Mi información como Speaker",
     "informationDescription": "Puedes usar la siguiente información para presentarme:",
     "copied": "¡Copiado!",
-    "introduction": "Iván es un software developer y emprendedor apasionado, actualmente co-fundador de MediaCreators y Tech Director en Globant. Con más de 15 años de experiencia, disfruta construir productos digitales explorando el ecosistema JavaScript, la nube y la inteligencia artificial. Comparte sus ideas, artículos y proyectos personales en iolivares.com, donde promueve la innovación y el aprendizaje continuo.",
+    "introduction": "Iván es un software developer y emprendedor apasionado, co-fundador de MediaCreators. Con más de 20 años de experiencia, disfruta construir productos digitales explorando el ecosistema JavaScript, la nube y la inteligencia artificial. Comparte sus ideas, artículos y proyectos personales en iolivares.com, donde promueve la innovación y el aprendizaje continuo.",
     "copyToClipboard": "Copiar al portapapeles",
     "speakerInfo": {
       "name": "Nombre",
@@ -72,7 +68,8 @@
     "loveToTalk": "¿Te gusta conversar?",
     "copyright": "Algunos contenidos con derechos de reservados.",
     "creativeCommons": "Donde no se indique copyright, los contenidos están disponibles bajo una licencia {license}",
-    "madeWith": "Vibecodeado usando {v0link} desde 🇨🇱"
+    "madeWith": "Vibecodeado usando {multipleToolsLink} desde 🇨🇱",
+    "multipleToolsLinkLabel": "múltiples herramientas de IA"
   },
   "language": {
     "english": "English",

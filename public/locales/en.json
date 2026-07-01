@@ -6,18 +6,14 @@
     "contact": "CONNECT"
   },
   "home": {
-    "title": "I'm Iván Olivares — a senior software engineer, vinyl enthusiast, and dog dad.",
+    "title": "Co-founder at MediaCreators, software engineer, vinyl enthusiast, and dog dad.",
     "newArticle": "New post",
     "articleTitle": "Building my v2025 website with V0: Thoughts on using AI for prototyping and shipping",
-    "currentWork": "I'm currently working as a Tech Director at {glb}, based in Santiago, Chile. I'm also the co-founder of {mediacreators}, The Creator Business OS. I also enjoy sharing my knowledge and insights with the community {thoughts} and {talks}.",
+    "currentWork": "I'm the co-founder of {mediacreators}, The Creator Business OS, based in Santiago, Chile. With over 20 years of experience building digital products, I enjoy sharing my knowledge and insights with the community {thoughts} and {talks}.",
     "currentWorkTalks": "through talks",
     "currentWorkThoughts": "with my thoughts",
     "background": "I started in the development world in 2004, experimenting with computers (often breaking things) and learning to program by researching online. At just 15, I built my first website — and never stopped. In 2010, I launched my first entrepreneurial venture with my first clients, and fell even more in love with technology.",
-    "mission": "My personal mission is to build the digital infrastructure of the future for creators, giving them the tools to control their own business.",
-    "startup": {
-      "title": "🚀 Introducing: MediaCreators",
-      "cta": "Follow my co-founder journey"
-    }
+    "mission": "My personal mission is to build the digital infrastructure of the future for creators, giving them the tools to control their own business."
   },
   "talks": {
     "pageTitle": "Talks",
@@ -50,7 +46,7 @@
     "informationTitle": "My Info as Speaker",
     "informationDescription": "You can use the following information to present me:",
     "copied": "Copied!",
-    "introduction": "Iván is a passionate software engineer and entrepreneur, currently co-founder of MediaCreators and working as Tech Director at Globant. With over 15 years of experience, he enjoys building digital products while exploring the JavaScript ecosystem, media streaming technologies, and artificial intelligence. He shares his ideas, articles, and personal projects at iolivares.com, fostering innovation and continuous learning.",
+    "introduction": "Iván is a passionate software engineer and entrepreneur, co-founder of MediaCreators. With over 20 years of experience, he enjoys building digital products while exploring the JavaScript ecosystem, media streaming technologies, and artificial intelligence. He shares his ideas, articles, and personal projects at iolivares.com, fostering innovation and continuous learning.",
     "copyToClipboard": "Copy to clipboard",
     "speakerInfo": {
       "name": "Name",
@@ -72,7 +68,8 @@
     "loveToTalk": "Love to talk?",
     "copyright": "Some contents are copyrighted.",
     "creativeCommons": "Where no copyright is indicated, the contents are available under {license}",
-    "madeWith": "Vibecoded using {v0link} from 🇨🇱"
+    "madeWith": "Vibecoded with {multipleToolsLink} from 🇨🇱",
+    "multipleToolsLinkLabel": "multiple AI tools"
   },
   "language": {
     "english": "English",
