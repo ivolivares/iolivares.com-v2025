@@ -80,7 +80,7 @@ export default function Connect() {
   const getSizeClasses = (size: string) => {
     switch (size) {
       case "large":
-        return "col-span-2 row-span-2 p-8"
+        return "col-span-2 lg:col-span-3 row-span-2 p-8"
       case "medium":
         return "col-span-1 row-span-2 p-6"
       case "small":
