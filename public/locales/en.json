@@ -6,10 +6,10 @@
     "contact": "CONNECT"
   },
   "home": {
-    "title": "Co-founder at MediaCreators, software engineer, vinyl enthusiast, and dog dad.",
+    "title": "Founder at MediaCreators, software engineer, vinyl enthusiast, and dog dad.",
     "newArticle": "New post",
     "articleTitle": "Building my v2025 website with V0: Thoughts on using AI for prototyping and shipping",
-    "currentWork": "I'm the co-founder of {mediacreators}, The Creator Business OS, based in Santiago, Chile. With over 20 years of experience building digital products, I enjoy sharing my knowledge and insights with the community {thoughts} and {talks}.",
+    "currentWork": "I'm the founder of {mediacreators}, The Creator Business OS, based in Santiago, Chile. With over 20 years of experience building digital products, I enjoy sharing my knowledge and insights with the community {thoughts} and {talks}.",
     "currentWorkTalks": "through talks",
     "currentWorkThoughts": "with my thoughts",
     "background": "I started in the development world in 2004, experimenting with computers (often breaking things) and learning to program by researching online. At just 15, I built my first website — and never stopped. In 2010, I launched my first entrepreneurial venture with my first clients, and fell even more in love with technology.",
@@ -46,7 +46,7 @@
     "informationTitle": "My Info as Speaker",
     "informationDescription": "You can use the following information to present me:",
     "copied": "Copied!",
-    "introduction": "Iván is a passionate software engineer and entrepreneur, co-founder of MediaCreators. With over 20 years of experience, he enjoys building digital products while exploring the JavaScript ecosystem, media streaming technologies, and artificial intelligence. He shares his ideas, articles, and personal projects at iolivares.com, fostering innovation and continuous learning.",
+    "introduction": "Iván is a passionate software engineer and entrepreneur, founder of MediaCreators. With over 20 years of experience, he enjoys building digital products while exploring the JavaScript ecosystem, media streaming technologies, and artificial intelligence. He shares his ideas, articles, and personal projects at iolivares.com, fostering innovation and continuous learning.",
     "copyToClipboard": "Copy to clipboard",
     "speakerInfo": {
       "name": "Name",
