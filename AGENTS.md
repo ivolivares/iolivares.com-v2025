@@ -26,6 +26,9 @@ pnpm install
 pnpm run dev
 
 # Type checking
+pnpm run typecheck
+
+# Lint (Biome; this rewrites files)
 pnpm run lint
 
 # Production build
@@ -89,9 +92,10 @@ pnpm run build
 ### Essential Commands
 ```bash
 # Development
-pnpm run dev              # Start development server
+pnpm run dev              # Start development server (http://localhost:3000)
 pnpm run build            # Production build
-pnpm run lint             # Type checking
+pnpm run typecheck        # Type checking (tsc --noEmit)
+pnpm run lint             # Biome lint (rewrites files)
 
 # Components
 pnpm dlx shadcn-ui add [component]  # Add UI component
@@ -138,3 +142,12 @@ import { Card } from '@/components/ui/card'
 > **💡 Pro Tip:** For comprehensive guidance on any topic, navigate to the specific instruction files linked above. Each guide contains complete, actionable information while cross-referencing related topics.
 
 *This documentation is designed to scale with the project. Each section contains complete information while maintaining clear navigation between related concepts.*
+
+## Cursor Cloud specific instructions
+
+- Node 22 is installed through nvm. `.nvmrc` pins `v22.20.0`; the image’s current Node 22.x is compatible. The package manager is pnpm `10.27.0` (`packageManager` in `package.json`). Activate it with `corepack enable` and `corepack prepare pnpm@10.27.0 --activate` when the shell does not already have that pnpm.
+- Install with `pnpm install --frozen-lockfile`. Running it again is safe and leaves the lockfile unchanged.
+- The dev server is `pnpm dev` (Next.js with Turbopack) on port 3000.
+- `pnpm typecheck` currently fails on existing errors in `app/(standalone)/links/page.tsx`. `pnpm build` still succeeds because `next.config.mjs` sets `typescript.ignoreBuildErrors`.
+- `pnpm lint` and `pnpm check` run Biome with `--write` and will modify files. Use `pnpm exec biome check .` for a read-only check. The repo currently has existing Biome findings.
+- `NOTION_TOKEN` and `NOTION_DATABASE_ID` are optional. Without them, `/` and `/thoughts` render with an empty post list and the server logs a missing-env warning. `NEXT_PUBLIC_POSTHOG_TOKEN` and `NEXT_PUBLIC_POSTHOG_HOST` are optional; the browser logs a PostHog init error when they are unset. `DRAFT_SECRET_TOKEN` is only required for draft mode (`/api/draft`). Copy names from `.env.local.example`.
