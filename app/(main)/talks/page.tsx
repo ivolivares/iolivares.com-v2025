@@ -80,28 +80,37 @@ export default function TalksPage() {
             {latestTalks.map((talk, index) => (
               <div key={index} className="border-b border-border/30 pb-8 last:border-b-0">
                 <div className="flex flex-col md:flex-row gap-6">
-                  {/* Thumbnail - top on mobile, left on desktop */}
-                  <Link
-                    href={talk.video}
-                    className="flex-shrink-0 hover:opacity-90 transition delay-0 duration-100 easy-in-out"
-                  >
-                    <Image
-                      src={talk.thumbnail || "/placeholder.svg"}
-                      alt={`${talk.title} ${t("talks.presentationThumbnail")}`}
-                      width={200}
-                      height={120}
-                      priority={false}
-                      loading="lazy"
-                      className="rounded-lg w-full md:w-[200px]"
-                    />
-                  </Link>
+                  {/* Thumbnails - top on mobile, left on desktop */}
+                  <div className="flex flex-col gap-3 flex-shrink-0">
+                    {talk.videos.map((video) => (
+                      <Link
+                        key={video.url}
+                        href={video.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:opacity-90 transition delay-0 duration-100 ease-in-out"
+                      >
+                        <Image
+                          src={video.thumbnail || "/placeholder.svg"}
+                          alt={`${talk.title} — ${video.location} ${t("talks.presentationThumbnail")}`}
+                          width={200}
+                          height={120}
+                          priority={false}
+                          loading="lazy"
+                          className="rounded-lg w-full md:w-[200px]"
+                        />
+                      </Link>
+                    ))}
+                  </div>
 
                   {/* Content */}
                   <div className="flex-1">
                     <h3 className="text-xl font-semibold mb-3 text-balance">{talk.title}</h3>
                     <p className="text-muted-foreground mb-4 leading-relaxed">{talk.description}</p>
                     <div className="flex flex-wrap items-center gap-4 text-sm">
-                      <span className="font-medium">{talk.location}</span>
+                      <span className="font-medium">
+                        {talk.videos.map((video) => video.location).join(" · ")}
+                      </span>
                       <span className="text-muted-foreground">{talk.duration}</span>
                       <div className="flex items-center gap-3">
                         {talk.slides && (
@@ -113,13 +122,18 @@ export default function TalksPage() {
                             {t("talks.talkSlides")}
                           </Link>
                         )}
-                        <Link
-                          href={talk.video}
-                          className="flex items-center gap-1 text-blue-400 hover:text-blue-300 transition-colors"
-                        >
-                          <Play className="w-4 h-4" />
-                          {t("talks.talkVideo")}
-                        </Link>
+                        {talk.videos.map((video) => (
+                          <Link
+                            key={video.url}
+                            href={video.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1 text-blue-400 hover:text-blue-300 transition-colors"
+                          >
+                            <Play className="w-4 h-4" />
+                            {t("talks.talkVideo")} ({video.lang.toUpperCase()})
+                          </Link>
+                        ))}
                       </div>
                     </div>
                   </div>

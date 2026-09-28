@@ -9,16 +9,21 @@ export interface TalkScheduleItem {
   link: string
 }
 
+export interface TalkVideo {
+  url: string
+  lang: string
+  location: string
+  thumbnail: string
+}
+
 export interface LatestTalk {
   title: string
   description: string
   lang: string
-  location: string
-  thumbnail: string
   date: string
   duration: string
   slides?: string | null
-  video: string
+  videos: TalkVideo[]
 }
 
 export interface TalksPageData {
