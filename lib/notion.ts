@@ -63,7 +63,39 @@ const getNotionClient = () => {
 }
 
 const getN2M = (notion: Client) => {
-  return new NotionToMarkdown({ notionClient: notion })
+  const n2m = new NotionToMarkdown({ notionClient: notion })
+
+  // notion-to-md defaults bookmark/video/embed to markdown links like [bookmark](url).
+  // Prefer image-style markers so MarkdownRenderer can mount VideoEmbed.
+  const mediaTransformer = async (block: unknown) => {
+    const mediaBlock = block as {
+      type?: string
+      bookmark?: { url?: string }
+      embed?: { url?: string }
+      video?: { type?: string; external?: { url?: string }; file?: { url?: string } }
+      link_preview?: { url?: string }
+    }
+    const type = mediaBlock.type
+    let url: string | undefined
+
+    if (type === "bookmark") url = mediaBlock.bookmark?.url
+    else if (type === "embed") url = mediaBlock.embed?.url
+    else if (type === "link_preview") url = mediaBlock.link_preview?.url
+    else if (type === "video") {
+      if (mediaBlock.video?.type === "external") url = mediaBlock.video.external?.url
+      else if (mediaBlock.video?.type === "file") url = mediaBlock.video.file?.url
+    }
+
+    if (!url) return false
+    return `![${type || "embed"}](${url})`
+  }
+
+  n2m.setCustomTransformer("bookmark", mediaTransformer)
+  n2m.setCustomTransformer("embed", mediaTransformer)
+  n2m.setCustomTransformer("video", mediaTransformer)
+  n2m.setCustomTransformer("link_preview", mediaTransformer)
+
+  return n2m
 }
 
 // Normalize Notion database ID - removes hyphens and extracts from URL if needed
