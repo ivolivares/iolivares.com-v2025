@@ -1,10 +1,19 @@
 "use client"
 
+import type { ReactNode } from "react"
 import ReactMarkdown from "react-markdown"
 import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
 import TweetEmbed from "@/components/tweet-embed"
+import { VideoEmbed } from "@/components/video-embed"
 import { cn } from "@/lib/utils"
+import { getVideoEmbedInfo, isNotionMediaLinkLabel } from "@/lib/video-embeds"
+
+function getTextContent(node: ReactNode): string {
+  if (typeof node === "string" || typeof node === "number") return String(node)
+  if (Array.isArray(node)) return node.map(getTextContent).join("")
+  return ""
+}
 
 interface MarkdownRendererProps {
   content: string
@@ -18,24 +27,29 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeSlug]}
         components={{
-          // Custom link styles
-          a: ({ href, children }) => (
-            <a
-              href={href}
-              className="text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors"
-              target={href?.startsWith("http") ? "_blank" : undefined}
-              rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
-            >
-              {children}
-            </a>
-          ),
-          // Custom blockquote styles
+          // Catch Notion media links like [bookmark](video-url) from the default converter
+          a: ({ href, children }) => {
+            const label = getTextContent(children).trim()
+            if (href && getVideoEmbedInfo(href) && (isNotionMediaLinkLabel(label) || label === href)) {
+              return <VideoEmbed url={href} />
+            }
+
+            return (
+              <a
+                href={href}
+                className="text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors"
+                target={href?.startsWith("http") ? "_blank" : undefined}
+                rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
+              >
+                {children}
+              </a>
+            )
+          },
           blockquote: ({ children }) => (
             <blockquote className="border-l-4 border-border pl-6 my-6 italic text-muted-foreground">
               {children}
             </blockquote>
           ),
-          // Custom code styles
           code: ({ children, className }) => {
             const isInline = !className
             if (isInline) {
@@ -47,7 +61,6 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
               </code>
             )
           },
-          // Custom heading styles with IDs for anchor linking
           h1: ({ children, id }) => (
             <h1 id={id} className="text-3xl font-bold mb-6 text-foreground scroll-mt-20">
               {children}
@@ -78,16 +91,20 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
               {children}
             </h6>
           ),
-          // Custom image handler for tweet embeds
           img: ({ alt, src }) => {
-            // Check if this is a tweet embed (using ![tweet](tweet_id) syntax)
-            if (alt === "tweet" && src) {
-              return <TweetEmbed tweetId={src as unknown as string} />
+            const srcUrl = typeof src === "string" ? src : undefined
+
+            if (alt === "tweet" && srcUrl) {
+              return <TweetEmbed tweetId={srcUrl} />
             }
-            // Regular image rendering
+
+            if (srcUrl && (isNotionMediaLinkLabel(alt) || getVideoEmbedInfo(srcUrl))) {
+              return <VideoEmbed url={srcUrl} title={isNotionMediaLinkLabel(alt) ? undefined : alt || undefined} />
+            }
+
             return (
               <picture className="w-full flex flex-col space-y-2">
-                <img src={src} alt={alt} className="rounded-lg max-w-full h-auto" />
+                <img src={srcUrl} alt={alt} className="rounded-lg max-w-full h-auto" />
                 <p className="w-full text-sm py-1 text-muted-foreground wrap-break-word whitespace-break-spaces">
                   {alt}
                 </p>
@@ -96,24 +113,36 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
           },
           li: ({ children }) => <li className="leading-relaxed">{children}</li>,
           ol: ({ children }) => <ol className="mb-6 space-y-2 text-foreground">{children}</ol>,
-          // Custom paragraph styles with tweet embed handling
+          // Avoid invalid <p><figure> / <p><div> nesting for tweet/video embeds
           p: ({ children, node }) => {
-            // Check if paragraph contains an image (which might be a tweet embed)
-            // This prevents invalid <p><div> nesting when tweet embeds are rendered
-            const hasImage = node?.children?.some((child) => "tagName" in child && child.tagName === "img")
+            const hasBlockMedia = node?.children?.some((child) => {
+              if (!("tagName" in child)) return false
+              if (child.tagName === "img") return true
+              if (child.tagName === "a" && "properties" in child) {
+                const href = (child.properties as { href?: string } | undefined)?.href
+                const label =
+                  "children" in child && Array.isArray(child.children)
+                    ? child.children
+                        .map((c) => ("value" in c && typeof c.value === "string" ? c.value : ""))
+                        .join("")
+                        .trim()
+                    : ""
+                return Boolean(href && getVideoEmbedInfo(href) && (isNotionMediaLinkLabel(label) || label === href))
+              }
+              return false
+            })
 
-            // Use div for paragraphs containing images to avoid nesting issues
-            const Component = hasImage ? "div" : "p"
+            const Component = hasBlockMedia ? "div" : "p"
             return <Component className="mb-6 leading-relaxed text-foreground">{children}</Component>
           },
-          // Custom pre styles for code blocks
           pre: ({ children }) => (
             <pre className="bg-muted p-4 rounded-lg text-sm font-mono text-foreground overflow-x-auto mb-6">
               {children}
             </pre>
           ),
-          // Custom list styles
-          ul: ({ children }) => <ul className="mb-6 pl-4 space-y-2 text-foreground list-disc list-outside block">{children}</ul>,
+          ul: ({ children }) => (
+            <ul className="mb-6 pl-4 space-y-2 text-foreground list-disc list-outside block">{children}</ul>
+          ),
         }}
       >
         {content}
