@@ -150,4 +150,8 @@ import { Card } from '@/components/ui/card'
 - The dev server is `pnpm dev` (Next.js with Turbopack) on port 3000.
 - `pnpm typecheck` currently fails on existing errors in `app/(standalone)/links/page.tsx`. `pnpm build` still succeeds because `next.config.mjs` sets `typescript.ignoreBuildErrors`.
 - `pnpm lint` and `pnpm check` run Biome with `--write` and will modify files. Use `pnpm exec biome check .` for a read-only check. The repo currently has existing Biome findings.
-- `NOTION_TOKEN` and `NOTION_DATABASE_ID` are optional. Without them, `/` and `/thoughts` render with an empty post list and the server logs a missing-env warning. `NEXT_PUBLIC_POSTHOG_TOKEN` and `NEXT_PUBLIC_POSTHOG_HOST` are optional; the browser logs a PostHog init error when they are unset. `DRAFT_SECRET_TOKEN` is only required for draft mode (`/api/draft`). Copy names from `.env.local.example`.
+- `NOTION_TOKEN` and `NOTION_DATABASE_ID` are optional locally. Without them, `/` and `/thoughts` render with an empty post list and the server logs a missing-env warning. `NEXT_PUBLIC_POSTHOG_TOKEN` and `NEXT_PUBLIC_POSTHOG_HOST` are optional locally; without them PostHog is skipped. `DRAFT_SECRET_TOKEN` is only required for draft mode (`/api/draft`). Copy names from `.env.local.example`.
+- **Production deploy (GitHub Actions → Cloudflare Workers):** set these repository secrets (Settings → Secrets and variables → Actions). The workflows pass them at **build** time and sync Notion/Draft as **Worker secrets** at deploy time:
+  - `NOTION_TOKEN`, `NOTION_DATABASE_ID`, `DRAFT_SECRET_TOKEN`
+  - `NEXT_PUBLIC_POSTHOG_TOKEN`, `NEXT_PUBLIC_POSTHOG_HOST` (required at build — Next.js inlines `NEXT_PUBLIC_*` into the client bundle; `wrangler.jsonc` `vars` alone is not enough for the browser SDK)
+  - `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` (already used by deploy)
