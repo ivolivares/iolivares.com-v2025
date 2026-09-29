@@ -3,6 +3,7 @@ name: Deploy to Cloudflare Workers
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -28,7 +29,6 @@ jobs:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
           DRAFT_SECRET_TOKEN: ${{ secrets.DRAFT_SECRET_TOKEN }}
-          # Prefer GitHub secrets; fall back to the public project key already in wrangler.jsonc
           NEXT_PUBLIC_POSTHOG_TOKEN: ${{ secrets.NEXT_PUBLIC_POSTHOG_TOKEN || 'phc_9aA1LgjqHexvljElyfkFEUeKKiAvvTESNqX3oWplIyf' }}
           NEXT_PUBLIC_POSTHOG_HOST: ${{ secrets.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com' }}
 
@@ -37,7 +37,6 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: deploy
-          # Sync runtime secrets so ISR/API routes can read Notion + draft mode
           secrets: |
             NOTION_TOKEN
             NOTION_DATABASE_ID
