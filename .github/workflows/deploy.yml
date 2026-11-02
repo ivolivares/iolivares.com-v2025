@@ -28,6 +28,7 @@ jobs:
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          NOTION_PERKS_DATABASE_ID: ${{ secrets.NOTION_PERKS_DATABASE_ID }}
           DRAFT_SECRET_TOKEN: ${{ secrets.DRAFT_SECRET_TOKEN }}
           NEXT_PUBLIC_POSTHOG_TOKEN: ${{ secrets.NEXT_PUBLIC_POSTHOG_TOKEN || 'phc_9aA1LgjqHexvljElyfkFEUeKKiAvvTESNqX3oWplIyf' }}
           NEXT_PUBLIC_POSTHOG_HOST: ${{ secrets.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com' }}
@@ -40,8 +41,10 @@ jobs:
           secrets: |
             NOTION_TOKEN
             NOTION_DATABASE_ID
+            NOTION_PERKS_DATABASE_ID
             DRAFT_SECRET_TOKEN
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          NOTION_PERKS_DATABASE_ID: ${{ secrets.NOTION_PERKS_DATABASE_ID }}
           DRAFT_SECRET_TOKEN: ${{ secrets.DRAFT_SECRET_TOKEN }}

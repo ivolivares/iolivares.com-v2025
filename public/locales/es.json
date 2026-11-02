@@ -290,6 +290,18 @@
     "appleMusic": "Apple Music",
     "description": "Aquí están los enlaces a otras plataformas donde puedes encontrarme. Puede que no esté activo en todas. No prometo nada."
   },
+  "startupsPerks": {
+    "title": "Perks para startups",
+    "description": "Créditos, descuentos y programas de partners que conviene revisar antes de pagar precio de lista.",
+    "searchLabel": "Buscar perks",
+    "searchPlaceholder": "Busca por programa, empresa o beneficio...",
+    "allCategories": "Todos",
+    "resultsCount": "{count} perks",
+    "empty": "Ningún perk coincide con tus filtros.",
+    "featured": "Destacado",
+    "eligibility": "Quién califica",
+    "apply": "Aplicar"
+  },
   "commandPalette": {
     "placeholder": "Escriba lo que está buscando...",
     "empty": "No se encontraron resultados.",
@@ -300,7 +312,8 @@
       "givingTalks": "Información como Speaker",
       "connect": "Conectemos",
       "links": "Enlaces",
-      "uses": "Lo que uso"
+      "uses": "Lo que uso",
+      "startupPerks": "Perks para startups"
     }
   }
 }
