@@ -290,6 +290,18 @@
     "appleMusic": "Apple Music",
     "description": "Here are links to other platforms where you can find me. Might not be active on all of them. Not promising anything."
   },
+  "startupsPerks": {
+    "title": "Startup Perks",
+    "description": "Credits, discounts, and partner programs worth checking before you pay list price.",
+    "searchLabel": "Search perks",
+    "searchPlaceholder": "Search by program, company, or benefit...",
+    "allCategories": "All",
+    "resultsCount": "{count} perks",
+    "empty": "No perks match your filters yet.",
+    "featured": "Featured",
+    "eligibility": "Who qualifies",
+    "apply": "Apply"
+  },
   "commandPalette": {
     "placeholder": "Type a command or search...",
     "empty": "No results found.",
@@ -300,7 +312,8 @@
       "givingTalks": "Giving Talks",
       "connect": "Connect",
       "links": "Links",
-      "uses": "Uses"
+      "uses": "Uses",
+      "startupPerks": "Startup Perks"
     }
   }
 }

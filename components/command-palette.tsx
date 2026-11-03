@@ -68,6 +68,7 @@ export function CommandPalette({ open: controlledOpen, onOpenChange }: CommandPa
     // { icon: Layers, label: "Stack", route: "/stack" },
     // { icon: Camera, label: "Photographs", route: "/photographs" },
     { icon: LaptopMinimal, label: t("commandPalette.commands.uses"), route: "/uses" },
+    { icon: Briefcase, label: t("commandPalette.commands.startupPerks"), route: "/startups/perks" },
     // { icon: FileText, label: "Resume", route: "/resume" },
     // { icon: Disc3, label: "Vinyls", route: "/vinyls" },
   ]
