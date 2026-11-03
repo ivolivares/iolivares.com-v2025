@@ -4,15 +4,46 @@ import { ExternalLink, Search } from "lucide-react"
 import { useMemo, useState } from "react"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import { useTranslation } from "@/hooks/use-translation"
-import { PERK_CATEGORIES, type StartupPerk } from "@/lib/notion-perks"
+import { getPerkLogoUrl, PERK_CATEGORIES, type StartupPerk } from "@/lib/notion-perks"
 import { cn } from "@/lib/utils"
 
 interface StartupsPerksClientProps {
   perks: StartupPerk[]
 }
 
+function PerkLogo({ name, url }: { name: string; url: string }) {
+  const logoUrl = getPerkLogoUrl(url)
+  const [failed, setFailed] = useState(false)
+
+  if (!logoUrl || failed) {
+    return (
+      <div
+        aria-hidden
+        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-muted text-sm font-semibold text-muted-foreground"
+      >
+        {name.trim().charAt(0).toUpperCase() || "?"}
+      </div>
+    )
+  }
+
+  return (
+    // biome-ignore lint/performance/noImgElement: favicon CDN URLs vary by domain and are decorative
+    <img
+      src={logoUrl}
+      alt=""
+      width={40}
+      height={40}
+      loading="lazy"
+      decoding="async"
+      onError={() => setFailed(true)}
+      className="h-10 w-10 shrink-0 rounded-lg bg-muted object-contain p-1.5"
+    />
+  )
+}
+
 export function StartupsPerksClient({ perks }: StartupsPerksClientProps) {
-  const sectionRef = useScrollReveal()
+  // threshold 0: a long list can stay under 10% visible and never reveal otherwise
+  const sectionRef = useScrollReveal({ threshold: 0 })
   const { t } = useTranslation()
   const [query, setQuery] = useState("")
   const [activeCategory, setActiveCategory] = useState<string>("all")
@@ -108,36 +139,41 @@ export function StartupsPerksClient({ perks }: StartupsPerksClientProps) {
           <ul className="divide-y divide-border/60 border-y border-border/60">
             {filteredPerks.map((perk) => (
               <li key={perk.id} className="py-5 sm:py-6">
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                  <div className="min-w-0 flex-1 space-y-2">
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                      <h2 className="text-lg font-semibold tracking-tight">{perk.name}</h2>
-                      <span className="text-xs uppercase tracking-wide text-muted-foreground">{perk.category}</span>
-                      {perk.featured ? (
-                        <span className="text-xs text-foreground/70">{t("startupsPerks.featured")}</span>
+                <div className="flex gap-3 sm:gap-4">
+                  <PerkLogo name={perk.company || perk.name} url={perk.url} />
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                      <div className="min-w-0 flex-1 space-y-2">
+                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                          <h2 className="text-lg font-semibold tracking-tight">{perk.name}</h2>
+                          <span className="text-xs uppercase tracking-wide text-muted-foreground">{perk.category}</span>
+                          {perk.featured ? (
+                            <span className="text-xs text-foreground/70">{t("startupsPerks.featured")}</span>
+                          ) : null}
+                        </div>
+                        {perk.company ? <p className="text-sm text-muted-foreground">{perk.company}</p> : null}
+                        {perk.benefit ? <p className="text-sm leading-relaxed">{perk.benefit}</p> : null}
+                        {perk.eligibility ? (
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            <span className="font-medium text-foreground/80">{t("startupsPerks.eligibility")}: </span>
+                            {perk.eligibility}
+                          </p>
+                        ) : null}
+                      </div>
+
+                      {perk.url ? (
+                        <a
+                          href={perk.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+                        >
+                          {t("startupsPerks.apply")}
+                          <ExternalLink className="h-3.5 w-3.5" />
+                        </a>
                       ) : null}
                     </div>
-                    {perk.company ? <p className="text-sm text-muted-foreground">{perk.company}</p> : null}
-                    {perk.benefit ? <p className="text-sm leading-relaxed">{perk.benefit}</p> : null}
-                    {perk.eligibility ? (
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        <span className="font-medium text-foreground/80">{t("startupsPerks.eligibility")}: </span>
-                        {perk.eligibility}
-                      </p>
-                    ) : null}
                   </div>
-
-                  {perk.url ? (
-                    <a
-                      href={perk.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-primary hover:underline"
-                    >
-                      {t("startupsPerks.apply")}
-                      <ExternalLink className="h-3.5 w-3.5" />
-                    </a>
-                  ) : null}
                 </div>
               </li>
             ))}

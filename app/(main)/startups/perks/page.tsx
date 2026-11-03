@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { getStartupPerks } from "@/lib/notion-perks"
+import { getStartupPerks } from "@/lib/notion-perks.server"
 import { StartupsPerksClient } from "./page-client"
 
 export const metadata: Metadata = {
