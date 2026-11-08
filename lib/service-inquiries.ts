@@ -44,6 +44,7 @@ const inquirySchema = z.object({
     .string()
     .transform((value) => cleanText(value).toLowerCase())
     .pipe(z.string().email().max(254)),
+  interest: z.enum(["agent", "advisory", "mvp"]).optional(),
   locale: z.enum(["en", "es"]),
   name: optionalText(120),
   need: optionalText(2_000),
@@ -331,6 +332,7 @@ function toLead(value: ParsedInquiry): LeadRecord {
 function formatSource(value: ParsedInquiry): string {
   const page = value.sourcePath === "/servicios" ? "/servicios" : "/services"
   const parts = [`page=${page}`]
+  if (value.interest) parts.push(`interest=${value.interest}`)
   const search = value.sourceSearch.startsWith("?") ? value.sourceSearch.slice(1) : value.sourceSearch
   const params = new URLSearchParams(search)
   for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"]) {

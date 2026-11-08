@@ -309,11 +309,9 @@
     "includes": "Qué incluye",
     "timeline": "Plazo",
     "priceLabel": "Precio",
-    "startingAt": "Desde",
-    "startingPrice": "US$1.000–1.500",
-    "startingNote": "50% por adelantado. Agente de IA en 1 semana.",
+    "priceLocked": "El precio se muestra al terminar el formulario.",
     "availableNow": "Disponible ahora",
-    "panelCta": "Hablemos",
+    "formOpen": "Completa el formulario",
     "codeYours": "El código queda en tus repositorios.",
     "alsoTitle": "También",
     "packages": {
@@ -345,7 +343,13 @@
       }
     },
     "talksTitle": "Charlas",
-    "talksBody": "Charlas en Next.js Conf, WebConf LATAM y Reliable Web Summit ({talksLink}).",
+    "talksBody": "Charlas públicas, con el título y dónde las di.",
+    "talks": {
+      "nextTitle": "Construyendo la próxima generación de sitios web de aerolíneas",
+      "nextWhere": "Next.js Conf",
+      "obsTitle": "Observability 101: Monitorear tu app no es solo cosa de devops",
+      "obsWhere": "WebConf LATAM y Reliable Web Summit"
+    },
     "processTitle": "Cómo funciona",
     "steps": {
       "call": "Llamada de 30 minutos: entendemos tu problema y objetivos.",
@@ -381,6 +385,7 @@
       "jump": "Ver precios",
       "title": "Ver precios de los paquetes",
       "body": "Deja tu email para el precio del MVP y de la asesoría, y para que te responda. Nombre, empresa y qué necesitas son opcionales.",
+      "open": "Completa el formulario",
       "honeypot": "Sitio web",
       "email": "Email",
       "name": "Nombre (opcional)",
@@ -401,7 +406,36 @@
         "tooFast": "Espera un segundo e inténtalo de nuevo.",
         "rateLimited": "Demasiadas solicitudes con este email. Inténtalo más tarde.",
         "origin": "Envía el formulario desde esta página.",
-        "network": "No se pudo enviar. Revisa tu conexión e inténtalo de nuevo."
+        "network": "No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.",
+        "turnstile": "La verificación anti-bots no pasó. Inténtalo de nuevo.",
+        "invalidCode": "Ese código no es válido o venció.",
+        "emailUnavailable": "No pude enviar el código. Escríbeme y te respondo."
+      }
+    },
+    "funnel": {
+      "back": "Atrás",
+      "close": "Cerrar",
+      "continue": "Continuar",
+      "packageQuestion": "¿Cuál de estos es el trabajo?",
+      "packageHint": "Elige el más cercano. Lo ajustamos en la llamada.",
+      "needQuestion": "¿Qué necesitas?",
+      "needHint": "Con una frase basta.",
+      "aboutQuestion": "¿A quién le respondo?",
+      "emailQuestion": "¿A dónde envío el código?",
+      "emailHint": "Un código de 6 dígitos, para confirmar que el email es real. Vence en 10 minutos.",
+      "sendCode": "Enviar código",
+      "otpQuestion": "Escribe el código",
+      "otpHint": "Enviado a {email}.",
+      "devCode": "Solo en local: el código es {code}.",
+      "cleared": "Listo",
+      "minutes": "Unos 2 minutos",
+      "steps": {
+        "package": "Trabajo",
+        "need": "Necesidad",
+        "about": "Tú",
+        "email": "Email",
+        "code": "Código",
+        "prices": "Precios"
       }
     }
   },

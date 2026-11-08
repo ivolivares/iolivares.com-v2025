@@ -2,23 +2,14 @@
 
 import { Calendar, Check, Code2, FileText, FolderCheck } from "lucide-react"
 import Link from "next/link"
-import { type FormEvent, type ReactNode, useEffect, useRef, useState } from "react"
+import { type ReactNode, useEffect, useState } from "react"
+import { ServicesLeadForm } from "@/components/services-lead-form"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
 import { siteConfig } from "@/config/site"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import { useTranslation } from "@/hooks/use-translation"
-import {
-  type InquiryErrorCode,
-  isInquiryFailure,
-  isInquirySuccess,
-  type PackageQuote,
-} from "@/lib/service-inquiry-contract"
-
-const TALK_NAMES = ["Next.js Conf", "WebConf LATAM", "Reliable Web Summit"] as const
+import { type PackageQuote } from "@/lib/service-inquiry-contract"
 
 const STEP_IDS = [
   { icon: Calendar, id: "call" },
@@ -35,6 +26,7 @@ export function ServicesPage() {
   const sectionRef = useScrollReveal()
   const { isLoading, t } = useTranslation()
   const [quotes, setQuotes] = useState<PackageQuote[] | null>(null)
+  const [formOpen, setFormOpen] = useState(false)
 
   useEffect(() => {
     if (isLoading) return
@@ -81,14 +73,20 @@ export function ServicesPage() {
           <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.15fr)_auto]">
             <div>
               <p id="services-offer" className="text-sm text-muted-foreground">
-                {t("services.startingAt")}
+                {t("services.packages.agent.title")}
               </p>
-              <p className="mt-2 text-4xl font-medium tracking-[-0.03em] sm:text-5xl">{t("services.startingPrice")}</p>
+              <p className="mt-2 text-4xl font-medium tracking-[-0.03em] sm:text-5xl">
+                {quotes?.find((item) => item.id === "agent")?.price ?? t("services.packages.agent.timeline")}
+              </p>
               <p className="mt-3 max-w-[24ch] text-sm leading-relaxed text-muted-foreground">
-                {t("services.startingNote")}
+                {quotes ? t("services.packages.agent.timeline") : t("services.priceLocked")}
               </p>
-              <Button asChild className={`mt-6 h-11 rounded-full px-5 ${pressable}`}>
-                <a href="#pricing">{t("services.panelCta")}</a>
+              <Button
+                type="button"
+                onClick={() => setFormOpen(true)}
+                className={`mt-6 h-11 rounded-full px-5 ${pressable}`}
+              >
+                {t("services.form.open")}
               </Button>
             </div>
             <ul className="space-y-3">
@@ -127,17 +125,28 @@ export function ServicesPage() {
           </ul>
         </section>
 
-        <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-2 text-sm text-muted-foreground">
-          {TALK_NAMES.map((name) => (
-            <li key={name}>
-              <Link href="/talks" className="hover:text-foreground">
-                {name}
+        <section className="mt-10 max-w-[65ch]" aria-labelledby="services-talks">
+          <h2 id="services-talks" className="text-lg font-medium">
+            {t("services.talksTitle")}
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t("services.talksBody")}</p>
+          <ul className="mt-4 space-y-3">
+            <li>
+              <Link href="/talks" className="font-medium underline decoration-foreground/30 underline-offset-4">
+                {t("services.talks.nextTitle")}
               </Link>
+              <p className="text-sm text-muted-foreground">{t("services.talks.nextWhere")}</p>
             </li>
-          ))}
-        </ul>
+            <li>
+              <Link href="/talks" className="font-medium underline decoration-foreground/30 underline-offset-4">
+                {t("services.talks.obsTitle")}
+              </Link>
+              <p className="text-sm text-muted-foreground">{t("services.talks.obsWhere")}</p>
+            </li>
+          </ul>
+        </section>
 
-        <InquiryForm quotes={quotes} onQuotes={setQuotes} />
+        <ServicesLeadForm open={formOpen} onClose={() => setFormOpen(false)} onQuotes={setQuotes} />
 
         {projects.length > 0 ? (
           <section className="mt-10" aria-labelledby="services-work">
@@ -261,194 +270,10 @@ function Availability({ label }: { label: string }) {
   )
 }
 
-function InquiryForm({
-  quotes,
-  onQuotes,
-}: {
-  quotes: PackageQuote[] | null
-  onQuotes: (quotes: PackageQuote[]) => void
-}) {
-  const formRef = useRef<HTMLElement>(null)
-  const startedAt = useRef(0)
-  const { language, t } = useTranslation()
-  const [error, setError] = useState<string | null>(null)
-  const [received, setReceived] = useState(false)
-  const [submitting, setSubmitting] = useState(false)
-
-  useEffect(() => {
-    startedAt.current = Date.now()
-  }, [])
-
-  async function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    if (submitting) return
-    setSubmitting(true)
-    setError(null)
-
-    const form = new FormData(event.currentTarget)
-    try {
-      const response = await fetch("/api/services/inquiry", {
-        body: JSON.stringify({
-          company: String(form.get("company") ?? ""),
-          company_website: String(form.get("company_website") ?? ""),
-          email: String(form.get("email") ?? ""),
-          locale: language,
-          name: String(form.get("name") ?? ""),
-          need: String(form.get("need") ?? ""),
-          sourcePath: window.location.pathname,
-          sourceReferrer: document.referrer,
-          sourceSearch: window.location.search,
-          startedAt: startedAt.current,
-        }),
-        cache: "no-store",
-        headers: { "content-type": "application/json" },
-        method: "POST",
-      })
-      const payload: unknown = await response.json()
-      if (isInquirySuccess(payload) && payload.packages.length > 0) {
-        onQuotes(payload.packages)
-        formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
-        return
-      }
-      if (isInquirySuccess(payload)) {
-        setReceived(true)
-        return
-      }
-      if (isInquiryFailure(payload)) {
-        setError(messageFor(payload.error, t))
-        return
-      }
-      setError(asText(t("services.form.errors.network")))
-    } catch {
-      setError(asText(t("services.form.errors.network")))
-    } finally {
-      setSubmitting(false)
-    }
-  }
-
-  const fieldClass = "h-11 text-base md:text-base"
-
-  return (
-    <section
-      id="pricing"
-      ref={formRef}
-      className="mt-16 scroll-mt-28 rounded-2xl border border-border bg-muted/40 p-5 sm:p-6"
-    >
-      {quotes && quotes.length > 0 ? (
-        <div>
-          <h2 className="text-2xl font-medium tracking-[-0.02em]">{t("services.form.successTitle")}</h2>
-          <p className="mt-2 max-w-[62ch] text-sm leading-relaxed text-muted-foreground">
-            {t("services.form.successBody")}
-          </p>
-          <ul className="mt-4 divide-y divide-border">
-            {quotes.map((quote) => (
-              <li key={quote.id} className="grid gap-1 py-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:gap-8">
-                <div className="min-w-0">
-                  <p className="font-medium">{quote.name}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">{quote.timeline}</p>
-                </div>
-                <p className="text-sm sm:text-right">{quote.price}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : received ? (
-        <p className="text-lg">{t("services.form.received")}</p>
-      ) : (
-        <form className="relative" onSubmit={onSubmit}>
-          <div className="max-w-[62ch]">
-            <h2 className="text-2xl font-medium tracking-[-0.02em]">{t("services.form.title")}</h2>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t("services.form.body")}</p>
-          </div>
-          <div className="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden="true">
-            <label htmlFor="company_website">{t("services.form.honeypot")}</label>
-            <input id="company_website" name="company_website" type="text" tabIndex={-1} autoComplete="off" />
-          </div>
-          <div className="mt-6 space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="services-email">{t("services.form.email")}</Label>
-              <Input
-                id="services-email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                maxLength={254}
-                className={fieldClass}
-              />
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="space-y-2">
-                <Label htmlFor="services-name">{t("services.form.name")}</Label>
-                <Input id="services-name" name="name" autoComplete="name" maxLength={120} className={fieldClass} />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="services-company">{t("services.form.company")}</Label>
-                <Input
-                  id="services-company"
-                  name="company"
-                  autoComplete="organization"
-                  maxLength={160}
-                  className={fieldClass}
-                />
-              </div>
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="services-need">{t("services.form.need")}</Label>
-              <Textarea id="services-need" name="need" rows={4} maxLength={2000} className="text-base md:text-base" />
-            </div>
-          </div>
-          {error ? (
-            <p id="services-form-error" role="alert" className="mt-4 text-sm text-destructive">
-              {error}
-            </p>
-          ) : null}
-          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-            <Button
-              type="submit"
-              disabled={submitting}
-              aria-describedby={error ? "services-form-error" : undefined}
-              className={`h-11 px-5 ${pressable}`}
-            >
-              {submitting ? t("services.form.submitting") : t("services.form.submit")}
-            </Button>
-            <p className="text-sm text-muted-foreground">{t("services.form.privacy")}</p>
-          </div>
-        </form>
-      )}
-    </section>
-  )
-}
-
 function splitStep(value: string): { body: string; title: string } {
   const index = value.indexOf(": ")
   if (index === -1) return { body: "", title: value }
   return { body: value.slice(index + 2), title: value.slice(0, index) }
-}
-
-function messageFor(code: InquiryErrorCode, t: (key: string) => ReactNode): string {
-  switch (code) {
-    case "invalid_body":
-      return asText(t("services.form.errors.invalidBody"))
-    case "invalid_company":
-      return asText(t("services.form.errors.invalidCompany"))
-    case "invalid_email":
-      return asText(t("services.form.errors.invalidEmail"))
-    case "invalid_name":
-      return asText(t("services.form.errors.invalidName"))
-    case "invalid_need":
-      return asText(t("services.form.errors.invalidNeed"))
-    case "origin":
-      return asText(t("services.form.errors.origin"))
-    case "rate_limited":
-      return asText(t("services.form.errors.rateLimited"))
-    case "too_fast":
-      return asText(t("services.form.errors.tooFast"))
-    default: {
-      const exhaustive: never = code
-      return exhaustive
-    }
-  }
 }
 
 function publicProjects(t: (key: string) => ReactNode) {

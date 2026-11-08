@@ -309,11 +309,9 @@
     "includes": "What's included",
     "timeline": "Timeline",
     "priceLabel": "Price",
-    "startingAt": "From",
-    "startingPrice": "US$1,000–1,500",
-    "startingNote": "50% upfront. AI agent in 1 week.",
+    "priceLocked": "The price is shown when you finish the form.",
     "availableNow": "Available now",
-    "panelCta": "Let's talk",
+    "formOpen": "Complete the form",
     "codeYours": "The code is delivered to your repositories.",
     "alsoTitle": "Also",
     "packages": {
@@ -345,7 +343,13 @@
       }
     },
     "talksTitle": "Talks",
-    "talksBody": "Talks at Next.js Conf, WebConf LATAM and Reliable Web Summit ({talksLink}).",
+    "talksBody": "Public talks, with the title and where they were given.",
+    "talks": {
+      "nextTitle": "Building the Next Generation of Airlines Websites",
+      "nextWhere": "Next.js Conf",
+      "obsTitle": "Observability 101: Monitoring your app is not about devops",
+      "obsWhere": "WebConf LATAM and Reliable Web Summit"
+    },
     "processTitle": "How it works",
     "steps": {
       "call": "30-minute call: we understand your problem and goals.",
@@ -381,6 +385,7 @@
       "jump": "See pricing",
       "title": "See package pricing",
       "body": "Leave your email for the MVP and advisory prices, and so I can reply. Name, company, and what you need are optional.",
+      "open": "Complete the form",
       "honeypot": "Website",
       "email": "Email",
       "name": "Name (optional)",
@@ -401,7 +406,36 @@
         "tooFast": "Give it a second, then try again.",
         "rateLimited": "Too many requests for this email. Try again in a bit.",
         "origin": "Submit the form from this page.",
-        "network": "Couldn't send that. Check your connection and try again."
+        "network": "Couldn't send that. Check your connection and try again.",
+        "turnstile": "The bot check did not pass. Try again.",
+        "invalidCode": "That code is wrong or it expired.",
+        "emailUnavailable": "The code could not be sent. Email me and I'll reply."
+      }
+    },
+    "funnel": {
+      "back": "Back",
+      "close": "Close",
+      "continue": "Continue",
+      "packageQuestion": "Which of these is the work?",
+      "packageHint": "Pick the closest. We can adjust it on the call.",
+      "needQuestion": "What do you need?",
+      "needHint": "A sentence is enough.",
+      "aboutQuestion": "Who should I reply to?",
+      "emailQuestion": "Where should I send the code?",
+      "emailHint": "A 6-digit code, so the address is real. It expires in 10 minutes.",
+      "sendCode": "Send code",
+      "otpQuestion": "Enter the code",
+      "otpHint": "Sent to {email}.",
+      "devCode": "Local only: the code is {code}.",
+      "cleared": "Done",
+      "minutes": "About 2 minutes",
+      "steps": {
+        "package": "Work",
+        "need": "Need",
+        "about": "You",
+        "email": "Email",
+        "code": "Code",
+        "prices": "Pricing"
       }
     }
   },
