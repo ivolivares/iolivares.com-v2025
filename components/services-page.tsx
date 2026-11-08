@@ -36,13 +36,13 @@ const RECOMMENDATIONS = [
 ] as const
 
 const PUBLIC_BRANDS = [
-  { icon: "/logos/latam.svg", name: "LATAM Airlines" },
-  { icon: null, name: "British Airways" },
-  { icon: "/logos/warner-bros.svg", name: "Warner Bros. Discovery" },
-  { icon: null, name: "HBO Max" },
-  { icon: "/logos/cnn.svg", name: "CNN" },
-  { icon: "/logos/comcast.svg", name: "Comcast" },
-  { icon: "/logos/globant.svg", name: "Globant" },
+  { icon: "/logos/latam.png", name: "LATAM Airlines" },
+  { icon: "/logos/british-airways.png", name: "British Airways" },
+  { icon: "/logos/warner-bros.png", name: "Warner Bros. Discovery" },
+  { icon: "/logos/hbo-max.png", name: "HBO Max" },
+  { icon: "/logos/cnn.png", name: "CNN" },
+  { icon: "/logos/comcast.png", name: "Comcast" },
+  { icon: "/logos/globant.png", name: "Globant" },
   { icon: "/logos/neverland.png", name: "Estudios Neverland" },
 ] as const
 
@@ -127,28 +127,25 @@ export function ServicesPage() {
           </div>
           <div className="flex items-center gap-3 border-t border-border px-4 py-3 sm:px-6">
             <LogosCarousel
-              className="h-16 min-w-0 flex-1 text-foreground"
+              className="h-12 min-w-0 flex-1 text-foreground"
               label={asText(t("services.logosLabel"))}
               paused={logosPaused}
             >
               {PUBLIC_BRANDS.map((brand) => (
-                <span className="flex h-full w-full flex-col items-center justify-center gap-1 px-1" key={brand.name}>
-                  {brand.icon ? (
-                    <span
-                      aria-hidden="true"
-                      className="block h-5 w-[70%] bg-current"
-                      style={{
-                        maskImage: `url("${brand.icon}")`,
-                        maskMode: "alpha",
-                        maskPosition: "center",
-                        maskRepeat: "no-repeat",
-                        maskSize: "contain",
-                        WebkitMaskImage: `url("${brand.icon}")`,
-                      }}
-                    />
-                  ) : null}
-                  <span className="max-w-full text-center text-[11px] font-medium leading-tight">{brand.name}</span>
-                </span>
+                <span
+                  aria-label={brand.name}
+                  className="block h-7 w-[86%] bg-current"
+                  key={brand.name}
+                  role="img"
+                  style={{
+                    maskImage: `url("${brand.icon}")`,
+                    maskMode: "alpha",
+                    maskPosition: "center",
+                    maskRepeat: "no-repeat",
+                    maskSize: "contain",
+                    WebkitMaskImage: `url("${brand.icon}")`,
+                  }}
+                />
               ))}
             </LogosCarousel>
             <button
