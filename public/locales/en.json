@@ -300,6 +300,21 @@
     "logosTitle": "Companies",
     "logosBody": "The ones on my public LinkedIn.",
     "logosLabel": "Companies",
+    "recommendationsLabel": "Recommendations",
+    "recommendations": {
+      "diego": {
+        "context": "Globant",
+        "quote": "Working with Ivan on my teams was a genuine pleasure. He brings deep expertise across multiple disciplines, with particular strength in frontend engineering — and, rarely, the ability to connect technical decisions directly to business outcomes. When someone can articulate why a frontend library should be implemented or upgraded in terms of what it unlocks for the business, you have a team that can demonstrate real ROI rather than just ship code. Ivan is also an exceptional mentor, investing in the people around him and consistently raising the bar for the professionals on his team. Any organization would benefit from having him.",
+        "name": "Diego H. Mazzitelli",
+        "role": "Vice President of Technology, Globant"
+      },
+      "alex": {
+        "context": "Globant",
+        "quote": "It was a pleasure working with Iván. As Tech Director, he consistently planned ahead, anticipating risks and dependencies before they became problems while still moving fast and keeping an eye for detail. Great leader, always pushing people forward.",
+        "name": "Alex Otero",
+        "role": "Sr. Technical Director, Globant"
+      }
+    },
     "motion": {
       "play": "Play",
       "pause": "Pause",

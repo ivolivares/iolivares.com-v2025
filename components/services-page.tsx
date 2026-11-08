@@ -1,10 +1,11 @@
 "use client"
 
 import { Calendar, Check, Code2, FileText, FolderCheck } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 import { type ReactNode, useEffect, useState } from "react"
-import { LogoMarquee, type LogoMarqueeBrand } from "@/components/arc/blocks/logo-marquee/logo-marquee"
 import { Email } from "@/components/email"
+import { LogosCarousel } from "@/components/logos-carousel"
 import { ServicesLeadForm } from "@/components/services-lead-form"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
@@ -21,15 +22,29 @@ const STEP_IDS = [
 ] as const
 const FAQ_IDS = ["payment", "remote", "stack", "ownership", "start"] as const
 
-const PUBLIC_BRANDS: LogoMarqueeBrand[] = [
-  { icon: "/logos/latam.svg", name: "LATAM Airlines", wide: true },
+const RECOMMENDATIONS = [
+  {
+    href: "https://www.linkedin.com/in/diego-mazzitelli",
+    id: "diego",
+    photo: "/recommendations/diego-mazzitelli.jpg",
+  },
+  {
+    href: "https://www.linkedin.com/in/alex-otero-2b559634",
+    id: "alex",
+    photo: null,
+  },
+] as const
+
+const PUBLIC_BRANDS = [
+  { icon: "/logos/latam.svg", name: "LATAM Airlines" },
   { icon: "/logos/british-airways.svg", name: "British Airways" },
   { icon: "/logos/warner-bros.svg", name: "Warner Bros. Discovery" },
   { icon: "/logos/hbo-max.svg", name: "HBO Max" },
   { icon: "/logos/cnn.svg", name: "CNN" },
-  { icon: "/logos/comcast.svg", name: "Comcast", wide: true },
-  { icon: "/logos/globant.svg", name: "Globant", wide: true },
-]
+  { icon: "/logos/comcast.svg", name: "Comcast" },
+  { icon: "/logos/globant.svg", name: "Globant" },
+  { icon: "/logos/neverland.png", name: "Estudios Neverland" },
+] as const
 
 const pressable =
   "touch-manipulation select-none active:scale-[0.98] motion-safe:transition-transform motion-safe:duration-150 motion-safe:ease-[cubic-bezier(0.23,1,0.32,1)]"
@@ -39,6 +54,7 @@ export function ServicesPage() {
   const { isLoading, t } = useTranslation()
   const [quotes, setQuotes] = useState<PackageQuote[] | null>(null)
   const [formOpen, setFormOpen] = useState(false)
+  const [logosPaused, setLogosPaused] = useState(false)
 
   useEffect(() => {
     if (isLoading) return
@@ -69,7 +85,9 @@ export function ServicesPage() {
             const Icon = step.icon
             return (
               <li key={step.id} className="max-w-[28ch]">
-                <Icon className="size-4 text-foreground" aria-hidden="true" strokeWidth={1.75} />
+                <span className="inline-flex size-8 items-center justify-center rounded-md border border-border">
+                  <Icon className="size-4 text-foreground" aria-hidden="true" strokeWidth={1.75} />
+                </span>
                 <p className="mt-3 font-medium">{copy.title}</p>
                 {copy.body ? <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{copy.body}</p> : null}
               </li>
@@ -77,28 +95,8 @@ export function ServicesPage() {
           })}
         </ol>
 
-        <div className="mt-10">
-          <LogoMarquee
-            brands={PUBLIC_BRANDS}
-            description={asText(t("services.logosBody"))}
-            labels={{
-              logos: asText(t("services.logosLabel")),
-              pause: asText(t("services.motion.pause")),
-              paused: asText(t("services.motion.paused")),
-              pauseLabel: asText(t("services.motion.pauseLabel")),
-              play: asText(t("services.motion.play")),
-              playLabel: asText(t("services.motion.playLabel")),
-            }}
-            title={asText(t("services.logosTitle"))}
-            tone="mono"
-          />
-        </div>
-
-        <section
-          className="mt-10 rounded-2xl bg-muted/70 px-5 py-8 sm:px-8 sm:py-10 lg:px-10"
-          aria-labelledby="services-offer"
-        >
-          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.15fr)_auto]">
+        <section className="mt-10 overflow-hidden rounded-2xl border border-border" aria-labelledby="services-offer">
+          <div className="grid items-center gap-10 px-5 py-8 sm:px-8 sm:py-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.15fr)_auto] lg:px-10">
             <div>
               <p id="services-offer" className="text-sm text-muted-foreground">
                 {t("services.packages.agent.title")}
@@ -127,9 +125,83 @@ export function ServicesPage() {
             </ul>
             <Availability label={asText(t("services.availableNow"))} />
           </div>
+          <div className="flex items-center gap-3 border-t border-border px-4 py-3 sm:px-6">
+            <LogosCarousel
+              className="h-10 min-w-0 flex-1 text-foreground"
+              label={asText(t("services.logosLabel"))}
+              paused={logosPaused}
+            >
+              {PUBLIC_BRANDS.map((brand) => (
+                <span
+                  aria-label={brand.name}
+                  className="block h-6 w-[78%] bg-current"
+                  key={brand.name}
+                  role="img"
+                  style={{
+                    maskImage: `url("${brand.icon}")`,
+                    maskMode: "alpha",
+                    maskPosition: "center",
+                    maskRepeat: "no-repeat",
+                    maskSize: "contain",
+                    WebkitMaskImage: `url("${brand.icon}")`,
+                  }}
+                />
+              ))}
+            </LogosCarousel>
+            <button
+              aria-label={asText(logosPaused ? t("services.motion.playLabel") : t("services.motion.pauseLabel"))}
+              aria-pressed={logosPaused}
+              className={`shrink-0 text-xs text-muted-foreground ${pressable}`}
+              onClick={() => setLogosPaused((value) => !value)}
+              type="button"
+            >
+              {logosPaused ? t("services.motion.play") : t("services.motion.pause")}
+            </button>
+          </div>
+          <ul className="sr-only">
+            {PUBLIC_BRANDS.map((brand) => (
+              <li key={brand.name}>{brand.name}</li>
+            ))}
+          </ul>
         </section>
 
-        <section className="mt-8" aria-labelledby="services-also">
+        <section
+          className="mx-auto mt-16 max-w-[46rem] text-center"
+          aria-label={asText(t("services.recommendationsLabel"))}
+        >
+          {RECOMMENDATIONS.map((item) => (
+            <figure key={item.id} className="mt-14 first:mt-0">
+              <p className="text-sm text-muted-foreground">{t(`services.recommendations.${item.id}.context`)}</p>
+              <blockquote className="mt-4 text-lg leading-relaxed text-balance italic sm:text-xl">
+                {t(`services.recommendations.${item.id}.quote`)}
+              </blockquote>
+              {item.photo ? (
+                <Image
+                  alt=""
+                  className="mx-auto mt-6 size-16 rounded-full object-cover"
+                  height={64}
+                  src={item.photo}
+                  width={64}
+                />
+              ) : null}
+              <figcaption className="mt-3">
+                <a
+                  className="font-medium underline decoration-foreground/30 underline-offset-4"
+                  href={item.href}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  {t(`services.recommendations.${item.id}.name`)}
+                </a>
+                <p className="mt-1 text-xs tracking-wide text-muted-foreground">
+                  {t(`services.recommendations.${item.id}.role`)}
+                </p>
+              </figcaption>
+            </figure>
+          ))}
+        </section>
+
+        <section className="mt-16" aria-labelledby="services-also">
           <h2 id="services-also" className="text-sm text-muted-foreground">
             {t("services.alsoTitle")}
           </h2>
