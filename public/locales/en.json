@@ -309,6 +309,13 @@
     "includes": "What's included",
     "timeline": "Timeline",
     "priceLabel": "Price",
+    "startingAt": "From",
+    "startingPrice": "US$1,000–1,500",
+    "startingNote": "50% upfront. AI agent in 1 week.",
+    "availableNow": "Available now",
+    "panelCta": "Let's talk",
+    "codeYours": "The code is delivered to your repositories.",
+    "alsoTitle": "Also",
     "packages": {
       "agent": {
         "title": "AI agent / automation in 1 week",
@@ -373,7 +380,7 @@
     "form": {
       "jump": "See pricing",
       "title": "See package pricing",
-      "body": "Prices stay off this page. Leave your email to view the three packages. Name, company, and what you need are optional.",
+      "body": "Leave your email for the MVP and advisory prices, and so I can reply. Name, company, and what you need are optional.",
       "honeypot": "Website",
       "email": "Email",
       "name": "Name (optional)",

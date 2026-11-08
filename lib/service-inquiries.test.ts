@@ -23,7 +23,7 @@ function body(overrides: Record<string, unknown> = {}) {
   }
 }
 
-test("package quotes stay off the public copy and keep the known price server-side", async () => {
+test("package quotes keep the known price and the public page names no clients", async () => {
   const en = packageQuotes("en")
   const es = packageQuotes("es")
   assert.equal(en[0]?.price, "From US$1,000–1,500, 50% upfront")
@@ -45,9 +45,6 @@ test("package quotes stay off the public copy and keep the known price server-si
     "Showmax",
     "MercadoPago",
     "LATAM Airlines",
-    "US$",
-    "1,000",
-    "1.000",
     "99.99",
     "30M",
   ]

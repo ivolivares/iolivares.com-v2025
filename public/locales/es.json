@@ -309,6 +309,13 @@
     "includes": "Qué incluye",
     "timeline": "Plazo",
     "priceLabel": "Precio",
+    "startingAt": "Desde",
+    "startingPrice": "US$1.000–1.500",
+    "startingNote": "50% por adelantado. Agente de IA en 1 semana.",
+    "availableNow": "Disponible ahora",
+    "panelCta": "Hablemos",
+    "codeYours": "El código queda en tus repositorios.",
+    "alsoTitle": "También",
     "packages": {
       "agent": {
         "title": "Agente / automatización con IA en 1 semana",
@@ -373,7 +380,7 @@
     "form": {
       "jump": "Ver precios",
       "title": "Ver precios de los paquetes",
-      "body": "Los precios no están publicados en esta página. Deja tu email para ver los tres paquetes. Nombre, empresa y qué necesitas son opcionales.",
+      "body": "Deja tu email para el precio del MVP y de la asesoría, y para que te responda. Nombre, empresa y qué necesitas son opcionales.",
       "honeypot": "Sitio web",
       "email": "Email",
       "name": "Nombre (opcional)",

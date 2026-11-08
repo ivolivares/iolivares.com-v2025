@@ -1,6 +1,6 @@
 "use client"
 
-import { Check } from "lucide-react"
+import { Calendar, Check, Code2, FileText, FolderCheck } from "lucide-react"
 import Link from "next/link"
 import { type FormEvent, type ReactNode, useEffect, useRef, useState } from "react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
@@ -15,18 +15,17 @@ import {
   type InquiryErrorCode,
   isInquiryFailure,
   isInquirySuccess,
-  PACKAGE_IDS,
-  type PackageId,
   type PackageQuote,
 } from "@/lib/service-inquiry-contract"
 
-const INCLUDE_COUNTS: Record<PackageId, number> = {
-  advisory: 5,
-  agent: 3,
-  mvp: 3,
-}
+const TALK_NAMES = ["Next.js Conf", "WebConf LATAM", "Reliable Web Summit"] as const
 
-const STEP_IDS = ["call", "proposal", "build", "handoff"] as const
+const STEP_IDS = [
+  { icon: Calendar, id: "call" },
+  { icon: FileText, id: "proposal" },
+  { icon: Code2, id: "build" },
+  { icon: FolderCheck, id: "handoff" },
+] as const
 const FAQ_IDS = ["payment", "remote", "stack", "ownership", "start"] as const
 
 const pressable =
@@ -50,82 +49,95 @@ export function ServicesPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <main ref={sectionRef} className="page-content scroll-reveal mx-auto max-w-3xl px-1 pt-10 pb-8 sm:px-4 sm:pt-16">
-        <header className="max-w-2xl">
-          <h1 className="text-4xl font-medium leading-[1.08] tracking-[-0.03em] text-balance sm:text-5xl">
+      <main ref={sectionRef} className="page-content scroll-reveal mx-auto max-w-5xl px-1 pt-12 pb-8 sm:px-4 sm:pt-20">
+        <header>
+          <p className="text-sm text-muted-foreground">{t("services.servicesTitle")}</p>
+          <h1 className="mt-3 max-w-[18ch] text-4xl font-medium leading-[0.98] tracking-[-0.03em] sm:text-6xl">
             {t("services.heroTitle")}
           </h1>
-          <p className="mt-5 max-w-[65ch] text-lg leading-relaxed text-muted-foreground">{t("services.heroBody")}</p>
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-            <Button asChild className={`h-11 px-5 ${pressable}`}>
-              <a href="#pricing">{t("services.form.jump")}</a>
-            </Button>
-            {email.includes("@") ? (
-              <a
-                href={mailtoHref(email, asText(t("services.emailSubject")))}
-                className="text-sm underline decoration-foreground/30 underline-offset-4"
-              >
-                {email}
-              </a>
-            ) : null}
-            {calendly ? (
-              <a
-                href={calendly}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm underline decoration-foreground/30 underline-offset-4"
-              >
-                {t("services.bookCall")}
-              </a>
-            ) : null}
-          </div>
+          <p className="mt-5 max-w-[62ch] text-base leading-relaxed text-muted-foreground sm:text-lg">
+            {t("services.heroBody")}
+          </p>
         </header>
 
-        <section className="mt-16" aria-labelledby="services-packages">
-          <h2 id="services-packages" className="text-2xl font-medium tracking-[-0.02em]">
-            {t("services.servicesTitle")}
-          </h2>
-          <div className="mt-6 space-y-4">
-            {PACKAGE_IDS.map((id) => (
-              <PackageCard key={id} id={id} quote={quotes?.find((item) => item.id === id)} />
-            ))}
+        <ol className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {STEP_IDS.map((step) => {
+            const copy = splitStep(asText(t(`services.steps.${step.id}`)))
+            const Icon = step.icon
+            return (
+              <li key={step.id} className="max-w-[28ch]">
+                <Icon className="size-4 text-foreground" aria-hidden="true" strokeWidth={1.75} />
+                <p className="mt-3 font-medium">{copy.title}</p>
+                {copy.body ? <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{copy.body}</p> : null}
+              </li>
+            )
+          })}
+        </ol>
+
+        <section
+          className="mt-10 rounded-2xl bg-muted/70 px-5 py-8 sm:px-8 sm:py-10 lg:px-10"
+          aria-labelledby="services-offer"
+        >
+          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.15fr)_auto]">
+            <div>
+              <p id="services-offer" className="text-sm text-muted-foreground">
+                {t("services.startingAt")}
+              </p>
+              <p className="mt-2 text-4xl font-medium tracking-[-0.03em] sm:text-5xl">{t("services.startingPrice")}</p>
+              <p className="mt-3 max-w-[24ch] text-sm leading-relaxed text-muted-foreground">
+                {t("services.startingNote")}
+              </p>
+              <Button asChild className={`mt-6 h-11 rounded-full px-5 ${pressable}`}>
+                <a href="#pricing">{t("services.panelCta")}</a>
+              </Button>
+            </div>
+            <ul className="space-y-3">
+              {agentIncludes(t).map((item) => (
+                <li key={item} className="flex gap-2.5 text-sm leading-relaxed">
+                  <Check className="mt-0.5 size-4 shrink-0" aria-hidden="true" strokeWidth={1.75} />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <Availability label={asText(t("services.availableNow"))} />
           </div>
         </section>
 
-        <section className="mt-16" aria-labelledby="services-process">
-          <h2 id="services-process" className="text-2xl font-medium tracking-[-0.02em]">
-            {t("services.processTitle")}
+        <section className="mt-8" aria-labelledby="services-also">
+          <h2 id="services-also" className="text-sm text-muted-foreground">
+            {t("services.alsoTitle")}
           </h2>
-          <ol className="mt-6 grid gap-x-8 gap-y-6 sm:grid-cols-2">
-            {STEP_IDS.map((id, index) => {
-              const step = splitStep(asText(t(`services.steps.${id}`)))
+          <ul className="mt-2 divide-y divide-border border-y border-border">
+            {(["mvp", "advisory"] as const).map((id) => {
+              const quote = quotes?.find((item) => item.id === id)
               return (
-                <li key={id}>
-                  <p className="text-sm text-muted-foreground">{index + 1}</p>
-                  <p className="mt-1 font-medium">{step.title}</p>
-                  {step.body ? <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{step.body}</p> : null}
+                <li key={id} className="grid gap-1 py-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-baseline sm:gap-8">
+                  <div className="min-w-0">
+                    <p className="font-medium">{t(`services.packages.${id}.title`)}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                      {t(`services.packages.${id}.audience`)}
+                    </p>
+                  </div>
+                  <p className="text-sm text-muted-foreground sm:max-w-[28ch] sm:text-right">
+                    {quote ? quote.price : t(`services.packages.${id}.timeline`)}
+                  </p>
                 </li>
               )
             })}
-          </ol>
+          </ul>
         </section>
+
+        <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-2 text-sm text-muted-foreground">
+          {TALK_NAMES.map((name) => (
+            <li key={name}>
+              <Link href="/talks" className="hover:text-foreground">
+                {name}
+              </Link>
+            </li>
+          ))}
+        </ul>
 
         <InquiryForm quotes={quotes} onQuotes={setQuotes} />
-
-        <section className="mt-16 max-w-[65ch]" aria-labelledby="services-talks">
-          <h2 id="services-talks" className="text-lg font-medium">
-            {t("services.talksTitle")}
-          </h2>
-          <p className="mt-2 leading-relaxed text-muted-foreground">
-            {t("services.talksBody", {
-              talksLink: (
-                <Link href="/talks" className="text-foreground underline decoration-foreground/30 underline-offset-4">
-                  iolivares.com/talks
-                </Link>
-              ),
-            })}
-          </p>
-        </section>
 
         {projects.length > 0 ? (
           <section className="mt-10" aria-labelledby="services-work">
@@ -177,6 +189,11 @@ export function ServicesPage() {
                 {email}
               </a>
             ) : null}
+            {calendly ? (
+              <a href={calendly} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">
+                {t("services.bookCall")}
+              </a>
+            ) : null}
             <a
               href="https://www.linkedin.com/in/ivanolivaresrojas/?from=iolivares.com"
               target="_blank"
@@ -200,39 +217,47 @@ export function ServicesPage() {
   )
 }
 
-function PackageCard({ id, quote }: { id: PackageId; quote?: PackageQuote }) {
-  const { t } = useTranslation()
-  const items = Array.from({ length: INCLUDE_COUNTS[id] }, (_, index) =>
-    asText(t(`services.packages.${id}.includes${index + 1}`))
-  ).filter((item) => item.length > 0 && !item.startsWith("services.packages."))
+function agentIncludes(t: (key: string) => ReactNode): string[] {
+  return [1, 2, 3]
+    .map((index) => asText(t(`services.packages.agent.includes${index}`)))
+    .concat(asText(t("services.codeYours")))
+    .filter((item) => item.length > 0 && !item.startsWith("services."))
+}
+
+function Availability({ label }: { label: string }) {
+  const ticks = Array.from({ length: 42 }, (_, index) => {
+    const progress = index / 41
+    const angle = Math.PI * 0.82 + progress * Math.PI * 1.36
+    const inner = 34
+    const outer = index % 5 === 0 ? 50 : 45
+    return {
+      x1: 60 + Math.cos(angle) * inner,
+      x2: 60 + Math.cos(angle) * outer,
+      y1: 62 + Math.sin(angle) * inner,
+      y2: 62 + Math.sin(angle) * outer,
+    }
+  })
+  const dot = ticks[8]
 
   return (
-    <article className="rounded-2xl border border-border">
-      <div className="px-5 pt-5 sm:px-6 sm:pt-6">
-        <h3 className="text-xl font-medium tracking-[-0.02em] text-balance">{t(`services.packages.${id}.title`)}</h3>
-        <p className="mt-2 max-w-[62ch] text-sm leading-relaxed text-muted-foreground">
-          {t(`services.packages.${id}.audience`)}
-        </p>
-      </div>
-      {quote ? (
-        <div className="mx-5 mt-4 flex flex-col gap-1 rounded-xl bg-muted px-4 py-3 sm:mx-6 sm:flex-row sm:items-baseline sm:justify-between">
-          <span className="text-sm text-muted-foreground">{t("services.priceLabel")}</span>
-          <span className="text-sm font-medium sm:text-right">{quote.price}</span>
-        </div>
-      ) : null}
-      <ul className="space-y-2.5 px-5 py-5 sm:px-6">
-        {items.map((item) => (
-          <li key={item} className="flex gap-2.5 text-sm leading-relaxed">
-            <Check className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-            <span>{item}</span>
-          </li>
+    <div className="flex flex-col items-center justify-center">
+      <svg viewBox="0 0 120 108" className="w-36 text-foreground/30 sm:w-40" aria-hidden="true">
+        {ticks.map((tick) => (
+          <line
+            key={`${tick.x1}-${tick.y1}`}
+            x1={tick.x1}
+            y1={tick.y1}
+            x2={tick.x2}
+            y2={tick.y2}
+            stroke="currentColor"
+            strokeWidth="1.25"
+            strokeLinecap="round"
+          />
         ))}
-      </ul>
-      <div className="flex flex-col gap-1 border-t border-border px-5 py-4 sm:flex-row sm:items-baseline sm:justify-between sm:px-6">
-        <span className="text-sm text-muted-foreground">{t("services.timeline")}</span>
-        <span className="text-sm sm:max-w-[32ch] sm:text-right">{t(`services.packages.${id}.timeline`)}</span>
-      </div>
-    </article>
+        {dot ? <circle cx={dot.x1} cy={dot.y1} r="3.2" className="fill-emerald-500" /> : null}
+      </svg>
+      <p className="text-xs font-medium">{label}</p>
+    </div>
   )
 }
 
