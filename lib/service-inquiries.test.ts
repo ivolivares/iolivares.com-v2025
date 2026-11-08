@@ -99,7 +99,7 @@ test("a Notion failure still reveals pricing and does not throw", async () => {
     },
   }
   const result = await submitServiceInquiry({
-    body: body({ locale: "es", name: "" }),
+    body: body({ company: "Northwind", locale: "es", name: "Ada" }),
     config: { databaseId: "db", token: "token" },
     filePath: "/tmp/unused-services-leads.jsonl",
     now,
@@ -157,6 +157,16 @@ test("spam and invalid submissions do not reveal pricing", async () => {
     originAllowed: true,
   })
   assert.deepEqual(invalid, { error: "invalid_email", ok: false })
+
+  const missingCompany = await submitServiceInquiry({
+    body: body({ company: "  " }),
+    config: {},
+    filePath: "/tmp/unused-services-leads.jsonl",
+    now,
+    onWorker: false,
+    originAllowed: true,
+  })
+  assert.deepEqual(missingCompany, { error: "invalid_company", ok: false })
 
   const tooFast = await submitServiceInquiry({
     body: body({ startedAt: now }),

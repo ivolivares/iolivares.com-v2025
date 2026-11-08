@@ -37,8 +37,14 @@ const optionalText = (max: number) =>
     .transform((value) => (typeof value === "string" ? cleanText(value) : ""))
     .pipe(z.string().max(max))
 
+const requiredText = (max: number) =>
+  z
+    .string()
+    .transform((value) => cleanText(value))
+    .pipe(z.string().min(1).max(max))
+
 const inquirySchema = z.object({
-  company: optionalText(160),
+  company: requiredText(160),
   company_website: optionalText(200),
   email: z
     .string()
@@ -46,7 +52,7 @@ const inquirySchema = z.object({
     .pipe(z.string().email().max(254)),
   interest: z.enum(["agent", "advisory", "mvp"]).optional(),
   locale: z.enum(["en", "es"]),
-  name: optionalText(120),
+  name: requiredText(120),
   need: optionalText(2_000),
   sourcePath: optionalText(80),
   sourceReferrer: optionalText(500),

@@ -233,6 +233,7 @@ export function ServicesLeadForm({
                       value={name}
                       onChange={(event) => setName(event.target.value)}
                       autoComplete="name"
+                      required
                       maxLength={120}
                       className="h-11 text-base md:text-base"
                     />
@@ -244,12 +245,18 @@ export function ServicesLeadForm({
                       value={company}
                       onChange={(event) => setCompany(event.target.value)}
                       autoComplete="organization"
+                      required
                       maxLength={160}
                       className="h-11 text-base md:text-base"
                     />
                   </div>
                 </div>
-                <Button type="button" onClick={() => go("email")} className={`mt-4 h-11 ${pressable}`}>
+                <Button
+                  type="button"
+                  onClick={() => go("email")}
+                  disabled={name.trim().length === 0 || company.trim().length === 0}
+                  className={`mt-4 h-11 ${pressable}`}
+                >
                   {t("services.funnel.continue")}
                 </Button>
               </StepFrame>
