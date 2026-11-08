@@ -28,7 +28,7 @@ export async function sendOtpEmail(input: {
 }): Promise<"dev" | "sent" | "unavailable"> {
   const email = readEmailBinding(input.env)
   if (!email) return input.onWorker ? "unavailable" : "dev"
-  const from = process.env.SERVICES_NOTIFY_FROM || "services@iolivares.com"
+  const from = "hi@iolivares.com"
   const subject = input.locale === "es" ? "Tu código para ver los precios" : "Your code to see pricing"
   const text =
     input.locale === "es"

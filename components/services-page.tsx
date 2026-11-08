@@ -3,6 +3,8 @@
 import { Calendar, Check, Code2, FileText, FolderCheck } from "lucide-react"
 import Link from "next/link"
 import { type ReactNode, useEffect, useState } from "react"
+import { LogoMarquee, type LogoMarqueeBrand } from "@/components/arc/blocks/logo-marquee/logo-marquee"
+import { Email } from "@/components/email"
 import { ServicesLeadForm } from "@/components/services-lead-form"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
@@ -18,6 +20,16 @@ const STEP_IDS = [
   { icon: FolderCheck, id: "handoff" },
 ] as const
 const FAQ_IDS = ["payment", "remote", "stack", "ownership", "start"] as const
+
+const PUBLIC_BRANDS: LogoMarqueeBrand[] = [
+  { icon: "/logos/latam.svg", name: "LATAM Airlines", wide: true },
+  { icon: "/logos/british-airways.svg", name: "British Airways" },
+  { icon: "/logos/warner-bros.svg", name: "Warner Bros. Discovery" },
+  { icon: "/logos/hbo-max.svg", name: "HBO Max" },
+  { icon: "/logos/cnn.svg", name: "CNN" },
+  { icon: "/logos/comcast.svg", name: "Comcast", wide: true },
+  { icon: "/logos/globant.svg", name: "Globant", wide: true },
+]
 
 const pressable =
   "touch-manipulation select-none active:scale-[0.98] motion-safe:transition-transform motion-safe:duration-150 motion-safe:ease-[cubic-bezier(0.23,1,0.32,1)]"
@@ -35,7 +47,6 @@ export function ServicesPage() {
     document.title = `${title} - ${siteConfig.name}`
   }, [isLoading, t])
 
-  const email = asText(t("services.email"))
   const calendly = httpUrl(asText(t("services.calendlyUrl")))
   const projects = publicProjects(t)
 
@@ -65,6 +76,23 @@ export function ServicesPage() {
             )
           })}
         </ol>
+
+        <div className="mt-10">
+          <LogoMarquee
+            brands={PUBLIC_BRANDS}
+            description={asText(t("services.logosBody"))}
+            labels={{
+              logos: asText(t("services.logosLabel")),
+              pause: asText(t("services.motion.pause")),
+              paused: asText(t("services.motion.paused")),
+              pauseLabel: asText(t("services.motion.pauseLabel")),
+              play: asText(t("services.motion.play")),
+              playLabel: asText(t("services.motion.playLabel")),
+            }}
+            title={asText(t("services.logosTitle"))}
+            tone="mono"
+          />
+        </div>
 
         <section
           className="mt-10 rounded-2xl bg-muted/70 px-5 py-8 sm:px-8 sm:py-10 lg:px-10"
@@ -192,12 +220,8 @@ export function ServicesPage() {
           <h2 id="services-cta" className="max-w-[28ch] text-2xl font-medium tracking-[-0.02em] text-balance">
             {t("services.ctaTitle")}
           </h2>
-          <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm">
-            {email.includes("@") ? (
-              <a href={mailtoHref(email, asText(t("services.emailSubject")))} className="underline underline-offset-4">
-                {email}
-              </a>
-            ) : null}
+          <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
+            <Email className="underline underline-offset-4" />
             {calendly ? (
               <a href={calendly} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">
                 {t("services.bookCall")}
@@ -294,10 +318,6 @@ function httpUrl(value: string): string | null {
   } catch {
     return null
   }
-}
-
-function mailtoHref(email: string, subject: string): string {
-  return `mailto:${email}?subject=${encodeURIComponent(subject || "Services")}`
 }
 
 function asText(value: ReactNode): string {
