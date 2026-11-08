@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { useTranslation } from "@/hooks/use-translation"
-import { TURNSTILE_TEST_SITE_KEY } from "@/lib/service-challenge"
+import { allowsTestTurnstile, TURNSTILE_TEST_SITE_KEY } from "@/lib/service-challenge"
 import { isInquiryFailure, isInquirySuccess, type PackageId, type PackageQuote } from "@/lib/service-inquiry-contract"
 
 const STEPS = ["package", "need", "about", "email", "code", "prices"] as const
@@ -61,11 +61,12 @@ export function ServicesLeadForm({
     let cancelled = false
     const mount = () => {
       const api = (window as Window & { turnstile?: TurnstileApi }).turnstile
-      if (!widget.current || !api || cancelled) return
+      const key = siteKey()
+      if (!widget.current || !api || cancelled || !key) return
       if (widgetId.current) api.remove(widgetId.current)
       widgetId.current = api.render(widget.current, {
         callback: (token) => setTurnstileToken(token),
-        sitekey: siteKey(),
+        sitekey: key,
       })
     }
     if ((window as Window & { turnstile?: TurnstileApi }).turnstile) {
@@ -351,12 +352,7 @@ function StepFrame({ children, hint, title }: { children: ReactNode; hint?: Reac
 
 function siteKey() {
   if (process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY) return process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
-  if (
-    typeof window !== "undefined" &&
-    (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
-  ) {
-    return TURNSTILE_TEST_SITE_KEY
-  }
+  if (typeof window !== "undefined" && allowsTestTurnstile(window.location.hostname)) return TURNSTILE_TEST_SITE_KEY
   return ""
 }
 

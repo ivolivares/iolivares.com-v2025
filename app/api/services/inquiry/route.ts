@@ -1,7 +1,7 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare"
 import { NextResponse } from "next/server"
 import { z } from "zod"
-import { sendOtpEmail, verifyTurnstile } from "@/lib/service-challenge"
+import { allowsTestTurnstile, sendOtpEmail, verifyTurnstile } from "@/lib/service-challenge"
 import { defaultInquiryFilePath, isCloudflareWorker, submitServiceInquiry } from "@/lib/service-inquiries"
 import { type InquiryErrorCode, type InquiryResponse, isInquiryFailure } from "@/lib/service-inquiry-contract"
 import { createOtp, OTP_COOKIE, otpSecret, verifyOtp } from "@/lib/service-otp"
@@ -53,8 +53,9 @@ async function sendCode(request: Request, body: unknown) {
   const parsed = sendCodeSchema.safeParse(body)
   if (!parsed.success) return NextResponse.json({ error: "invalid_email", ok: false }, { status: 400 })
   const onWorker = isCloudflareWorker()
+  const host = new URL(request.url).host
   const ip = request.headers.get("cf-connecting-ip")
-  const human = await verifyTurnstile(parsed.data.turnstileToken, ip, onWorker)
+  const human = await verifyTurnstile(parsed.data.turnstileToken, ip, onWorker, host)
   if (!human) return NextResponse.json({ error: "turnstile", ok: false }, { status: 400 })
   const secret = otpSecret(onWorker)
   if (!secret) return NextResponse.json({ error: "email_unavailable", ok: false }, { status: 503 })
@@ -67,8 +68,11 @@ async function sendCode(request: Request, body: unknown) {
     onWorker,
     to: parsed.data.email,
   })
-  if (delivery === "unavailable") return NextResponse.json({ error: "email_unavailable", ok: false }, { status: 503 })
-  const response = NextResponse.json({ devCode: delivery === "dev" ? otp.code : undefined, ok: true })
+  const showCode = delivery === "dev" || (delivery === "unavailable" && allowsTestTurnstile(host))
+  if (delivery === "unavailable" && !showCode) {
+    return NextResponse.json({ error: "email_unavailable", ok: false }, { status: 503 })
+  }
+  const response = NextResponse.json({ devCode: showCode ? otp.code : undefined, ok: true })
   response.cookies.set(OTP_COOKIE, otp.cookieValue, {
     httpOnly: true,
     maxAge: otp.maxAge,

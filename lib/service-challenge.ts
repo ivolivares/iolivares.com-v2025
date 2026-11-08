@@ -2,12 +2,19 @@ const TURNSTILE_TEST_SECRET = "1x0000000000000000000000000000000AA"
 
 export const TURNSTILE_TEST_SITE_KEY = "1x00000000000000000000AA"
 
+const TEST_TURNSTILE_HOSTS = new Set(["127.0.0.1", "localhost", "preview.iolivares.com"])
+
+export function allowsTestTurnstile(host: string): boolean {
+  return TEST_TURNSTILE_HOSTS.has(host)
+}
+
 type EmailBinding = {
   send(message: { from: string; subject: string; text: string; to: string }): Promise<unknown>
 }
 
-export async function verifyTurnstile(token: string, ip: string | null, onWorker: boolean) {
-  const secret = process.env.TURNSTILE_SECRET_KEY || (!onWorker ? TURNSTILE_TEST_SECRET : "")
+export async function verifyTurnstile(token: string, ip: string | null, onWorker: boolean, host = "") {
+  const secret =
+    process.env.TURNSTILE_SECRET_KEY || (!onWorker || allowsTestTurnstile(host) ? TURNSTILE_TEST_SECRET : "")
   if (!secret || !token) return false
   const body = new FormData()
   body.set("secret", secret)

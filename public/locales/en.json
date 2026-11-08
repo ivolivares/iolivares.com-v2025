@@ -450,7 +450,7 @@
       "sendCode": "Send code",
       "otpQuestion": "Enter the code",
       "otpHint": "Sent to {email}.",
-      "devCode": "Local only: the code is {code}.",
+      "devCode": "The code is {code}.",
       "cleared": "Done",
       "minutes": "About 2 minutes",
       "steps": {
