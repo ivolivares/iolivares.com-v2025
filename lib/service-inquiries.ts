@@ -245,13 +245,13 @@ function quoteFor(id: PackageId, locale: InquiryLocale): PackageQuote {
         ? {
             id,
             name: "Agente / automatización con IA en 1 semana",
-            price: "Desde US$1.000–1.500, 50% por adelantado",
+            price: "Desde US$1.500, 50% por adelantado",
             timeline: "1 semana",
           }
         : {
             id,
             name: "AI agent / automation in 1 week",
-            price: "From US$1,000–1,500, 50% upfront",
+            price: "From US$1,500, 50% upfront",
             timeline: "1 week",
           }
     case "mvp":
@@ -259,28 +259,28 @@ function quoteFor(id: PackageId, locale: InquiryLocale): PackageQuote {
         ? {
             id,
             name: "MVP / desarrollo rápido full-stack",
-            price: "TODO: definir el precio del MVP / desarrollo full-stack",
-            timeline: "TODO: [X] semanas según alcance",
+            price: "Desde US$5.000",
+            timeline: "4 a 6 semanas",
           }
         : {
             id,
             name: "MVP / rapid full-stack development",
-            price: "TODO: set the MVP / fast full-stack price",
-            timeline: "TODO: [X] weeks depending on scope",
+            price: "From US$5,000",
+            timeline: "4 to 6 weeks",
           }
     case "advisory":
       return locale === "es"
         ? {
             id,
             name: "Asesoría técnica / CTO o EM fraccional",
-            price: "TODO: definir el precio mensual de la asesoría",
-            timeline: "TODO: mensual, horas por semana a definir",
+            price: "Desde US$2.500 al mes",
+            timeline: "Unas 6 horas por semana",
           }
         : {
             id,
             name: "Technical advisory / fractional CTO or EM",
-            price: "TODO: set the monthly fractional advisory price",
-            timeline: "TODO: monthly, hours per week to agree",
+            price: "From US$2,500 a month",
+            timeline: "About 6 hours a week",
           }
     default: {
       const exhaustive: never = id

@@ -151,6 +151,9 @@ export function ServicesPage() {
               )
             })}
           </ul>
+          {quotes ? (
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{t("services.priceReference")}</p>
+          ) : null}
         </section>
 
         <section className="mt-10 max-w-[65ch]" aria-labelledby="services-talks">

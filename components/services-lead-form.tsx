@@ -324,6 +324,7 @@ export function ServicesLeadForm({
                     </li>
                   ))}
                 </ul>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t("services.priceReference")}</p>
               </StepFrame>
             ) : null}
             {index > 0 && step !== "prices" ? (

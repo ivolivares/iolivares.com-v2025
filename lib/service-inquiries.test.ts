@@ -26,12 +26,16 @@ function body(overrides: Record<string, unknown> = {}) {
 test("package quotes keep the known price and the public page names no clients", async () => {
   const en = packageQuotes("en")
   const es = packageQuotes("es")
-  assert.equal(en[0]?.price, "From US$1,000–1,500, 50% upfront")
-  assert.equal(es[0]?.price, "Desde US$1.000–1.500, 50% por adelantado")
-  assert.match(en[1]?.price ?? "", /^TODO:/)
-  assert.match(en[2]?.price ?? "", /^TODO:/)
-  assert.match(es[1]?.price ?? "", /^TODO:/)
-  assert.match(es[2]?.price ?? "", /^TODO:/)
+  assert.equal(en[0]?.price, "From US$1,500, 50% upfront")
+  assert.equal(es[0]?.price, "Desde US$1.500, 50% por adelantado")
+  assert.equal(en[1]?.price, "From US$5,000")
+  assert.equal(en[1]?.timeline, "4 to 6 weeks")
+  assert.equal(es[1]?.price, "Desde US$5.000")
+  assert.equal(es[1]?.timeline, "4 a 6 semanas")
+  assert.equal(en[2]?.price, "From US$2,500 a month")
+  assert.equal(en[2]?.timeline, "About 6 hours a week")
+  assert.equal(es[2]?.price, "Desde US$2.500 al mes")
+  assert.equal(es[2]?.timeline, "Unas 6 horas por semana")
 
   const publicFiles = ["components/services-page.tsx", "public/locales/en.json", "public/locales/es.json"]
   const forbidden = [
@@ -72,7 +76,7 @@ test("missing Notion env writes a local mock and still returns pricing", async (
     if (!result.ok) return
     assert.equal(result.stored, true)
     assert.equal(result.storage, "local-file")
-    assert.match(result.packages[0]?.price ?? "", /US\$1,000/)
+    assert.match(result.packages[0]?.price ?? "", /US\$1,500/)
     const stored = await readFile(filePath, "utf8")
     const lead = JSON.parse(stored.trim()) as LeadRecord & { status: string }
     assert.equal(lead.email, "ada@example.com")
@@ -111,7 +115,7 @@ test("a Notion failure still reveals pricing and does not throw", async () => {
   if (!result.ok) return
   assert.equal(result.stored, false)
   assert.equal(result.storage, "notion")
-  assert.equal(result.packages[0]?.price, "Desde US$1.000–1.500, 50% por adelantado")
+  assert.equal(result.packages[0]?.price, "Desde US$1.500, 50% por adelantado")
 })
 
 test("spam and invalid submissions do not reveal pricing", async () => {

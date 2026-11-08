@@ -318,6 +318,7 @@
     "timeline": "Timeline",
     "priceLabel": "Price",
     "priceLocked": "The price is shown when you finish the form.",
+    "priceReference": "Reference prices. The final price is set once we understand your project.",
     "availableNow": "Available now",
     "formOpen": "Complete the form",
     "codeYours": "The code is delivered to your repositories.",
@@ -337,7 +338,7 @@
         "includes1": "Architecture",
         "includes2": "Full-stack development (TypeScript, React/Next.js, Node.js, PostgreSQL)",
         "includes3": "Deployment on AWS/GCP/Cloudflare and CI/CD",
-        "timeline": "TODO: [X] weeks depending on scope"
+        "timeline": "4 to 6 weeks"
       },
       "advisory": {
         "title": "Technical advisory / fractional CTO or EM",
@@ -347,7 +348,7 @@
         "includes3": "Team and process review",
         "includes4": "AI adoption in the SDLC",
         "includes5": "Support on decisions and vendors",
-        "timeline": "TODO: monthly, hours per week to agree"
+        "timeline": "About 6 hours a week"
       }
     },
     "talksTitle": "Talks",

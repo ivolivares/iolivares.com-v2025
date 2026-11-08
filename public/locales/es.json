@@ -318,6 +318,7 @@
     "timeline": "Plazo",
     "priceLabel": "Precio",
     "priceLocked": "El precio se muestra al terminar el formulario.",
+    "priceReference": "Precios de referencia. El precio final se define una vez que entendemos tu proyecto.",
     "availableNow": "Disponible ahora",
     "formOpen": "Completa el formulario",
     "codeYours": "El código queda en tus repositorios.",
@@ -337,7 +338,7 @@
         "includes1": "Arquitectura",
         "includes2": "Desarrollo full-stack (TypeScript, React/Next.js, Node.js, PostgreSQL)",
         "includes3": "Despliegue en AWS/GCP/Cloudflare y CI/CD",
-        "timeline": "TODO: [X] semanas según alcance"
+        "timeline": "4 a 6 semanas"
       },
       "advisory": {
         "title": "Asesoría técnica / CTO o EM fraccional",
@@ -347,7 +348,7 @@
         "includes3": "Revisión de equipo y procesos",
         "includes4": "Adopción de IA en el ciclo de desarrollo",
         "includes5": "Apoyo en decisiones y proveedores",
-        "timeline": "TODO: mensual, horas por semana a definir"
+        "timeline": "Unas 6 horas por semana"
       }
     },
     "talksTitle": "Charlas",
