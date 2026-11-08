@@ -5,7 +5,7 @@ import { Children, memo, type ReactNode, useEffect, useMemo, useRef, useState } 
 import { cn } from "@/lib/utils"
 
 const DEFAULT_COLUMN_COUNT = 4
-const CYCLE_INTERVAL = 2400
+const CYCLE_INTERVAL = 6800
 const STAGGER_DELAY = 125
 const TRANSITION_DURATION = 0.5
 const EASE_OUT_QUAD = [0.25, 0.46, 0.45, 0.94] as const

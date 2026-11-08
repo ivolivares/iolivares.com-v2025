@@ -37,9 +37,9 @@ const RECOMMENDATIONS = [
 
 const PUBLIC_BRANDS = [
   { icon: "/logos/latam.svg", name: "LATAM Airlines" },
-  { icon: "/logos/british-airways.svg", name: "British Airways" },
+  { icon: null, name: "British Airways" },
   { icon: "/logos/warner-bros.svg", name: "Warner Bros. Discovery" },
-  { icon: "/logos/hbo-max.svg", name: "HBO Max" },
+  { icon: null, name: "HBO Max" },
   { icon: "/logos/cnn.svg", name: "CNN" },
   { icon: "/logos/comcast.svg", name: "Comcast" },
   { icon: "/logos/globant.svg", name: "Globant" },
@@ -127,25 +127,28 @@ export function ServicesPage() {
           </div>
           <div className="flex items-center gap-3 border-t border-border px-4 py-3 sm:px-6">
             <LogosCarousel
-              className="h-10 min-w-0 flex-1 text-foreground"
+              className="h-16 min-w-0 flex-1 text-foreground"
               label={asText(t("services.logosLabel"))}
               paused={logosPaused}
             >
               {PUBLIC_BRANDS.map((brand) => (
-                <span
-                  aria-label={brand.name}
-                  className="block h-6 w-[78%] bg-current"
-                  key={brand.name}
-                  role="img"
-                  style={{
-                    maskImage: `url("${brand.icon}")`,
-                    maskMode: "alpha",
-                    maskPosition: "center",
-                    maskRepeat: "no-repeat",
-                    maskSize: "contain",
-                    WebkitMaskImage: `url("${brand.icon}")`,
-                  }}
-                />
+                <span className="flex h-full w-full flex-col items-center justify-center gap-1 px-1" key={brand.name}>
+                  {brand.icon ? (
+                    <span
+                      aria-hidden="true"
+                      className="block h-5 w-[70%] bg-current"
+                      style={{
+                        maskImage: `url("${brand.icon}")`,
+                        maskMode: "alpha",
+                        maskPosition: "center",
+                        maskRepeat: "no-repeat",
+                        maskSize: "contain",
+                        WebkitMaskImage: `url("${brand.icon}")`,
+                      }}
+                    />
+                  ) : null}
+                  <span className="max-w-full text-center text-[11px] font-medium leading-tight">{brand.name}</span>
+                </span>
               ))}
             </LogosCarousel>
             <button
@@ -158,11 +161,6 @@ export function ServicesPage() {
               {logosPaused ? t("services.motion.play") : t("services.motion.pause")}
             </button>
           </div>
-          <ul className="sr-only">
-            {PUBLIC_BRANDS.map((brand) => (
-              <li key={brand.name}>{brand.name}</li>
-            ))}
-          </ul>
         </section>
 
         <section
