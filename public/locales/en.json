@@ -3,6 +3,7 @@
     "home": "HOME",
     "thoughts": "THOUGHTS",
     "talks": "TALKS",
+    "services": "SERVICES",
     "contact": "CONNECT"
   },
   "home": {
@@ -290,6 +291,105 @@
     "appleMusic": "Apple Music",
     "description": "Here are links to other platforms where you can find me. Might not be active on all of them. Not promising anything."
   },
+  "services": {
+    "metaTitle": "Services",
+    "heroTitle": "Software engineer and AI & automation advisor for companies.",
+    "heroBody": "I build software and AI agents that solve real business problems. 15 years building software for companies in media, airlines and streaming. Available immediately.",
+    "email": "hola@iolivares.com",
+    "emailSubject": "Services inquiry from iolivares.com",
+    "bookCall": "Book a call",
+    "calendlyUrl": "TODO: Calendly or booking URL",
+    "publicProject1Label": "TODO: title of a public project you can talk about",
+    "publicProject1Url": "TODO: URL of a public project you can talk about",
+    "publicProject2Label": "TODO: title of a public project you can talk about",
+    "publicProject2Url": "TODO: URL of a public project you can talk about",
+    "publicWorkTitle": "Selected work",
+    "servicesTitle": "Services",
+    "forWhom": "Who it's for",
+    "includes": "What's included",
+    "timeline": "Timeline",
+    "priceLabel": "Price",
+    "packages": {
+      "agent": {
+        "title": "AI agent / automation in 1 week",
+        "audience": "Companies with a repetitive process (support, back-office, CRM, reporting) ready to automate it with AI now",
+        "includes": "Process discovery, agent design, integration with LLMs (Anthropic, OpenAI, xAI, AWS Bedrock) and your systems, deployment and documented handoff",
+        "timeline": "1 week"
+      },
+      "mvp": {
+        "title": "MVP / rapid full-stack development",
+        "audience": "Founders and companies that need to validate a product or ship a new feature fast",
+        "includes": "Architecture, full-stack development (TypeScript, React/Next.js, Node.js, PostgreSQL), deployment on AWS/GCP/Cloudflare and CI/CD",
+        "timeline": "TODO: [X] weeks depending on scope"
+      },
+      "advisory": {
+        "title": "Technical advisory / fractional CTO or EM",
+        "audience": "Startups and companies without a CTO, or teams that need senior technical leadership part-time",
+        "includes": "Strategy and architecture, technical roadmap, team and process review, AI adoption in the SDLC, support on decisions and vendors",
+        "timeline": "TODO: monthly, hours per week to agree"
+      }
+    },
+    "talksTitle": "Talks",
+    "talksBody": "Talks at Next.js Conf, WebConf LATAM and Reliable Web Summit ({talksLink}).",
+    "processTitle": "How it works",
+    "steps": {
+      "call": "30-minute call: we understand your problem and goals.",
+      "proposal": "Proposal within 48 hours: fixed scope, timeline and price.",
+      "build": "Build: visible progress throughout the project.",
+      "handoff": "Delivery and handoff: code, documentation and support so your team can keep going."
+    },
+    "faqTitle": "Questions",
+    "faq": {
+      "payment": {
+        "question": "How do payments work?",
+        "answer": "50% upfront and 50% on delivery, via bank transfer or Wise."
+      },
+      "remote": {
+        "question": "Do you work with companies outside Chile?",
+        "answer": "Yes. Remote, in English and Spanish, with U.S. time-zone overlap."
+      },
+      "stack": {
+        "question": "What stack do you use?",
+        "answer": "TypeScript, React/Next.js, Node.js, PostgreSQL, AWS, GCP and Cloudflare. For AI: Anthropic, OpenAI, xAI and AWS Bedrock."
+      },
+      "ownership": {
+        "question": "Who owns the code?",
+        "answer": "You do. Everything is delivered to your repositories and accounts."
+      },
+      "start": {
+        "question": "When can you start?",
+        "answer": "Available immediately."
+      }
+    },
+    "ctaTitle": "Have a process to automate or a product to launch? Let's talk.",
+    "form": {
+      "jump": "See pricing",
+      "title": "See package pricing",
+      "body": "Prices stay off this page. Leave your email to view the three packages. Name, company, and what you need are optional.",
+      "honeypot": "Website",
+      "email": "Email",
+      "name": "Name (optional)",
+      "company": "Company (optional)",
+      "need": "What do you need? (optional)",
+      "submit": "Show pricing",
+      "submitting": "Sending…",
+      "privacy": "I'll use this to follow up. It isn't added to a mailing list.",
+      "successTitle": "Package pricing",
+      "successBody": "Thanks. Here are the three packages, with timeline and price.",
+      "received": "Thanks. I'll be in touch.",
+      "errors": {
+        "invalidBody": "Something in the form isn't valid. Check it and try again.",
+        "invalidEmail": "Enter a valid email.",
+        "invalidName": "Name is too long.",
+        "invalidCompany": "Company is too long.",
+        "invalidNeed": "That note is too long.",
+        "tooFast": "Give it a second, then try again.",
+        "rateLimited": "Too many requests for this email. Try again in a bit.",
+        "origin": "Submit the form from this page.",
+        "network": "Couldn't send that. Check your connection and try again."
+      }
+    }
+  },
   "commandPalette": {
     "placeholder": "Type a command or search...",
     "empty": "No results found.",
@@ -297,6 +397,7 @@
     "commands": {
       "about": "About",
       "talks": "Talks",
+      "services": "Services",
       "givingTalks": "Giving Talks",
       "connect": "Connect",
       "links": "Links",

@@ -3,6 +3,7 @@
     "home": "INICIO",
     "thoughts": "IDEAS",
     "talks": "CHARLAS",
+    "services": "SERVICIOS",
     "contact": "CONECTEMOS"
   },
   "home": {
@@ -290,6 +291,105 @@
     "appleMusic": "Apple Music",
     "description": "Aquí están los enlaces a otras plataformas donde puedes encontrarme. Puede que no esté activo en todas. No prometo nada."
   },
+  "services": {
+    "metaTitle": "Servicios",
+    "heroTitle": "Ingeniero de software y asesor en IA y automatización para empresas.",
+    "heroBody": "Construyo software y agentes de IA que resuelven problemas reales de negocio. 15 años construyendo software para empresas de medios, aerolíneas y streaming. Disponibilidad inmediata.",
+    "email": "hola@iolivares.com",
+    "emailSubject": "Consulta de servicios desde iolivares.com",
+    "bookCall": "Agenda una llamada",
+    "calendlyUrl": "TODO: URL de Calendly o de reserva",
+    "publicProject1Label": "TODO: título de un proyecto público del que puedas hablar",
+    "publicProject1Url": "TODO: URL de un proyecto público del que puedas hablar",
+    "publicProject2Label": "TODO: título de un proyecto público del que puedas hablar",
+    "publicProject2Url": "TODO: URL de un proyecto público del que puedas hablar",
+    "publicWorkTitle": "Trabajo público",
+    "servicesTitle": "Servicios",
+    "forWhom": "Para quién",
+    "includes": "Qué incluye",
+    "timeline": "Plazo",
+    "priceLabel": "Precio",
+    "packages": {
+      "agent": {
+        "title": "Agente / automatización con IA en 1 semana",
+        "audience": "Empresas con un proceso repetitivo (atención, back-office, CRM, reportes) que quieren automatizarlo con IA ya",
+        "includes": "Descubrimiento del proceso, diseño del agente, integración con LLMs (Anthropic, OpenAI, xAI, AWS Bedrock) y tus sistemas, despliegue y traspaso documentado",
+        "timeline": "1 semana"
+      },
+      "mvp": {
+        "title": "MVP / desarrollo rápido full-stack",
+        "audience": "Founders y empresas que necesitan validar un producto o lanzar una nueva funcionalidad rápido",
+        "includes": "Arquitectura, desarrollo full-stack (TypeScript, React/Next.js, Node.js, PostgreSQL), despliegue en AWS/GCP/Cloudflare y CI/CD",
+        "timeline": "TODO: [X] semanas según alcance"
+      },
+      "advisory": {
+        "title": "Asesoría técnica / CTO o EM fraccional",
+        "audience": "Startups y empresas sin CTO o con equipos que necesitan liderazgo técnico senior a tiempo parcial",
+        "includes": "Estrategia y arquitectura, roadmap técnico, revisión de equipo y procesos, adopción de IA en el ciclo de desarrollo, apoyo en decisiones y proveedores",
+        "timeline": "TODO: mensual, horas por semana a definir"
+      }
+    },
+    "talksTitle": "Charlas",
+    "talksBody": "Charlas en Next.js Conf, WebConf LATAM y Reliable Web Summit ({talksLink}).",
+    "processTitle": "Cómo funciona",
+    "steps": {
+      "call": "Llamada de 30 minutos: entendemos tu problema y objetivos.",
+      "proposal": "Propuesta en 48 horas: alcance, plazo y precio cerrados.",
+      "build": "Construcción: avances visibles durante el proyecto.",
+      "handoff": "Entrega y traspaso: código, documentación y acompañamiento para que tu equipo siga solo."
+    },
+    "faqTitle": "Preguntas",
+    "faq": {
+      "payment": {
+        "question": "¿Cómo se paga?",
+        "answer": "50% por adelantado y 50% a la entrega, por transferencia o Wise."
+      },
+      "remote": {
+        "question": "¿Trabajas con empresas fuera de Chile?",
+        "answer": "Sí. Trabajo remoto en español e inglés, con superposición horaria con EE.UU."
+      },
+      "stack": {
+        "question": "¿Qué tecnologías usas?",
+        "answer": "TypeScript, React/Next.js, Node.js, PostgreSQL, AWS, GCP y Cloudflare. Para IA: Anthropic, OpenAI, xAI y AWS Bedrock."
+      },
+      "ownership": {
+        "question": "¿Quién es dueño del código?",
+        "answer": "Tú. Todo se entrega en tus repositorios y cuentas."
+      },
+      "start": {
+        "question": "¿Cuándo puedes empezar?",
+        "answer": "Disponibilidad inmediata."
+      }
+    },
+    "ctaTitle": "¿Tienes un proceso para automatizar o un producto para lanzar? Hablemos.",
+    "form": {
+      "jump": "Ver precios",
+      "title": "Ver precios de los paquetes",
+      "body": "Los precios no están publicados en esta página. Deja tu email para ver los tres paquetes. Nombre, empresa y qué necesitas son opcionales.",
+      "honeypot": "Sitio web",
+      "email": "Email",
+      "name": "Nombre (opcional)",
+      "company": "Empresa (opcional)",
+      "need": "¿Qué necesitas? (opcional)",
+      "submit": "Ver precios",
+      "submitting": "Enviando…",
+      "privacy": "Lo uso para responderte. No es una lista de correo.",
+      "successTitle": "Precios",
+      "successBody": "Gracias. Aquí están los tres paquetes, con plazo y precio.",
+      "received": "Gracias. Te escribiré.",
+      "errors": {
+        "invalidBody": "Hay algo en el formulario que no es válido. Revísalo e inténtalo de nuevo.",
+        "invalidEmail": "Escribe un email válido.",
+        "invalidName": "El nombre es demasiado largo.",
+        "invalidCompany": "La empresa es demasiado larga.",
+        "invalidNeed": "Esa nota es demasiado larga.",
+        "tooFast": "Espera un segundo e inténtalo de nuevo.",
+        "rateLimited": "Demasiadas solicitudes con este email. Inténtalo más tarde.",
+        "origin": "Envía el formulario desde esta página.",
+        "network": "No se pudo enviar. Revisa tu conexión e inténtalo de nuevo."
+      }
+    }
+  },
   "commandPalette": {
     "placeholder": "Escriba lo que está buscando...",
     "empty": "No se encontraron resultados.",
@@ -297,6 +397,7 @@
     "commands": {
       "about": "Acerca de",
       "talks": "Charlas",
+      "services": "Servicios",
       "givingTalks": "Información como Speaker",
       "connect": "Conectemos",
       "links": "Enlaces",

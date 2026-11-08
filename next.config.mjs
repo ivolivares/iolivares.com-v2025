@@ -23,6 +23,15 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        destination: "/services",
+        permanent: true,
+        source: "/servicios",
+      },
+    ]
+  },
   typescript: {
     ignoreBuildErrors: true,
   },
