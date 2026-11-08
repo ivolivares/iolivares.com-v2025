@@ -313,19 +313,27 @@
       "agent": {
         "title": "Agente / automatización con IA en 1 semana",
         "audience": "Empresas con un proceso repetitivo (atención, back-office, CRM, reportes) que quieren automatizarlo con IA ya",
-        "includes": "Descubrimiento del proceso, diseño del agente, integración con LLMs (Anthropic, OpenAI, xAI, AWS Bedrock) y tus sistemas, despliegue y traspaso documentado",
+        "includes1": "Descubrimiento del proceso y diseño del agente",
+        "includes2": "Integración con LLMs (Anthropic, OpenAI, xAI, AWS Bedrock) y tus sistemas",
+        "includes3": "Despliegue y traspaso documentado",
         "timeline": "1 semana"
       },
       "mvp": {
         "title": "MVP / desarrollo rápido full-stack",
         "audience": "Founders y empresas que necesitan validar un producto o lanzar una nueva funcionalidad rápido",
-        "includes": "Arquitectura, desarrollo full-stack (TypeScript, React/Next.js, Node.js, PostgreSQL), despliegue en AWS/GCP/Cloudflare y CI/CD",
+        "includes1": "Arquitectura",
+        "includes2": "Desarrollo full-stack (TypeScript, React/Next.js, Node.js, PostgreSQL)",
+        "includes3": "Despliegue en AWS/GCP/Cloudflare y CI/CD",
         "timeline": "TODO: [X] semanas según alcance"
       },
       "advisory": {
         "title": "Asesoría técnica / CTO o EM fraccional",
         "audience": "Startups y empresas sin CTO o con equipos que necesitan liderazgo técnico senior a tiempo parcial",
-        "includes": "Estrategia y arquitectura, roadmap técnico, revisión de equipo y procesos, adopción de IA en el ciclo de desarrollo, apoyo en decisiones y proveedores",
+        "includes1": "Estrategia y arquitectura",
+        "includes2": "Roadmap técnico",
+        "includes3": "Revisión de equipo y procesos",
+        "includes4": "Adopción de IA en el ciclo de desarrollo",
+        "includes5": "Apoyo en decisiones y proveedores",
         "timeline": "TODO: mensual, horas por semana a definir"
       }
     },

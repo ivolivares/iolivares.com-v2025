@@ -1,6 +1,6 @@
 "use client"
 
-import Image from "next/image"
+import { Check } from "lucide-react"
 import Link from "next/link"
 import { type FormEvent, type ReactNode, useEffect, useRef, useState } from "react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
@@ -20,8 +20,17 @@ import {
   type PackageQuote,
 } from "@/lib/service-inquiry-contract"
 
+const INCLUDE_COUNTS: Record<PackageId, number> = {
+  advisory: 5,
+  agent: 3,
+  mvp: 3,
+}
+
 const STEP_IDS = ["call", "proposal", "build", "handoff"] as const
 const FAQ_IDS = ["payment", "remote", "stack", "ownership", "start"] as const
+
+const pressable =
+  "touch-manipulation select-none active:scale-[0.98] motion-safe:transition-transform motion-safe:duration-150 motion-safe:ease-[cubic-bezier(0.23,1,0.32,1)]"
 
 export function ServicesPage() {
   const sectionRef = useScrollReveal()
@@ -41,62 +50,73 @@ export function ServicesPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <main
-        ref={sectionRef}
-        className="scroll-reveal mx-auto max-w-4xl px-1 pt-8 pb-8 sm:px-4 sm:pt-16 lg:px-8 page-content"
-      >
-        <header className="flex items-end justify-between gap-8">
-          <div className="max-w-2xl space-y-6">
-            <h1 className="text-4xl font-light text-balance sm:text-5xl">{t("services.heroTitle")}</h1>
-            <p className="text-lg leading-relaxed text-muted-foreground text-pretty">{t("services.heroBody")}</p>
-            <div className="flex flex-wrap items-center gap-3">
-              <Button asChild>
-                <a href="#pricing">{t("services.form.jump")}</a>
-              </Button>
-              {calendly ? (
-                <Button variant="outline" asChild>
-                  <a href={calendly} target="_blank" rel="noopener noreferrer">
-                    {t("services.bookCall")}
-                  </a>
-                </Button>
-              ) : null}
-              {email.includes("@") ? (
-                <Button variant="outline" asChild>
-                  <a href={mailtoHref(email, asText(t("services.emailSubject")))}>{email}</a>
-                </Button>
-              ) : null}
-            </div>
-          </div>
-          <div className="hidden shrink-0 md:block">
-            <Image
-              src="/headshot-drawn.png"
-              alt="Iván Olivares Rojas"
-              width={160}
-              height={220}
-              priority
-              className="h-52 w-auto object-contain drop-shadow-[0_18px_18px_rgba(0,0,0,0.35)]"
-            />
+      <main ref={sectionRef} className="page-content scroll-reveal mx-auto max-w-3xl px-1 pt-10 pb-8 sm:px-4 sm:pt-16">
+        <header className="max-w-2xl">
+          <h1 className="text-4xl font-medium leading-[1.08] tracking-[-0.03em] text-balance sm:text-5xl">
+            {t("services.heroTitle")}
+          </h1>
+          <p className="mt-5 max-w-[65ch] text-lg leading-relaxed text-muted-foreground">{t("services.heroBody")}</p>
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <Button asChild className={`h-11 px-5 ${pressable}`}>
+              <a href="#pricing">{t("services.form.jump")}</a>
+            </Button>
+            {email.includes("@") ? (
+              <a
+                href={mailtoHref(email, asText(t("services.emailSubject")))}
+                className="text-sm underline decoration-foreground/30 underline-offset-4"
+              >
+                {email}
+              </a>
+            ) : null}
+            {calendly ? (
+              <a
+                href={calendly}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm underline decoration-foreground/30 underline-offset-4"
+              >
+                {t("services.bookCall")}
+              </a>
+            ) : null}
           </div>
         </header>
 
-        <section className="mt-20 space-y-6" aria-labelledby="services-packages">
-          <h2 id="services-packages" className="text-2xl font-light sm:text-3xl">
+        <section className="mt-16" aria-labelledby="services-packages">
+          <h2 id="services-packages" className="text-2xl font-medium tracking-[-0.02em]">
             {t("services.servicesTitle")}
           </h2>
-          <div className="space-y-4">
-            {PACKAGE_IDS.map((id, index) => (
-              <PackageCard key={id} id={id} index={index} quote={quotes?.find((item) => item.id === id)} />
+          <div className="mt-6 space-y-4">
+            {PACKAGE_IDS.map((id) => (
+              <PackageCard key={id} id={id} quote={quotes?.find((item) => item.id === id)} />
             ))}
           </div>
         </section>
 
+        <section className="mt-16" aria-labelledby="services-process">
+          <h2 id="services-process" className="text-2xl font-medium tracking-[-0.02em]">
+            {t("services.processTitle")}
+          </h2>
+          <ol className="mt-6 grid gap-x-8 gap-y-6 sm:grid-cols-2">
+            {STEP_IDS.map((id, index) => {
+              const step = splitStep(asText(t(`services.steps.${id}`)))
+              return (
+                <li key={id}>
+                  <p className="text-sm text-muted-foreground">{index + 1}</p>
+                  <p className="mt-1 font-medium">{step.title}</p>
+                  {step.body ? <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{step.body}</p> : null}
+                </li>
+              )
+            })}
+          </ol>
+        </section>
+
         <InquiryForm quotes={quotes} onQuotes={setQuotes} />
 
-        <section className="mt-20 space-y-4" aria-labelledby="services-talks">
-          <h2 id="services-talks" className="text-2xl font-light sm:text-3xl">
+        <section className="mt-16 max-w-[65ch]" aria-labelledby="services-talks">
+          <h2 id="services-talks" className="text-lg font-medium">
             {t("services.talksTitle")}
           </h2>
-          <p className="max-w-2xl leading-relaxed text-muted-foreground">
+          <p className="mt-2 leading-relaxed text-muted-foreground">
             {t("services.talksBody", {
               talksLink: (
                 <Link href="/talks" className="text-foreground underline decoration-foreground/30 underline-offset-4">
@@ -108,18 +128,18 @@ export function ServicesPage() {
         </section>
 
         {projects.length > 0 ? (
-          <section className="mt-20 space-y-4" aria-labelledby="services-work">
-            <h2 id="services-work" className="text-2xl font-light sm:text-3xl">
+          <section className="mt-10" aria-labelledby="services-work">
+            <h2 id="services-work" className="text-lg font-medium">
               {t("services.publicWorkTitle")}
             </h2>
-            <ul className="space-y-2">
+            <ul className="mt-2 space-y-2">
               {projects.map((project) => (
                 <li key={project.url}>
                   <a
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-foreground underline decoration-foreground/30 underline-offset-4"
+                    className="underline decoration-foreground/30 underline-offset-4"
                   >
                     {project.label}
                   </a>
@@ -129,25 +149,11 @@ export function ServicesPage() {
           </section>
         ) : null}
 
-        <section className="mt-20 space-y-6" aria-labelledby="services-process">
-          <h2 id="services-process" className="text-2xl font-light sm:text-3xl">
-            {t("services.processTitle")}
-          </h2>
-          <ol className="space-y-5">
-            {STEP_IDS.map((id, index) => (
-              <li key={id} className="flex gap-4">
-                <span className="font-mono text-sm text-muted-foreground">{index + 1}</span>
-                <p className="leading-relaxed">{t(`services.steps.${id}`)}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <section className="mt-20 space-y-4" aria-labelledby="services-faq">
-          <h2 id="services-faq" className="text-2xl font-light sm:text-3xl">
+        <section className="mt-16" aria-labelledby="services-faq">
+          <h2 id="services-faq" className="text-lg font-medium">
             {t("services.faqTitle")}
           </h2>
-          <Accordion type="single" collapsible>
+          <Accordion type="single" collapsible className="mt-2">
             {FAQ_IDS.map((id) => (
               <AccordionItem key={id} value={id}>
                 <AccordionTrigger className="text-base font-normal">
@@ -161,11 +167,11 @@ export function ServicesPage() {
           </Accordion>
         </section>
 
-        <section className="mt-20 space-y-4 border-t border-border pt-12" aria-labelledby="services-cta">
-          <h2 id="services-cta" className="text-2xl font-light text-balance sm:text-3xl">
+        <section className="mt-16 border-t border-border pt-10" aria-labelledby="services-cta">
+          <h2 id="services-cta" className="max-w-[28ch] text-2xl font-medium tracking-[-0.02em] text-balance">
             {t("services.ctaTitle")}
           </h2>
-          <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+          <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm">
             {email.includes("@") ? (
               <a href={mailtoHref(email, asText(t("services.emailSubject")))} className="underline underline-offset-4">
                 {email}
@@ -194,28 +200,39 @@ export function ServicesPage() {
   )
 }
 
-function PackageCard({ id, index, quote }: { id: PackageId; index: number; quote?: PackageQuote }) {
+function PackageCard({ id, quote }: { id: PackageId; quote?: PackageQuote }) {
   const { t } = useTranslation()
-  return (
-    <article className="rounded-2xl border border-border p-6 sm:p-8">
-      <p className="font-mono text-xs tracking-[0.18em] text-muted-foreground">0{index + 1}</p>
-      <h3 className="mt-3 text-2xl font-light">{t(`services.packages.${id}.title`)}</h3>
-      <dl className="mt-6 space-y-5">
-        <Field label={asText(t("services.forWhom"))} value={t(`services.packages.${id}.audience`)} />
-        <Field label={asText(t("services.includes"))} value={t(`services.packages.${id}.includes`)} />
-        <Field label={asText(t("services.timeline"))} value={t(`services.packages.${id}.timeline`)} />
-        {quote ? <Field label={asText(t("services.priceLabel"))} value={quote.price} /> : null}
-      </dl>
-    </article>
-  )
-}
+  const items = Array.from({ length: INCLUDE_COUNTS[id] }, (_, index) =>
+    asText(t(`services.packages.${id}.includes${index + 1}`))
+  ).filter((item) => item.length > 0 && !item.startsWith("services.packages."))
 
-function Field({ label, value }: { label: string; value: ReactNode }) {
   return (
-    <div>
-      <dt className="text-xs font-medium uppercase tracking-wider text-muted-foreground">{label}</dt>
-      <dd className="mt-1 leading-relaxed text-foreground/90">{value}</dd>
-    </div>
+    <article className="rounded-2xl border border-border">
+      <div className="px-5 pt-5 sm:px-6 sm:pt-6">
+        <h3 className="text-xl font-medium tracking-[-0.02em] text-balance">{t(`services.packages.${id}.title`)}</h3>
+        <p className="mt-2 max-w-[62ch] text-sm leading-relaxed text-muted-foreground">
+          {t(`services.packages.${id}.audience`)}
+        </p>
+      </div>
+      {quote ? (
+        <div className="mx-5 mt-4 flex flex-col gap-1 rounded-xl bg-muted px-4 py-3 sm:mx-6 sm:flex-row sm:items-baseline sm:justify-between">
+          <span className="text-sm text-muted-foreground">{t("services.priceLabel")}</span>
+          <span className="text-sm font-medium sm:text-right">{quote.price}</span>
+        </div>
+      ) : null}
+      <ul className="space-y-2.5 px-5 py-5 sm:px-6">
+        {items.map((item) => (
+          <li key={item} className="flex gap-2.5 text-sm leading-relaxed">
+            <Check className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+      <div className="flex flex-col gap-1 border-t border-border px-5 py-4 sm:flex-row sm:items-baseline sm:justify-between sm:px-6">
+        <span className="text-sm text-muted-foreground">{t("services.timeline")}</span>
+        <span className="text-sm sm:max-w-[32ch] sm:text-right">{t(`services.packages.${id}.timeline`)}</span>
+      </div>
+    </article>
   )
 }
 
@@ -284,20 +301,28 @@ function InquiryForm({
     }
   }
 
+  const fieldClass = "h-11 text-base md:text-base"
+
   return (
-    <section id="pricing" ref={formRef} className="mt-12 scroll-mt-28 rounded-2xl border border-border p-6 sm:p-8">
+    <section
+      id="pricing"
+      ref={formRef}
+      className="mt-16 scroll-mt-28 rounded-2xl border border-border bg-muted/40 p-5 sm:p-6"
+    >
       {quotes && quotes.length > 0 ? (
-        <div className="space-y-6">
-          <div className="space-y-2">
-            <h2 className="text-2xl font-light">{t("services.form.successTitle")}</h2>
-            <p className="text-muted-foreground">{t("services.form.successBody")}</p>
-          </div>
-          <ul className="space-y-5">
+        <div>
+          <h2 className="text-2xl font-medium tracking-[-0.02em]">{t("services.form.successTitle")}</h2>
+          <p className="mt-2 max-w-[62ch] text-sm leading-relaxed text-muted-foreground">
+            {t("services.form.successBody")}
+          </p>
+          <ul className="mt-4 divide-y divide-border">
             {quotes.map((quote) => (
-              <li key={quote.id} className="border-t border-border pt-4">
-                <p className="text-lg">{quote.name}</p>
-                <p className="mt-1 text-sm text-muted-foreground">{quote.timeline}</p>
-                <p className="mt-2">{quote.price}</p>
+              <li key={quote.id} className="grid gap-1 py-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:gap-8">
+                <div className="min-w-0">
+                  <p className="font-medium">{quote.name}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{quote.timeline}</p>
+                </div>
+                <p className="text-sm sm:text-right">{quote.price}</p>
               </li>
             ))}
           </ul>
@@ -305,40 +330,61 @@ function InquiryForm({
       ) : received ? (
         <p className="text-lg">{t("services.form.received")}</p>
       ) : (
-        <form className="relative space-y-5" onSubmit={onSubmit} noValidate={false}>
-          <div className="space-y-2">
-            <h2 className="text-2xl font-light">{t("services.form.title")}</h2>
-            <p className="text-muted-foreground leading-relaxed">{t("services.form.body")}</p>
+        <form className="relative" onSubmit={onSubmit}>
+          <div className="max-w-[62ch]">
+            <h2 className="text-2xl font-medium tracking-[-0.02em]">{t("services.form.title")}</h2>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t("services.form.body")}</p>
           </div>
           <div className="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden="true">
             <label htmlFor="company_website">{t("services.form.honeypot")}</label>
             <input id="company_website" name="company_website" type="text" tabIndex={-1} autoComplete="off" />
           </div>
-          <div className="space-y-2">
-            <Label htmlFor="services-email">{t("services.form.email")}</Label>
-            <Input id="services-email" name="email" type="email" autoComplete="email" required maxLength={254} />
-          </div>
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="mt-6 space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="services-name">{t("services.form.name")}</Label>
-              <Input id="services-name" name="name" autoComplete="name" maxLength={120} />
+              <Label htmlFor="services-email">{t("services.form.email")}</Label>
+              <Input
+                id="services-email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                maxLength={254}
+                className={fieldClass}
+              />
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="space-y-2">
+                <Label htmlFor="services-name">{t("services.form.name")}</Label>
+                <Input id="services-name" name="name" autoComplete="name" maxLength={120} className={fieldClass} />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="services-company">{t("services.form.company")}</Label>
+                <Input
+                  id="services-company"
+                  name="company"
+                  autoComplete="organization"
+                  maxLength={160}
+                  className={fieldClass}
+                />
+              </div>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="services-company">{t("services.form.company")}</Label>
-              <Input id="services-company" name="company" autoComplete="organization" maxLength={160} />
+              <Label htmlFor="services-need">{t("services.form.need")}</Label>
+              <Textarea id="services-need" name="need" rows={4} maxLength={2000} className="text-base md:text-base" />
             </div>
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="services-need">{t("services.form.need")}</Label>
-            <Textarea id="services-need" name="need" rows={4} maxLength={2000} />
           </div>
           {error ? (
-            <p id="services-form-error" role="alert" className="text-sm text-destructive">
+            <p id="services-form-error" role="alert" className="mt-4 text-sm text-destructive">
               {error}
             </p>
           ) : null}
-          <div className="flex flex-wrap items-center gap-4">
-            <Button type="submit" disabled={submitting} aria-describedby={error ? "services-form-error" : undefined}>
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+            <Button
+              type="submit"
+              disabled={submitting}
+              aria-describedby={error ? "services-form-error" : undefined}
+              className={`h-11 px-5 ${pressable}`}
+            >
               {submitting ? t("services.form.submitting") : t("services.form.submit")}
             </Button>
             <p className="text-sm text-muted-foreground">{t("services.form.privacy")}</p>
@@ -347,6 +393,12 @@ function InquiryForm({
       )}
     </section>
   )
+}
+
+function splitStep(value: string): { body: string; title: string } {
+  const index = value.indexOf(": ")
+  if (index === -1) return { body: "", title: value }
+  return { body: value.slice(index + 2), title: value.slice(0, index) }
 }
 
 function messageFor(code: InquiryErrorCode, t: (key: string) => ReactNode): string {

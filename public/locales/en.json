@@ -313,19 +313,27 @@
       "agent": {
         "title": "AI agent / automation in 1 week",
         "audience": "Companies with a repetitive process (support, back-office, CRM, reporting) ready to automate it with AI now",
-        "includes": "Process discovery, agent design, integration with LLMs (Anthropic, OpenAI, xAI, AWS Bedrock) and your systems, deployment and documented handoff",
+        "includes1": "Process discovery and agent design",
+        "includes2": "Integration with LLMs (Anthropic, OpenAI, xAI, AWS Bedrock) and your systems",
+        "includes3": "Deployment and documented handoff",
         "timeline": "1 week"
       },
       "mvp": {
         "title": "MVP / rapid full-stack development",
         "audience": "Founders and companies that need to validate a product or ship a new feature fast",
-        "includes": "Architecture, full-stack development (TypeScript, React/Next.js, Node.js, PostgreSQL), deployment on AWS/GCP/Cloudflare and CI/CD",
+        "includes1": "Architecture",
+        "includes2": "Full-stack development (TypeScript, React/Next.js, Node.js, PostgreSQL)",
+        "includes3": "Deployment on AWS/GCP/Cloudflare and CI/CD",
         "timeline": "TODO: [X] weeks depending on scope"
       },
       "advisory": {
         "title": "Technical advisory / fractional CTO or EM",
         "audience": "Startups and companies without a CTO, or teams that need senior technical leadership part-time",
-        "includes": "Strategy and architecture, technical roadmap, team and process review, AI adoption in the SDLC, support on decisions and vendors",
+        "includes1": "Strategy and architecture",
+        "includes2": "Technical roadmap",
+        "includes3": "Team and process review",
+        "includes4": "AI adoption in the SDLC",
+        "includes5": "Support on decisions and vendors",
         "timeline": "TODO: monthly, hours per week to agree"
       }
     },
