@@ -449,6 +449,9 @@
       "emailHint": "Después ves los precios de referencia. También te escribo para coordinar una llamada.",
       "label": "Formulario para ver los precios",
       "cleared": "Listo",
+      "settle": "Son de referencia. El precio final lo dejamos en una llamada de 15 minutos.",
+      "book": "Agendar 15 minutos",
+      "write": "Escribirme",
       "minutes": "Unos 2 minutos",
       "steps": {
         "package": "Trabajo",
