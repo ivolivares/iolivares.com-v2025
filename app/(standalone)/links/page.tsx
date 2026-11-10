@@ -81,7 +81,7 @@ export default function LinksPage() {
       color: "from-blue-500 to-blue-600",
       icon: Mail,
       name: t("links.email"),
-      url: "mailto:hi+fromlinkpage@iolivares.com?subject=Contact+from+iolivares.com/links",
+      url: `mailto:hi+fromlinkpage@iolivares.com?subject=${encodeURIComponent("Contact from iolivares.com/links")}`,
     },
     {
       className: "col-span-2",

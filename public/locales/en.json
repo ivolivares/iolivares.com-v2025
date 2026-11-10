@@ -449,6 +449,9 @@
       "emailHint": "Then you'll see the reference prices. I'll email you to set up a call.",
       "label": "Form to see pricing",
       "cleared": "Done",
+      "settle": "Does this make sense? Let's book 15 minutes and set the final price for your project.",
+      "book": "Book 15 minutes",
+      "write": "Email me",
       "minutes": "About 2 minutes",
       "steps": {
         "package": "Work",

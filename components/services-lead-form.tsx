@@ -2,6 +2,7 @@
 
 import { type ReactNode, useEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom"
+import { ServicesPriceClose } from "@/components/services-price-close"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -307,16 +308,7 @@ export function ServicesLeadForm({
                 <p className="text-sm font-medium text-emerald-700 dark:text-emerald-400">
                   {t("services.funnel.cleared")}
                 </p>
-                <ul className="mt-4 divide-y divide-border">
-                  {quotes.map((quote) => (
-                    <li key={quote.id} className="py-4">
-                      <p className="font-medium text-balance wrap-break-word">{quote.name}</p>
-                      <p className="mt-1 text-sm text-muted-foreground">{quote.timeline}</p>
-                      <p className="mt-2 text-balance">{quote.price}</p>
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t("services.priceReference")}</p>
+                <ServicesPriceClose emailAddress={email} interest={interest} name={name} need={need} quotes={quotes} />
               </StepFrame>
             ) : null}
             {index > 0 && step !== "prices" ? (
