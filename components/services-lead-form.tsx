@@ -21,6 +21,8 @@ type Step = (typeof STEPS)[number]
 
 const pressable =
   "touch-manipulation select-none active:scale-[0.98] motion-safe:transition-transform motion-safe:duration-150 motion-safe:ease-[cubic-bezier(0.23,1,0.32,1)]"
+const focusRing =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
 
 type TurnstileApi = {
   remove: (id: string) => void
@@ -32,6 +34,7 @@ type TurnstileApi = {
       "expired-callback": () => void
       language: string
       sitekey: string
+      size: "flexible"
     }
   ) => string
 }
@@ -92,6 +95,7 @@ export function ServicesLeadForm({
         "expired-callback": () => setTurnstileToken(""),
         language,
         sitekey: key,
+        size: "flexible",
       })
     }
     if ((window as Window & { turnstile?: TurnstileApi }).turnstile) {
@@ -169,7 +173,7 @@ export function ServicesLeadForm({
       aria-modal="true"
       aria-label={asText(t("services.funnel.label"))}
     >
-      <div className="grid h-full md:grid-cols-[16rem_minmax(0,1fr)]">
+      <div className="grid min-h-full md:h-full md:grid-cols-[16rem_minmax(0,1fr)]">
         <aside className="hidden border-r border-border p-6 md:block">
           <p className="text-sm text-muted-foreground">{t("services.funnel.minutes")}</p>
           <ol className="mt-6 space-y-3">
@@ -185,16 +189,20 @@ export function ServicesLeadForm({
             })}
           </ol>
         </aside>
-        <div className="flex h-full flex-col">
-          <div className="flex items-center justify-between px-5 py-4 sm:px-8">
+        <div className="flex min-h-full min-w-0 flex-col">
+          <div className="flex items-center justify-between px-4 py-2 sm:px-8">
             <p className="text-sm text-muted-foreground">
               {index + 1} / {STEPS.length}
             </p>
-            <button type="button" onClick={onClose} className={`text-sm ${pressable}`}>
+            <button
+              type="button"
+              onClick={onClose}
+              className={`inline-flex min-h-11 items-center px-2 text-sm ${pressable} ${focusRing}`}
+            >
               {t("services.funnel.close")}
             </button>
           </div>
-          <div className="mx-auto flex w-full max-w-xl flex-1 flex-col justify-center px-5 pb-16 sm:px-8">
+          <div className="mx-auto flex w-full min-w-0 max-w-xl flex-1 flex-col justify-center px-4 py-6 pb-16 sm:px-8">
             {step === "package" ? (
               <StepFrame title={t("services.funnel.packageQuestion")} hint={t("services.funnel.packageHint")}>
                 <div className="space-y-3">
@@ -206,7 +214,7 @@ export function ServicesLeadForm({
                         setInterest(id)
                         go("need")
                       }}
-                      className={`block w-full rounded-xl border border-border px-4 py-4 text-left ${pressable} hover:bg-muted`}
+                      className={`block w-full min-h-11 rounded-xl border border-border px-4 py-4 text-left wrap-break-word ${pressable} ${focusRing} hover:bg-muted`}
                     >
                       <span className="font-medium">{t(`services.packages.${id}.title`)}</span>
                       <span className="mt-1 block text-sm text-muted-foreground">
@@ -282,7 +290,7 @@ export function ServicesLeadForm({
                   maxLength={254}
                   className="mt-2 h-11 text-base md:text-base"
                 />
-                <div ref={widget} className="mt-4 min-h-16" />
+                <div ref={widget} className="mt-4 min-h-16 w-full max-w-full overflow-x-hidden [&_iframe]:max-w-full" />
                 {error ? <p className="mt-3 text-sm text-destructive">{error}</p> : null}
                 <Button
                   type="button"
@@ -296,13 +304,15 @@ export function ServicesLeadForm({
             ) : null}
             {step === "prices" && quotes ? (
               <StepFrame title={t("services.form.successTitle")} hint={t("services.form.successBody")}>
-                <p className="text-sm font-medium text-emerald-600">{t("services.funnel.cleared")}</p>
+                <p className="text-sm font-medium text-emerald-700 dark:text-emerald-400">
+                  {t("services.funnel.cleared")}
+                </p>
                 <ul className="mt-4 divide-y divide-border">
                   {quotes.map((quote) => (
                     <li key={quote.id} className="py-4">
-                      <p className="font-medium">{quote.name}</p>
+                      <p className="font-medium text-balance wrap-break-word">{quote.name}</p>
                       <p className="mt-1 text-sm text-muted-foreground">{quote.timeline}</p>
-                      <p className="mt-2">{quote.price}</p>
+                      <p className="mt-2 text-balance">{quote.price}</p>
                     </li>
                   ))}
                 </ul>
@@ -310,7 +320,11 @@ export function ServicesLeadForm({
               </StepFrame>
             ) : null}
             {index > 0 && step !== "prices" ? (
-              <button type="button" onClick={() => go(STEPS[index - 1])} className="mt-6 text-sm text-muted-foreground">
+              <button
+                type="button"
+                onClick={() => go(STEPS[index - 1])}
+                className={`mt-6 inline-flex min-h-11 items-center text-sm text-muted-foreground ${focusRing}`}
+              >
                 {t("services.funnel.back")}
               </button>
             ) : null}

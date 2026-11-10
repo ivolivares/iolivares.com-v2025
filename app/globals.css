@@ -219,7 +219,8 @@
 
   /* Link Animated */
   .link-animated {
-    @apply cursor-pointer text-lg relative whitespace-nowrap text-[color:var(--foreground)] before:hidden;
+    @apply relative cursor-pointer whitespace-nowrap text-lg text-[color:var(--foreground)] before:hidden;
+    overflow-x: clip;
   }
   .link-animated::before,
   .link-animated::after {

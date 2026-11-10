@@ -46,7 +46,7 @@ export function LogosCarousel({
   return (
     <div
       aria-label={label}
-      className={cn("grid", className)}
+      className={cn("grid overflow-x-hidden", className)}
       data-slot="logos-carousel"
       ref={containerRef}
       role="region"

@@ -58,7 +58,7 @@ const SvgPath: React.FC<{ variant: Variants }> = ({ variant }) => (
 
 export function LinkAnimated({ children, href, target, className, variant = "default", ...props }: LinkAnimatedProps) {
   return (
-    <span className={cn(`relative inline-block m-0 p-0 ${className}`)}>
+    <span className={cn("relative m-0 inline-block overflow-x-clip p-0", className)} style={{ overflowX: "clip" }}>
       <Link href={href} target={target} {...props} className="link-animated">
         <span>{children}</span>
         <SvgPath variant={variant} />

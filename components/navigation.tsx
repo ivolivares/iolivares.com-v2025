@@ -78,7 +78,7 @@ export default function Navigation() {
               <div className="flex items-center gap-3">
                 <button
                   onClick={openCommand}
-                  className="text-foreground/60 hover:text-foreground transition-colors p-1 flex items-center gap-2"
+                  className="inline-flex min-h-11 min-w-11 items-center justify-center gap-2 p-1 text-foreground/60 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   aria-label="Open command palette"
                 >
                   <Search className="w-4 h-4" />
@@ -87,7 +87,7 @@ export default function Navigation() {
 
                 <button
                   onClick={toggleTheme}
-                  className="text-foreground/60 hover:text-foreground transition-colors p-1"
+                  className="inline-flex min-h-11 min-w-11 items-center justify-center p-1 text-foreground/60 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   aria-label="Toggle theme"
                 >
                   {isDark ? (

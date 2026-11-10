@@ -48,6 +48,8 @@ const PUBLIC_BRANDS = [
 
 const pressable =
   "touch-manipulation select-none active:scale-[0.98] motion-safe:transition-transform motion-safe:duration-150 motion-safe:ease-[cubic-bezier(0.23,1,0.32,1)]"
+const focusRing =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
 
 export function ServicesPage() {
   const sectionRef = useScrollReveal()
@@ -55,6 +57,15 @@ export function ServicesPage() {
   const [quotes, setQuotes] = useState<PackageQuote[] | null>(null)
   const [formOpen, setFormOpen] = useState(false)
   const [logosPaused, setLogosPaused] = useState(false)
+  const [logoColumns, setLogoColumns] = useState(4)
+
+  useEffect(() => {
+    const query = window.matchMedia("(max-width: 640px)")
+    const apply = () => setLogoColumns(query.matches ? 2 : 4)
+    apply()
+    query.addEventListener("change", apply)
+    return () => query.removeEventListener("change", apply)
+  }, [])
 
   useEffect(() => {
     if (isLoading) return
@@ -76,7 +87,7 @@ export function ServicesPage() {
       <main ref={sectionRef} className="page-content scroll-reveal mx-auto max-w-5xl px-1 pt-12 pb-8 sm:px-4 sm:pt-20">
         <header>
           <p className="text-sm text-muted-foreground">{t("services.servicesTitle")}</p>
-          <h1 className="mt-3 max-w-[18ch] text-4xl font-medium leading-[0.98] tracking-[-0.03em] sm:text-6xl">
+          <h1 className="mt-3 max-w-[18ch] text-balance text-4xl font-medium leading-[1.05] tracking-[-0.03em] sm:text-6xl sm:leading-[0.98]">
             {t("services.heroTitle")}
           </h1>
           <p className="mt-5 max-w-[62ch] text-base leading-relaxed text-muted-foreground sm:text-lg">
@@ -106,7 +117,7 @@ export function ServicesPage() {
               <p id="services-offer" className="text-sm text-muted-foreground">
                 {t("services.packages.agent.title")}
               </p>
-              <p className="mt-2 text-4xl font-medium tracking-[-0.03em] sm:text-5xl">
+              <p className="mt-2 text-balance text-3xl font-medium tracking-[-0.03em] sm:text-5xl">
                 {quotes?.find((item) => item.id === "agent")?.price ?? t("services.packages.agent.timeline")}
               </p>
               <p className="mt-3 max-w-[24ch] text-sm leading-relaxed text-muted-foreground">
@@ -115,7 +126,7 @@ export function ServicesPage() {
               <Button
                 type="button"
                 onClick={() => setFormOpen(true)}
-                className={`mt-6 h-11 rounded-full px-5 ${pressable}`}
+                className={`mt-6 h-auto min-h-11 whitespace-normal rounded-full px-5 py-2.5 text-center ${pressable}`}
               >
                 {t("services.form.open")}
               </Button>
@@ -130,9 +141,10 @@ export function ServicesPage() {
             </ul>
             <Availability label={asText(t("services.availableNow"))} />
           </div>
-          <div className="flex items-center gap-3 border-t border-border px-4 py-3 sm:px-6">
+          <div className="flex min-w-0 items-center gap-2 border-t border-border px-3 py-2 sm:gap-3 sm:px-6">
             <LogosCarousel
               className="h-12 min-w-0 flex-1 text-foreground"
+              columnCount={logoColumns}
               label={asText(t("services.logosLabel"))}
               paused={logosPaused}
             >
@@ -156,7 +168,7 @@ export function ServicesPage() {
             <button
               aria-label={asText(logosPaused ? t("services.motion.playLabel") : t("services.motion.pauseLabel"))}
               aria-pressed={logosPaused}
-              className={`shrink-0 text-xs text-muted-foreground ${pressable}`}
+              className={`inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center px-2 text-xs text-muted-foreground ${pressable} ${focusRing}`}
               onClick={() => setLogosPaused((value) => !value)}
               type="button"
             >
@@ -172,7 +184,7 @@ export function ServicesPage() {
           {RECOMMENDATIONS.map((item) => (
             <figure key={item.id} className="mt-14 first:mt-0">
               <p className="text-sm text-muted-foreground">{t(`services.recommendations.${item.id}.context`)}</p>
-              <blockquote className="mt-4 text-lg leading-relaxed text-balance italic sm:text-xl">
+              <blockquote className="mt-4 text-balance text-lg leading-relaxed wrap-break-word italic sm:text-xl">
                 {t(`services.recommendations.${item.id}.quote`)}
               </blockquote>
               {item.photo ? (
@@ -216,7 +228,7 @@ export function ServicesPage() {
                       {t(`services.packages.${id}.audience`)}
                     </p>
                   </div>
-                  <p className="text-sm text-muted-foreground sm:max-w-[28ch] sm:text-right">
+                  <p className="text-balance text-sm text-muted-foreground sm:max-w-[28ch] sm:text-right">
                     {quote ? quote.price : t(`services.packages.${id}.timeline`)}
                   </p>
                 </li>
@@ -280,7 +292,7 @@ export function ServicesPage() {
           <Accordion type="single" collapsible className="mt-2">
             {FAQ_IDS.map((id) => (
               <AccordionItem key={id} value={id}>
-                <AccordionTrigger className="text-base font-normal">
+                <AccordionTrigger className="min-h-11 text-left text-base font-normal wrap-break-word">
                   {t(`services.faq.${id}.question`)}
                 </AccordionTrigger>
                 <AccordionContent className="text-base leading-relaxed text-muted-foreground">
