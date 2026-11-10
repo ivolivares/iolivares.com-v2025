@@ -105,6 +105,43 @@ test("a Notion failure still reveals pricing and does not throw", async () => {
   assert.equal(result.packages[0]?.price, "Desde US$1.500, 50% por adelantado")
 })
 
+test("a stored lead notifies once, and a mail failure still reveals pricing", async () => {
+  const directory = await mkdtemp(path.join(tmpdir(), "services-leads-"))
+  const filePath = path.join(directory, "inquiries.jsonl")
+  const seen: string[] = []
+  try {
+    const result = await submitServiceInquiry({
+      body: body({ interest: "agent", need: "A weekly report" }),
+      config: {},
+      filePath,
+      now,
+      onAccepted: async (lead) => {
+        seen.push(`${lead.interest ?? ""}:${lead.need ?? ""}`)
+      },
+      onWorker: false,
+      originAllowed: true,
+    })
+    assert.equal(result.ok, true)
+    assert.deepEqual(seen, ["agent:A weekly report"])
+
+    const mailed = await submitServiceInquiry({
+      body: body({ email: "grace@example.com" }),
+      config: {},
+      filePath,
+      now,
+      onAccepted: async () => {
+        throw new Error("resend down")
+      },
+      onWorker: false,
+      originAllowed: true,
+    })
+    assert.equal(mailed.ok, true)
+    if (mailed.ok) assert.match(mailed.packages[0]?.price ?? "", /US\$1,500/)
+  } finally {
+    await rm(directory, { force: true, recursive: true })
+  }
+})
+
 test("spam and invalid submissions do not reveal pricing", async () => {
   const created: LeadRecord[] = []
   const writer: LeadWriter = {
@@ -115,11 +152,16 @@ test("spam and invalid submissions do not reveal pricing", async () => {
       created.push(lead)
     },
   }
+  let notified = 0
+  const onAccepted = async () => {
+    notified += 1
+  }
   const limited = await submitServiceInquiry({
     body: body(),
     config: { databaseId: "db", token: "token" },
     filePath: "/tmp/unused-services-leads.jsonl",
     now,
+    onAccepted,
     onWorker: true,
     originAllowed: true,
     writer,
@@ -164,8 +206,21 @@ test("spam and invalid submissions do not reveal pricing", async () => {
     config: {},
     filePath: "/tmp/unused-services-leads.jsonl",
     now,
+    onAccepted,
     onWorker: false,
     originAllowed: true,
   })
   assert.deepEqual(tooFast, { error: "too_fast", ok: false })
+
+  const skipped = await submitServiceInquiry({
+    body: body({ company_website: "https://spam.example" }),
+    config: {},
+    filePath: "/tmp/unused-services-leads.jsonl",
+    now,
+    onAccepted,
+    onWorker: true,
+    originAllowed: true,
+  })
+  assert.equal(skipped.ok, true)
+  assert.equal(notified, 0)
 })

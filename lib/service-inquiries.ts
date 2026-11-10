@@ -71,6 +71,10 @@ export type LeadRecord = {
   source: string
 }
 
+export type AcceptedLead = LeadRecord & {
+  interest: PackageId | null
+}
+
 export interface LeadWriter {
   countRecentByEmail(email: string, sinceIso: string): Promise<number>
   create(lead: LeadRecord): Promise<void>
@@ -85,6 +89,7 @@ type SubmitInput = {
   filePath: string
   now: number
   onWorker: boolean
+  onAccepted?: (lead: AcceptedLead) => Promise<void>
   originAllowed: boolean
   writer?: LeadWriter | null
 }
@@ -120,47 +125,48 @@ export async function submitServiceInquiry(input: SubmitInput): Promise<InquiryR
   if (timing) return failure(timing)
 
   const lead = toLead(parsed.value)
+  const storedLead = toStoredLead(lead)
   const sinceIso = new Date(input.now - HOUR_MS).toISOString()
   const writer = resolveWriter(input)
 
   if (!writer) {
     if (input.onWorker) {
-      logUnstored("missing_notion_env", lead)
-      return revealed(lead.locale, false, "unconfigured")
+      logUnstored("missing_notion_env", storedLead)
+      return finish(input, lead, false, "unconfigured")
     }
 
     try {
-      const recent = await countLocalLeads(input.filePath, lead.email, sinceIso)
+      const recent = await countLocalLeads(input.filePath, storedLead.email, sinceIso)
       if (recent >= EMAIL_LIMIT_PER_HOUR) return failure("rate_limited")
-      await appendLocalLead(input.filePath, lead, input.now)
-      console.info(JSON.stringify({ email: lead.email, event: "service_inquiry_stored", storage: "local-file" }))
-      return revealed(lead.locale, true, "local-file")
+      await appendLocalLead(input.filePath, storedLead, input.now)
+      console.info(JSON.stringify({ email: storedLead.email, event: "service_inquiry_stored", storage: "local-file" }))
+      return finish(input, lead, true, "local-file")
     } catch (error) {
-      logUnstored("local_mock_failed", lead, error)
-      return revealed(lead.locale, false, "unconfigured")
+      logUnstored("local_mock_failed", storedLead, error)
+      return finish(input, lead, false, "unconfigured")
     }
   }
 
   try {
-    const recent = await writer.countRecentByEmail(lead.email, sinceIso)
+    const recent = await writer.countRecentByEmail(storedLead.email, sinceIso)
     if (recent >= EMAIL_LIMIT_PER_HOUR) return failure("rate_limited")
   } catch (error) {
     console.error(
       JSON.stringify({
         detail: errorSummary(error),
-        email: lead.email,
+        email: storedLead.email,
         event: "service_inquiry_rate_limit_skipped",
       })
     )
   }
 
   try {
-    await writer.create(lead)
-    console.info(JSON.stringify({ email: lead.email, event: "service_inquiry_stored", storage: "notion" }))
-    return revealed(lead.locale, true, "notion")
+    await writer.create(storedLead)
+    console.info(JSON.stringify({ email: storedLead.email, event: "service_inquiry_stored", storage: "notion" }))
+    return finish(input, lead, true, "notion")
   } catch (error) {
-    logUnstored("notion_error", lead, error)
-    return revealed(lead.locale, false, "notion")
+    logUnstored("notion_error", storedLead, error)
+    return finish(input, lead, false, "notion")
   }
 }
 
@@ -324,15 +330,49 @@ function isHoneypot(body: unknown): boolean {
   return typeof value === "string" && cleanText(value).length > 0
 }
 
-function toLead(value: ParsedInquiry): LeadRecord {
+function toLead(value: ParsedInquiry): AcceptedLead {
   return {
     company: emptyToNull(value.company),
     email: value.email,
+    interest: value.interest ?? null,
     locale: value.locale,
     name: value.name || value.email,
     need: emptyToNull(value.need),
     source: formatSource(value),
   }
+}
+
+function toStoredLead(lead: AcceptedLead): LeadRecord {
+  return {
+    company: lead.company,
+    email: lead.email,
+    locale: lead.locale,
+    name: lead.name,
+    need: lead.need,
+    source: lead.source,
+  }
+}
+
+async function finish(
+  input: SubmitInput,
+  lead: AcceptedLead,
+  stored: boolean,
+  storage: InquiryStorage
+): Promise<InquiryResponse> {
+  if (input.onAccepted) {
+    try {
+      await input.onAccepted(lead)
+    } catch (error) {
+      console.error(
+        JSON.stringify({
+          detail: errorSummary(error),
+          email: lead.email,
+          event: "service_inquiry_mail",
+        })
+      )
+    }
+  }
+  return revealed(lead.locale, stored, storage)
 }
 
 function formatSource(value: ParsedInquiry): string {

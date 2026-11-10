@@ -431,9 +431,7 @@
         "rateLimited": "Demasiadas solicitudes con este email. Inténtalo más tarde.",
         "origin": "Envía el formulario desde esta página.",
         "network": "No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.",
-        "turnstile": "La verificación anti-bots no pasó. Inténtalo de nuevo.",
-        "invalidCode": "Ese código no es válido o venció.",
-        "emailUnavailable": "No pude enviar el código. Escríbeme a hi@iolivares.com y te respondo."
+        "turnstile": "La verificación anti-bots no pasó. Inténtalo de nuevo."
       }
     },
     "funnel": {
@@ -445,12 +443,8 @@
       "needQuestion": "¿Qué necesitas?",
       "needHint": "Con una frase basta.",
       "aboutQuestion": "¿A quién le respondo?",
-      "emailQuestion": "¿A dónde envío el código?",
-      "emailHint": "Un código de 6 dígitos, para confirmar que el email es real. Vence en 10 minutos.",
-      "sendCode": "Enviar código",
-      "otpQuestion": "Escribe el código",
-      "otpHint": "Enviado a {email}.",
-      "devCode": "El código es {code}.",
+      "emailQuestion": "¿A qué email te escribo?",
+      "emailHint": "Después ves los precios de referencia. También te escribo para coordinar una llamada.",
       "cleared": "Listo",
       "minutes": "Unos 2 minutos",
       "steps": {
@@ -458,7 +452,6 @@
         "need": "Necesidad",
         "about": "Tú",
         "email": "Email",
-        "code": "Código",
         "prices": "Precios"
       }
     }

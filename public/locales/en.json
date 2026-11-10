@@ -431,9 +431,7 @@
         "rateLimited": "Too many requests for this email. Try again in a bit.",
         "origin": "Submit the form from this page.",
         "network": "Couldn't send that. Check your connection and try again.",
-        "turnstile": "The bot check did not pass. Try again.",
-        "invalidCode": "That code is wrong or it expired.",
-        "emailUnavailable": "The code could not be sent. Email hi@iolivares.com and I'll reply."
+        "turnstile": "The bot check did not pass. Try again."
       }
     },
     "funnel": {
@@ -445,12 +443,8 @@
       "needQuestion": "What do you need?",
       "needHint": "A sentence is enough.",
       "aboutQuestion": "Who should I reply to?",
-      "emailQuestion": "Where should I send the code?",
-      "emailHint": "A 6-digit code, so the address is real. It expires in 10 minutes.",
-      "sendCode": "Send code",
-      "otpQuestion": "Enter the code",
-      "otpHint": "Sent to {email}.",
-      "devCode": "The code is {code}.",
+      "emailQuestion": "Where can I write you?",
+      "emailHint": "Then you'll see the reference prices. I'll email you to set up a call.",
       "cleared": "Done",
       "minutes": "About 2 minutes",
       "steps": {
@@ -458,7 +452,6 @@
         "need": "Need",
         "about": "You",
         "email": "Email",
-        "code": "Code",
         "prices": "Pricing"
       }
     }

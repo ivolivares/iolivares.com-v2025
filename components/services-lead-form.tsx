@@ -8,9 +8,15 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { useTranslation } from "@/hooks/use-translation"
 import { isLocalHost, TURNSTILE_SITE_KEY, TURNSTILE_TEST_SITE_KEY } from "@/lib/service-challenge"
-import { isInquiryFailure, isInquirySuccess, type PackageId, type PackageQuote } from "@/lib/service-inquiry-contract"
+import {
+  type InquiryErrorCode,
+  isInquiryFailure,
+  isInquirySuccess,
+  type PackageId,
+  type PackageQuote,
+} from "@/lib/service-inquiry-contract"
 
-const STEPS = ["package", "need", "about", "email", "code", "prices"] as const
+const STEPS = ["package", "need", "about", "email", "prices"] as const
 type Step = (typeof STEPS)[number]
 
 const pressable =
@@ -18,7 +24,15 @@ const pressable =
 
 type TurnstileApi = {
   remove: (id: string) => void
-  render: (element: HTMLElement, options: { callback: (token: string) => void; sitekey: string }) => string
+  render: (
+    element: HTMLElement,
+    options: {
+      callback: (token: string) => void
+      "error-callback": () => void
+      "expired-callback": () => void
+      sitekey: string
+    }
+  ) => string
 }
 
 export function ServicesLeadForm({
@@ -40,9 +54,8 @@ export function ServicesLeadForm({
   const [name, setName] = useState("")
   const [company, setCompany] = useState("")
   const [email, setEmail] = useState("")
-  const [code, setCode] = useState("")
-  const [devCode, setDevCode] = useState("")
   const [turnstileToken, setTurnstileToken] = useState("")
+  const [widgetEpoch, setWidgetEpoch] = useState(0)
   const [quotes, setQuotes] = useState<PackageQuote[] | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
@@ -64,6 +77,8 @@ export function ServicesLeadForm({
 
   useEffect(() => {
     if (!open || step !== "email") return
+    if (widget.current) widget.current.dataset.epoch = String(widgetEpoch)
+    setTurnstileToken("")
     let cancelled = false
     const mount = () => {
       const api = (window as Window & { turnstile?: TurnstileApi }).turnstile
@@ -72,6 +87,8 @@ export function ServicesLeadForm({
       if (widgetId.current) api.remove(widgetId.current)
       widgetId.current = api.render(widget.current, {
         callback: (token) => setTurnstileToken(token),
+        "error-callback": () => setTurnstileToken(""),
+        "expired-callback": () => setTurnstileToken(""),
         sitekey: key,
       })
     }
@@ -87,7 +104,7 @@ export function ServicesLeadForm({
     return () => {
       cancelled = true
     }
-  }, [open, step])
+  }, [open, step, widgetEpoch])
 
   if (!open || !mounted) return null
 
@@ -98,41 +115,15 @@ export function ServicesLeadForm({
     setStep(next)
   }
 
-  async function sendCode() {
-    setSubmitting(true)
-    setError(null)
-    try {
-      const response = await fetch("/api/services/inquiry", {
-        body: JSON.stringify({ email, intent: "send-code", locale: language, turnstileToken }),
-        credentials: "same-origin",
-        headers: { "content-type": "application/json" },
-        method: "POST",
-      })
-      const payload = (await response.json()) as { devCode?: string; error?: string; ok?: boolean }
-      if (!response.ok || !payload.ok) {
-        setError(errorText(payload.error, t))
-        return
-      }
-      setDevCode(payload.devCode ?? "")
-      go("code")
-    } catch {
-      setError(asText(t("services.form.errors.network")))
-    } finally {
-      setSubmitting(false)
-    }
-  }
-
-  async function verify() {
+  async function submit() {
     setSubmitting(true)
     setError(null)
     try {
       const response = await fetch("/api/services/inquiry", {
         body: JSON.stringify({
-          code,
           company,
           company_website: "",
           email,
-          intent: "verify",
           interest,
           locale: language,
           name,
@@ -141,6 +132,7 @@ export function ServicesLeadForm({
           sourceReferrer: document.referrer,
           sourceSearch: window.location.search,
           startedAt: startedAt.current,
+          turnstileToken,
         }),
         credentials: "same-origin",
         headers: { "content-type": "application/json" },
@@ -153,13 +145,15 @@ export function ServicesLeadForm({
         go("prices")
         return
       }
+      setWidgetEpoch((value) => value + 1)
       if (isInquiryFailure(payload)) {
         setError(errorText(payload.error, t))
         return
       }
-      const record = payload as { error?: string }
-      setError(errorText(record.error, t))
+      const record = payload as { error?: unknown }
+      setError(errorText(record.error === "turnstile" ? "turnstile" : undefined, t))
     } catch {
+      setWidgetEpoch((value) => value + 1)
       setError(asText(t("services.form.errors.network")))
     } finally {
       setSubmitting(false)
@@ -289,34 +283,8 @@ export function ServicesLeadForm({
                 {error ? <p className="mt-3 text-sm text-destructive">{error}</p> : null}
                 <Button
                   type="button"
-                  onClick={sendCode}
+                  onClick={submit}
                   disabled={submitting || !turnstileToken || !email.includes("@")}
-                  className={`mt-4 h-11 ${pressable}`}
-                >
-                  {submitting ? t("services.form.submitting") : t("services.funnel.sendCode")}
-                </Button>
-              </StepFrame>
-            ) : null}
-            {step === "code" ? (
-              <StepFrame title={t("services.funnel.otpQuestion")} hint={t("services.funnel.otpHint", { email })}>
-                <Input
-                  value={code}
-                  onChange={(event) => setCode(event.target.value.replace(/\D/g, "").slice(0, 6))}
-                  inputMode="numeric"
-                  autoComplete="one-time-code"
-                  maxLength={6}
-                  className="h-14 text-center text-2xl tracking-[0.3em] md:text-2xl"
-                />
-                {devCode ? (
-                  <p className="mt-3 text-sm text-muted-foreground">
-                    {t("services.funnel.devCode", { code: devCode })}
-                  </p>
-                ) : null}
-                {error ? <p className="mt-3 text-sm text-destructive">{error}</p> : null}
-                <Button
-                  type="button"
-                  onClick={verify}
-                  disabled={submitting || code.length !== 6}
                   className={`mt-4 h-11 ${pressable}`}
                 >
                   {submitting ? t("services.form.submitting") : t("services.form.submit")}
@@ -372,20 +340,31 @@ function siteKey() {
   return TURNSTILE_SITE_KEY
 }
 
-function errorText(code: string | undefined, t: (key: string) => ReactNode) {
+function errorText(code: InquiryErrorCode | "turnstile" | undefined, t: (key: string) => ReactNode) {
   switch (code) {
-    case "email_unavailable":
-      return asText(t("services.form.errors.emailUnavailable"))
-    case "invalid_code":
-      return asText(t("services.form.errors.invalidCode"))
+    case "invalid_body":
+    case undefined:
+      return asText(t("services.form.errors.invalidBody"))
+    case "invalid_company":
+      return asText(t("services.form.errors.invalidCompany"))
     case "invalid_email":
       return asText(t("services.form.errors.invalidEmail"))
+    case "invalid_name":
+      return asText(t("services.form.errors.invalidName"))
+    case "invalid_need":
+      return asText(t("services.form.errors.invalidNeed"))
+    case "origin":
+      return asText(t("services.form.errors.origin"))
     case "rate_limited":
       return asText(t("services.form.errors.rateLimited"))
+    case "too_fast":
+      return asText(t("services.form.errors.tooFast"))
     case "turnstile":
       return asText(t("services.form.errors.turnstile"))
-    default:
-      return asText(t("services.form.errors.invalidBody"))
+    default: {
+      const exhaustive: never = code
+      return exhaustive
+    }
   }
 }
 
