@@ -30,6 +30,7 @@ type TurnstileApi = {
       callback: (token: string) => void
       "error-callback": () => void
       "expired-callback": () => void
+      language: string
       sitekey: string
     }
   ) => string
@@ -89,6 +90,7 @@ export function ServicesLeadForm({
         callback: (token) => setTurnstileToken(token),
         "error-callback": () => setTurnstileToken(""),
         "expired-callback": () => setTurnstileToken(""),
+        language,
         sitekey: key,
       })
     }
@@ -104,7 +106,7 @@ export function ServicesLeadForm({
     return () => {
       cancelled = true
     }
-  }, [open, step, widgetEpoch])
+  }, [language, open, step, widgetEpoch])
 
   if (!open || !mounted) return null
 
@@ -165,6 +167,7 @@ export function ServicesLeadForm({
       className="fixed inset-0 z-[70] h-dvh overflow-y-auto bg-background text-foreground"
       role="dialog"
       aria-modal="true"
+      aria-label={asText(t("services.funnel.label"))}
     >
       <div className="grid h-full md:grid-cols-[16rem_minmax(0,1fr)]">
         <aside className="hidden border-r border-border p-6 md:block">

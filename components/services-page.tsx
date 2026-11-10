@@ -59,8 +59,13 @@ export function ServicesPage() {
   useEffect(() => {
     if (isLoading) return
     const title = asText(t("services.metaTitle"))
-    if (!title || title === "services.metaTitle") return
-    document.title = `${title} - ${siteConfig.name}`
+    if (title && title !== "services.metaTitle") {
+      document.title = `${title} - ${siteConfig.name}`
+    }
+    const description = asText(t("services.metaDescription"))
+    if (!description || description === "services.metaDescription") return
+    const tag = document.querySelector('meta[name="description"]')
+    if (tag) tag.setAttribute("content", description)
   }, [isLoading, t])
 
   const calendly = httpUrl(asText(t("services.calendlyUrl")))

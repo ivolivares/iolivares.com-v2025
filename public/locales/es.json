@@ -4,6 +4,7 @@
     "thoughts": "IDEAS",
     "talks": "CHARLAS",
     "services": "SERVICIOS",
+    "selectLanguage": "Elegir idioma",
     "contact": "CONECTEMOS"
   },
   "home": {
@@ -293,8 +294,9 @@
   },
   "services": {
     "metaTitle": "Servicios",
-    "heroTitle": "Ingeniero de software y asesor en IA y automatización para empresas.",
-    "heroBody": "Construyo software y agentes de IA que resuelven problemas reales de negocio. 15 años construyendo software para empresas de medios, aerolíneas y streaming. Disponibilidad inmediata.",
+    "metaDescription": "Ingeniero de software y asesor de IA y automatización. Agentes de IA en una semana, MVPs full-stack rápidos y asesoría técnica como CTO o EM fraccional.",
+    "heroTitle": "Ingeniero de software y asesor de IA y automatización para empresas.",
+    "heroBody": "Construyo software y agentes de IA que resuelven problemas reales de negocio. Llevo 15 años construyendo software para empresas de medios, aerolíneas y streaming. Puedo empezar ahora.",
     "bookCall": "Agenda una llamada",
     "calendlyUrl": "https://cal.com/iolivares/15min?from=iolivares.com",
     "logosTitle": "Empresas",
@@ -304,15 +306,15 @@
     "recommendations": {
       "diego": {
         "context": "Globant",
-        "quote": "Working with Ivan on my teams was a genuine pleasure. He brings deep expertise across multiple disciplines, with particular strength in frontend engineering — and, rarely, the ability to connect technical decisions directly to business outcomes. When someone can articulate why a frontend library should be implemented or upgraded in terms of what it unlocks for the business, you have a team that can demonstrate real ROI rather than just ship code. Ivan is also an exceptional mentor, investing in the people around him and consistently raising the bar for the professionals on his team. Any organization would benefit from having him.",
+        "quote": "Trabajar con Iván en mis equipos fue un verdadero gusto. Tiene experiencia profunda en varias disciplinas, con particular fuerza en frontend y, cosa poco común, la capacidad de conectar las decisiones técnicas con el resultado de negocio. Cuando alguien puede explicar por qué conviene implementar o actualizar una librería de frontend según lo que abre para el negocio, tienes un equipo que puede mostrar un retorno real y no solo entregar código. Iván también es un mentor excepcional: invierte en la gente que lo rodea y sube el nivel de los profesionales de su equipo. Cualquier organización se beneficiaría de tenerlo.",
         "name": "Diego H. Mazzitelli",
-        "role": "Vice President of Technology, Globant"
+        "role": "Vicepresidente de tecnología, Globant"
       },
       "alex": {
         "context": "Globant",
-        "quote": "It was a pleasure working with Iván. As Tech Director, he consistently planned ahead, anticipating risks and dependencies before they became problems while still moving fast and keeping an eye for detail. Great leader, always pushing people forward.",
+        "quote": "Fue un gusto trabajar con Iván. Como director técnico, se anticipaba: veía riesgos y dependencias antes de que fueran un problema, sin dejar de ir rápido y cuidar el detalle. Un gran líder, siempre empujando a la gente hacia adelante.",
         "name": "Alex Otero",
-        "role": "Sr. Technical Director, Globant"
+        "role": "Director técnico senior, Globant"
       }
     },
     "motion": {
@@ -332,24 +334,24 @@
     "includes": "Qué incluye",
     "timeline": "Plazo",
     "priceLabel": "Precio",
-    "priceLocked": "El precio se muestra al terminar el formulario.",
+    "priceLocked": "El precio aparece cuando terminas el formulario.",
     "priceReference": "Precios de referencia. El precio final se define una vez que entendemos tu proyecto.",
     "availableNow": "Disponible ahora",
     "formOpen": "Completa el formulario",
     "codeYours": "El código queda en tus repositorios.",
-    "alsoTitle": "También",
+    "alsoTitle": "Además",
     "packages": {
       "agent": {
-        "title": "Agente / automatización con IA en 1 semana",
-        "audience": "Empresas con un proceso repetitivo (atención, back-office, CRM, reportes) que quieren automatizarlo con IA ya",
-        "includes1": "Descubrimiento del proceso y diseño del agente",
-        "includes2": "Integración con LLMs (Anthropic, OpenAI, xAI, AWS Bedrock) y tus sistemas",
+        "title": "Agente de IA / automatización en 1 semana",
+        "audience": "Empresas con un proceso repetitivo (soporte, operaciones, CRM, reportes) que quieren automatizarlo con IA ahora",
+        "includes1": "Entender el proceso y diseñar el agente",
+        "includes2": "Integración con modelos de IA (Anthropic, OpenAI, xAI, AWS Bedrock) y tus sistemas",
         "includes3": "Despliegue y traspaso documentado",
         "timeline": "1 semana"
       },
       "mvp": {
-        "title": "MVP / desarrollo rápido full-stack",
-        "audience": "Founders y empresas que necesitan validar un producto o lanzar una nueva funcionalidad rápido",
+        "title": "MVP / desarrollo full-stack rápido",
+        "audience": "Fundadores y empresas que necesitan validar un producto o lanzar una función nueva, rápido",
         "includes1": "Arquitectura",
         "includes2": "Desarrollo full-stack (TypeScript, React/Next.js, Node.js, PostgreSQL)",
         "includes3": "Despliegue en AWS/GCP/Cloudflare y CI/CD",
@@ -359,9 +361,9 @@
         "title": "Asesoría técnica / CTO o EM fraccional",
         "audience": "Startups y empresas sin CTO o con equipos que necesitan liderazgo técnico senior a tiempo parcial",
         "includes1": "Estrategia y arquitectura",
-        "includes2": "Roadmap técnico",
-        "includes3": "Revisión de equipo y procesos",
-        "includes4": "Adopción de IA en el ciclo de desarrollo",
+        "includes2": "Hoja de ruta técnica",
+        "includes3": "Revisión del equipo y de los procesos",
+        "includes4": "Adopción de IA en el desarrollo",
         "includes5": "Apoyo en decisiones y proveedores",
         "timeline": "Unas 6 horas por semana"
       }
@@ -371,15 +373,15 @@
     "talks": {
       "nextTitle": "Construyendo la próxima generación de sitios web de aerolíneas",
       "nextWhere": "Next.js Conf",
-      "obsTitle": "Observability 101: Monitorear tu app no es solo cosa de devops",
+      "obsTitle": "Observabilidad 101: monitorear tu aplicación no es cosa de devops",
       "obsWhere": "WebConf LATAM y Reliable Web Summit"
     },
     "processTitle": "Cómo funciona",
     "steps": {
-      "call": "Llamada de 30 minutos: entendemos tu problema y objetivos.",
+      "call": "Llamada de 30 minutos: vemos tu problema y lo que quieres lograr.",
       "proposal": "Propuesta en 48 horas: alcance, plazo y precio cerrados.",
       "build": "Construcción: avances visibles durante el proyecto.",
-      "handoff": "Entrega y traspaso: código, documentación y acompañamiento para que tu equipo siga solo."
+      "handoff": "Entrega y traspaso: código, documentación y apoyo para que tu equipo siga solo."
     },
     "faqTitle": "Preguntas",
     "faq": {
@@ -389,69 +391,70 @@
       },
       "remote": {
         "question": "¿Trabajas con empresas fuera de Chile?",
-        "answer": "Sí. Trabajo remoto en español e inglés, con superposición horaria con EE.UU."
+        "answer": "Sí. Trabajo remoto, en español y en inglés, con cruce de horario con Estados Unidos."
       },
       "stack": {
         "question": "¿Qué tecnologías usas?",
         "answer": "TypeScript, React/Next.js, Node.js, PostgreSQL, AWS, GCP y Cloudflare. Para IA: Anthropic, OpenAI, xAI y AWS Bedrock."
       },
       "ownership": {
-        "question": "¿Quién es dueño del código?",
-        "answer": "Tú. Todo se entrega en tus repositorios y cuentas."
+        "question": "¿De quién es el código?",
+        "answer": "Tuyo. Todo queda en tus repositorios y cuentas."
       },
       "start": {
         "question": "¿Cuándo puedes empezar?",
-        "answer": "Disponibilidad inmediata."
+        "answer": "Puedo empezar ahora."
       }
     },
     "ctaTitle": "¿Tienes un proceso para automatizar o un producto para lanzar? Hablemos.",
     "form": {
       "jump": "Ver precios",
       "title": "Ver precios de los paquetes",
-      "body": "Deja tu email para el precio del MVP y de la asesoría, y para que te responda. Qué necesitas es opcional.",
+      "body": "Deja tu correo para ver los precios de referencia, y para que te responda. Qué necesitas es opcional.",
       "open": "Completa el formulario",
       "honeypot": "Sitio web",
-      "email": "Email",
+      "email": "Correo",
       "name": "Nombre",
       "company": "Empresa",
       "need": "¿Qué necesitas? (opcional)",
       "submit": "Ver precios",
       "submitting": "Enviando…",
       "privacy": "Lo uso para responderte. No es una lista de correo.",
-      "successTitle": "Precios",
+      "successTitle": "Precios de referencia",
       "successBody": "Gracias. Aquí están los tres paquetes, con plazo y precio.",
       "received": "Gracias. Te escribiré.",
       "errors": {
         "invalidBody": "Hay algo en el formulario que no es válido. Revísalo e inténtalo de nuevo.",
-        "invalidEmail": "Escribe un email válido.",
+        "invalidEmail": "Escribe un correo válido.",
         "invalidName": "El nombre es demasiado largo.",
         "invalidCompany": "La empresa es demasiado larga.",
         "invalidNeed": "Esa nota es demasiado larga.",
         "tooFast": "Espera un segundo e inténtalo de nuevo.",
-        "rateLimited": "Demasiadas solicitudes con este email. Inténtalo más tarde.",
+        "rateLimited": "Demasiados intentos con este correo. Prueba más tarde.",
         "origin": "Envía el formulario desde esta página.",
         "network": "No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.",
-        "turnstile": "La verificación anti-bots no pasó. Inténtalo de nuevo."
+        "turnstile": "No pude comprobar que eres una persona. Inténtalo de nuevo."
       }
     },
     "funnel": {
       "back": "Atrás",
       "close": "Cerrar",
       "continue": "Continuar",
-      "packageQuestion": "¿Cuál de estos es el trabajo?",
+      "packageQuestion": "¿Cuál se parece más a lo que necesitas?",
       "packageHint": "Elige el más cercano. Lo ajustamos en la llamada.",
       "needQuestion": "¿Qué necesitas?",
       "needHint": "Con una frase basta.",
       "aboutQuestion": "¿A quién le respondo?",
-      "emailQuestion": "¿A qué email te escribo?",
+      "emailQuestion": "¿A qué correo te escribo?",
       "emailHint": "Después ves los precios de referencia. También te escribo para coordinar una llamada.",
+      "label": "Formulario para ver los precios",
       "cleared": "Listo",
       "minutes": "Unos 2 minutos",
       "steps": {
         "package": "Trabajo",
         "need": "Necesidad",
         "about": "Tú",
-        "email": "Email",
+        "email": "Correo",
         "prices": "Precios"
       }
     }

@@ -250,7 +250,7 @@ function quoteFor(id: PackageId, locale: InquiryLocale): PackageQuote {
       return locale === "es"
         ? {
             id,
-            name: "Agente / automatización con IA en 1 semana",
+            name: "Agente de IA / automatización en 1 semana",
             price: "Desde US$1.500, 50% por adelantado",
             timeline: "1 semana",
           }
@@ -264,7 +264,7 @@ function quoteFor(id: PackageId, locale: InquiryLocale): PackageQuote {
       return locale === "es"
         ? {
             id,
-            name: "MVP / desarrollo rápido full-stack",
+            name: "MVP / desarrollo full-stack rápido",
             price: "Desde US$5.000",
             timeline: "4 a 6 semanas",
           }

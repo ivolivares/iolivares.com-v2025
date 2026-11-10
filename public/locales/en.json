@@ -4,6 +4,7 @@
     "thoughts": "THOUGHTS",
     "talks": "TALKS",
     "services": "SERVICES",
+    "selectLanguage": "Select language",
     "contact": "CONNECT"
   },
   "home": {
@@ -293,6 +294,7 @@
   },
   "services": {
     "metaTitle": "Services",
+    "metaDescription": "Software engineer and AI & automation advisor. One-week AI agents, fast full-stack MVPs, and fractional technical leadership.",
     "heroTitle": "Software engineer and AI & automation advisor for companies.",
     "heroBody": "I build software and AI agents that solve real business problems. 15 years building software for companies in media, airlines and streaming. Available immediately.",
     "bookCall": "Book a call",
@@ -408,7 +410,7 @@
     "form": {
       "jump": "See pricing",
       "title": "See package pricing",
-      "body": "Leave your email for the MVP and advisory prices, and so I can reply. What you need is optional.",
+      "body": "Leave your email to see the reference prices, and so I can reply. What you need is optional.",
       "open": "Complete the form",
       "honeypot": "Website",
       "email": "Email",
@@ -445,6 +447,7 @@
       "aboutQuestion": "Who should I reply to?",
       "emailQuestion": "Where can I write you?",
       "emailHint": "Then you'll see the reference prices. I'll email you to set up a call.",
+      "label": "Form to see pricing",
       "cleared": "Done",
       "minutes": "About 2 minutes",
       "steps": {
