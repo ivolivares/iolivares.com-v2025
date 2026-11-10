@@ -1,6 +1,7 @@
 "use client"
 
 import { type ReactNode, useEffect, useRef, useState } from "react"
+import { createPortal } from "react-dom"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -45,6 +46,11 @@ export function ServicesLeadForm({
   const [quotes, setQuotes] = useState<PackageQuote[] | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     if (!open) return
@@ -83,7 +89,7 @@ export function ServicesLeadForm({
     }
   }, [open, step])
 
-  if (!open) return null
+  if (!open || !mounted) return null
 
   const index = STEPS.indexOf(step)
 
@@ -160,8 +166,12 @@ export function ServicesLeadForm({
     }
   }
 
-  return (
-    <div className="fixed inset-0 z-[70] bg-background text-foreground" role="dialog" aria-modal="true">
+  return createPortal(
+    <div
+      className="fixed inset-0 z-[70] h-dvh overflow-y-auto bg-background text-foreground"
+      role="dialog"
+      aria-modal="true"
+    >
       <div className="grid h-full md:grid-cols-[16rem_minmax(0,1fr)]">
         <aside className="hidden border-r border-border p-6 md:block">
           <p className="text-sm text-muted-foreground">{t("services.funnel.minutes")}</p>
@@ -336,7 +346,8 @@ export function ServicesLeadForm({
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
 
