@@ -304,10 +304,7 @@ export function ServicesLeadForm({
               </StepFrame>
             ) : null}
             {step === "prices" && quotes ? (
-              <StepFrame title={t("services.form.successTitle")} hint={t("services.form.successBody")}>
-                <p className="text-sm font-medium text-emerald-700 dark:text-emerald-400">
-                  {t("services.funnel.cleared")}
-                </p>
+              <StepFrame title={t("services.priceReference")} hint={t("services.form.successBody")}>
                 <ServicesPriceClose emailAddress={email} interest={interest} name={name} need={need} quotes={quotes} />
               </StepFrame>
             ) : null}

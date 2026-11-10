@@ -58,6 +58,9 @@ export function ServicesPriceClose({
           </li>
         ))}
       </ul>
+      <p className="mt-6 text-balance text-sm leading-relaxed text-muted-foreground">
+        {t("services.faq.payment.answer")}
+      </p>
       <p className="mt-6 text-balance text-base leading-relaxed">{t("services.funnel.settle")}</p>
       <div className="mt-4 flex flex-col gap-3 sm:flex-row">
         <Button asChild className={`h-auto min-h-11 w-full whitespace-normal px-5 py-2.5 sm:flex-1 ${pressable}`}>
