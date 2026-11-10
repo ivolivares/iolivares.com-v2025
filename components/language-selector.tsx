@@ -6,7 +6,7 @@ import { Language, useTranslation } from "@/hooks/use-translation"
 
 export function LanguageSelector() {
   const [isOpen, setIsOpen] = useState(false)
-  const { language, setLanguage } = useTranslation()
+  const { language, setLanguage, t } = useTranslation()
 
   const languages = [
     { code: "en", flag: "🇺🇸", name: "English" },
@@ -20,13 +20,20 @@ export function LanguageSelector() {
   }
 
   const currentLanguage = languages.find((lang) => lang.code === language) || languages[0]
+  const languageLabel = t("nav.selectLanguage")
+  const languageAria =
+    typeof languageLabel === "string" && !languageLabel.startsWith("nav.")
+      ? languageLabel
+      : language === "es"
+        ? "Elegir idioma"
+        : "Select language"
 
   return (
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-muted/50"
-        aria-label="Select language"
+        aria-label={languageAria}
       >
         <Globe className="w-4 h-4" />
         <span className="hidden sm:inline">{currentLanguage.name}</span>

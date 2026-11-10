@@ -32,3 +32,6 @@ next-env.d.ts
 # cloudflare
 /.open-next/
 /.wrangler/
+
+# local services-inquiry mock (no Notion env)
+/.data/

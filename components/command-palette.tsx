@@ -62,6 +62,7 @@ export function CommandPalette({ open: controlledOpen, onOpenChange }: CommandPa
     { icon: Home, label: t("commandPalette.commands.about"), route: "/" },
     { icon: MessageSquare, label: "Thoughts", route: "/thoughts" },
     { icon: Mic, label: t("commandPalette.commands.talks"), route: "/talks" },
+    { icon: Briefcase, label: t("commandPalette.commands.services"), route: "/services" },
     { icon: User, label: t("commandPalette.commands.givingTalks"), route: "/giving-talks" },
     { icon: Mail, label: t("commandPalette.commands.connect"), route: "/connect" },
     { icon: ExternalLink, label: t("commandPalette.commands.links"), route: "/links" },
