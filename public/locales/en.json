@@ -387,7 +387,7 @@
     "faq": {
       "payment": {
         "question": "How do payments work?",
-        "answer": "50% upfront and 50% on delivery, via bank transfer or Wise."
+        "answer": "Milestone-based payments: the first one at kickoff, the rest against deliverables. Advisory is billed monthly. I send an invoice, we put a short agreement in writing before starting, and you can pay by bank transfer or card."
       },
       "remote": {
         "question": "Do you work with companies outside Chile?",
@@ -412,6 +412,7 @@
       "title": "See package pricing",
       "body": "Leave your email to see the reference prices, and so I can reply. What you need is optional.",
       "open": "Complete the form",
+      "seePrices": "See prices",
       "honeypot": "Website",
       "email": "Email",
       "name": "Name",
