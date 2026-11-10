@@ -251,13 +251,13 @@ function quoteFor(id: PackageId, locale: InquiryLocale): PackageQuote {
         ? {
             id,
             name: "Agente de IA / automatización en 1 semana",
-            price: "Desde US$1.500, 50% por adelantado",
+            price: "Desde US$1.500",
             timeline: "1 semana",
           }
         : {
             id,
             name: "AI agent / automation in 1 week",
-            price: "From US$1,500, 50% upfront",
+            price: "From US$1,500",
             timeline: "1 week",
           }
     case "mvp":

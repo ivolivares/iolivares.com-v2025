@@ -26,8 +26,8 @@ function body(overrides: Record<string, unknown> = {}) {
 test("package quotes keep the known price and the public page names no clients", async () => {
   const en = packageQuotes("en")
   const es = packageQuotes("es")
-  assert.equal(en[0]?.price, "From US$1,500, 50% upfront")
-  assert.equal(es[0]?.price, "Desde US$1.500, 50% por adelantado")
+  assert.equal(en[0]?.price, "From US$1,500")
+  assert.equal(es[0]?.price, "Desde US$1.500")
   assert.equal(en[1]?.price, "From US$5,000")
   assert.equal(en[1]?.timeline, "4 to 6 weeks")
   assert.equal(es[1]?.price, "Desde US$5.000")
@@ -102,7 +102,7 @@ test("a Notion failure still reveals pricing and does not throw", async () => {
   if (!result.ok) return
   assert.equal(result.stored, false)
   assert.equal(result.storage, "notion")
-  assert.equal(result.packages[0]?.price, "Desde US$1.500, 50% por adelantado")
+  assert.equal(result.packages[0]?.price, "Desde US$1.500")
 })
 
 test("a stored lead notifies once, and a mail failure still reveals pricing", async () => {
