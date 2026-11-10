@@ -267,3 +267,37 @@
     transform: translate3d(-66.6%, 0, 0);
   }
 }
+
+/* Notion tables become GitHub-flavored markdown, so editor column widths are lost.
+   Two-column tables keep a compact first column and let the rest wrap. Wider
+   tables give every column a readable minimum and scroll sideways when needed. */
+@layer components {
+  .post-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  /* Notion marks header cells bold. `bolder` on top of semibold jumps to 900. */
+  .post-table th :is(strong, b) {
+    font-weight: 700;
+  }
+
+  .post-table :is(th, td):first-child:nth-last-child(2) {
+    width: 8rem;
+  }
+
+  @media (min-width: 640px) {
+    .post-table :is(th, td):first-child:nth-last-child(2) {
+      width: 10rem;
+    }
+  }
+
+  .post-table:has(tr > :nth-child(3)) {
+    table-layout: auto;
+  }
+
+  .post-table:has(tr > :nth-child(3)) :is(th, td) {
+    min-width: 9rem;
+  }
+}
