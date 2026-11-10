@@ -2,19 +2,34 @@ const TURNSTILE_TEST_SECRET = "1x0000000000000000000000000000000AA"
 
 export const TURNSTILE_TEST_SITE_KEY = "1x00000000000000000000AA"
 
-const TEST_TURNSTILE_HOSTS = new Set(["127.0.0.1", "localhost", "preview.iolivares.com"])
+export const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "0x4AAAAAAF62OAYvIEAQmASR"
 
-export function allowsTestTurnstile(host: string): boolean {
-  return TEST_TURNSTILE_HOSTS.has(host)
+const RESEND_FROM = "Iván Olivares <hi@iolivares.com>"
+
+export function isLocalHost(host: string): boolean {
+  return host === "localhost" || host === "127.0.0.1"
 }
 
-type EmailBinding = {
-  send(message: { from: string; subject: string; text: string; to: string }): Promise<unknown>
+export function allowsOnScreenCode(host: string): boolean {
+  return isLocalHost(host) || host === "preview.iolivares.com"
 }
 
-export async function verifyTurnstile(token: string, ip: string | null, onWorker: boolean, host = "") {
-  const secret =
-    process.env.TURNSTILE_SECRET_KEY || (!onWorker || allowsTestTurnstile(host) ? TURNSTILE_TEST_SECRET : "")
+export function turnstileSecret(env: unknown, host: string): string {
+  const configured = readWorkerSecret(env, "TURNSTILE_SECRET_KEY")
+  if (configured) return configured
+  if (isLocalHost(host)) return TURNSTILE_TEST_SECRET
+  return ""
+}
+
+export function readWorkerSecret(env: unknown, name: keyof CloudflareEnv): string {
+  if (env && typeof env === "object" && name in env) {
+    const value = (env as CloudflareEnv)[name]
+    if (typeof value === "string" && value) return value
+  }
+  return process.env[name] ?? ""
+}
+
+export async function verifyTurnstile(token: string, ip: string | null, secret: string) {
   if (!secret || !token) return false
   const body = new FormData()
   body.set("secret", secret)
@@ -27,22 +42,43 @@ export async function verifyTurnstile(token: string, ip: string | null, onWorker
 }
 
 export async function sendOtpEmail(input: {
+  apiKey: string
   code: string
-  env: unknown
   locale: "en" | "es"
-  onWorker: boolean
   to: string
-}): Promise<"dev" | "sent" | "unavailable"> {
-  const email = readEmailBinding(input.env)
-  if (!email) return input.onWorker ? "unavailable" : "dev"
-  const from = "hi@iolivares.com"
+}): Promise<"sent" | "unavailable"> {
+  if (!input.apiKey) return "unavailable"
   const subject = input.locale === "es" ? "Tu código para ver los precios" : "Your code to see pricing"
   const text =
     input.locale === "es"
       ? `Tu código es ${input.code}. Vence en 10 minutos.`
       : `Your code is ${input.code}. It expires in 10 minutes.`
   try {
-    await email.send({ from, subject, text, to: input.to })
+    const response = await fetch("https://api.resend.com/emails", {
+      body: JSON.stringify({
+        from: RESEND_FROM,
+        subject,
+        text,
+        to: [input.to],
+      }),
+      headers: {
+        Authorization: `Bearer ${input.apiKey}`,
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    })
+    const payload = (await response.json().catch(() => null)) as { id?: string; message?: string } | null
+    if (!response.ok) {
+      console.error(
+        JSON.stringify({
+          detail: payload?.message ?? `resend ${response.status}`,
+          event: "service_otp_email",
+          status: response.status,
+        })
+      )
+      return "unavailable"
+    }
+    console.info(JSON.stringify({ event: "service_otp_email", id: payload?.id ?? null, status: response.status }))
     return "sent"
   } catch (error) {
     console.error(
@@ -50,11 +86,4 @@ export async function sendOtpEmail(input: {
     )
     return "unavailable"
   }
-}
-
-function readEmailBinding(env: unknown): EmailBinding | null {
-  if (!env || typeof env !== "object") return null
-  const candidate = (env as { SERVICES_EMAIL?: { send?: unknown } }).SERVICES_EMAIL
-  if (!candidate || typeof candidate.send !== "function") return null
-  return candidate as EmailBinding
 }

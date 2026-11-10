@@ -433,7 +433,7 @@
         "network": "Couldn't send that. Check your connection and try again.",
         "turnstile": "The bot check did not pass. Try again.",
         "invalidCode": "That code is wrong or it expired.",
-        "emailUnavailable": "The code could not be sent. Email me and I'll reply."
+        "emailUnavailable": "The code could not be sent. Email hi@iolivares.com and I'll reply."
       }
     },
     "funnel": {

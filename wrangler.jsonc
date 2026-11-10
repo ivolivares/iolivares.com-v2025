@@ -24,12 +24,6 @@
       "service": "iolivares-dot-com"
     }
   ],
-  "send_email": [
-    {
-      "name": "SERVICES_EMAIL",
-      "allowed_sender_addresses": ["hi@iolivares.com"]
-    }
-  ],
   "env": {
     "preview": {
       "name": "iolivares-dot-com-preview",
@@ -53,12 +47,6 @@
         {
           "binding": "WORKER_SELF_REFERENCE",
           "service": "iolivares-dot-com-preview"
-        }
-      ],
-      "send_email": [
-        {
-          "name": "SERVICES_EMAIL",
-          "allowed_sender_addresses": ["hi@iolivares.com"]
         }
       ]
     }

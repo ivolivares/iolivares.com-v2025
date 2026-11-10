@@ -433,7 +433,7 @@
         "network": "No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.",
         "turnstile": "La verificación anti-bots no pasó. Inténtalo de nuevo.",
         "invalidCode": "Ese código no es válido o venció.",
-        "emailUnavailable": "No pude enviar el código. Escríbeme y te respondo."
+        "emailUnavailable": "No pude enviar el código. Escríbeme a hi@iolivares.com y te respondo."
       }
     },
     "funnel": {

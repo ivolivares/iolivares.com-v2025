@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { useTranslation } from "@/hooks/use-translation"
-import { allowsTestTurnstile, TURNSTILE_TEST_SITE_KEY } from "@/lib/service-challenge"
+import { isLocalHost, TURNSTILE_SITE_KEY, TURNSTILE_TEST_SITE_KEY } from "@/lib/service-challenge"
 import { isInquiryFailure, isInquirySuccess, type PackageId, type PackageQuote } from "@/lib/service-inquiry-contract"
 
 const STEPS = ["package", "need", "about", "email", "code", "prices"] as const
@@ -362,9 +362,14 @@ function StepFrame({ children, hint, title }: { children: ReactNode; hint?: Reac
 }
 
 function siteKey() {
-  if (process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY) return process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
-  if (typeof window !== "undefined" && allowsTestTurnstile(window.location.hostname)) return TURNSTILE_TEST_SITE_KEY
-  return ""
+  if (
+    typeof window !== "undefined" &&
+    isLocalHost(window.location.hostname) &&
+    !process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
+  ) {
+    return TURNSTILE_TEST_SITE_KEY
+  }
+  return TURNSTILE_SITE_KEY
 }
 
 function errorText(code: string | undefined, t: (key: string) => ReactNode) {

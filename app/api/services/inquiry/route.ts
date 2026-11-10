@@ -1,7 +1,13 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare"
 import { NextResponse } from "next/server"
 import { z } from "zod"
-import { allowsTestTurnstile, sendOtpEmail, verifyTurnstile } from "@/lib/service-challenge"
+import {
+  allowsOnScreenCode,
+  readWorkerSecret,
+  sendOtpEmail,
+  turnstileSecret,
+  verifyTurnstile,
+} from "@/lib/service-challenge"
 import { defaultInquiryFilePath, isCloudflareWorker, submitServiceInquiry } from "@/lib/service-inquiries"
 import { type InquiryErrorCode, type InquiryResponse, isInquiryFailure } from "@/lib/service-inquiry-contract"
 import { createOtp, OTP_COOKIE, otpSecret, verifyOtp } from "@/lib/service-otp"
@@ -54,22 +60,21 @@ async function sendCode(request: Request, body: unknown) {
   if (!parsed.success) return NextResponse.json({ error: "invalid_email", ok: false }, { status: 400 })
   const onWorker = isCloudflareWorker()
   const host = new URL(request.url).host
+  const { env } = await platformEnv()
   const ip = request.headers.get("cf-connecting-ip")
-  const human = await verifyTurnstile(parsed.data.turnstileToken, ip, onWorker, host)
+  const human = await verifyTurnstile(parsed.data.turnstileToken, ip, turnstileSecret(env, host))
   if (!human) return NextResponse.json({ error: "turnstile", ok: false }, { status: 400 })
   const secret = otpSecret(onWorker)
   if (!secret) return NextResponse.json({ error: "email_unavailable", ok: false }, { status: 503 })
   const otp = await createOtp(parsed.data.email, secret)
-  const { env } = await platformEnv()
   const delivery = await sendOtpEmail({
+    apiKey: readWorkerSecret(env, "RESEND_API_KEY"),
     code: otp.code,
-    env,
     locale: parsed.data.locale === "es" ? "es" : "en",
-    onWorker,
     to: parsed.data.email,
   })
-  const showCode = delivery === "dev" || (delivery === "unavailable" && allowsTestTurnstile(host))
-  if (delivery === "unavailable" && !showCode) {
+  const showCode = delivery !== "sent" && allowsOnScreenCode(host)
+  if (delivery !== "sent" && !showCode) {
     return NextResponse.json({ error: "email_unavailable", ok: false }, { status: 503 })
   }
   const response = NextResponse.json({ devCode: showCode ? otp.code : undefined, ok: true })
