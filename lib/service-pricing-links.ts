@@ -27,8 +27,15 @@ export function pricingMailto(input: {
     input.locale === "es"
       ? `Hola Iván, soy ${who}. Vi ${input.packageName} en iolivares.com y quiero conversar.`
       : `Hi Iván, I'm ${who}. I looked at ${input.packageName} on iolivares.com and I'd like to talk.`
-  const params = new URLSearchParams({ body, subject })
-  return `mailto:${input.ownerEmail}?${params.toString()}`
+  const query = [
+    `subject=${encodeMailto(subject)}`,
+    `body=${encodeMailto(body)}`,
+  ].join("&")
+  return `mailto:${input.ownerEmail}?${query}`
+}
+
+function encodeMailto(value: string): string {
+  return encodeURIComponent(value.replace(/\r\n/g, "\n").replace(/\n/g, "\r\n"))
 }
 
 function bookingNote(packageName: string, need: string): string {

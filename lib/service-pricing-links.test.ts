@@ -21,14 +21,16 @@ test("the booking link keeps the site param and prefills name, email and notes",
 })
 
 test("the mailto names the package and the person in the page language", () => {
-  const spanish = new URL(
-    pricingMailto({
-      locale: "es",
-      name: "Ada",
-      ownerEmail: "hi@iolivares.com",
-      packageName: "Agente de IA / automatización en 1 semana",
-    })
-  )
+  const raw = pricingMailto({
+    locale: "es",
+    name: "Ada",
+    ownerEmail: "hi@iolivares.com",
+    packageName: "Agente de IA / automatización en 1 semana",
+  })
+  assert.equal(raw.includes("+"), false)
+  assert.match(raw, /subject=Agente%20de%20IA/)
+  assert.match(raw, /body=Hola%20Iv%C3%A1n/)
+  const spanish = new URL(raw)
   assert.equal(spanish.protocol, "mailto:")
   assert.equal(spanish.pathname, "hi@iolivares.com")
   assert.equal(spanish.searchParams.get("subject"), "Agente de IA / automatización en 1 semana — Ada")
