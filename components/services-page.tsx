@@ -3,6 +3,7 @@
 import { Calendar, Check, Code2, FileText, FolderCheck } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { usePostHog } from "posthog-js/react"
 import { type ReactNode, useEffect, useState } from "react"
 import { Email } from "@/components/email"
 import { LogosCarousel } from "@/components/logos-carousel"
@@ -12,7 +13,8 @@ import { Button } from "@/components/ui/button"
 import { siteConfig } from "@/config/site"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import { useTranslation } from "@/hooks/use-translation"
-import { type PackageQuote } from "@/lib/service-inquiry-contract"
+import { type PackageId, type PackageQuote } from "@/lib/service-inquiry-contract"
+import { readPricingUnlock } from "@/lib/service-pricing-memory"
 
 const STEP_IDS = [
   { icon: Calendar, id: "call" },
@@ -53,11 +55,18 @@ const focusRing =
 
 export function ServicesPage() {
   const sectionRef = useScrollReveal()
-  const { isLoading, t } = useTranslation()
+  const { isLoading, language, t } = useTranslation()
+  const posthog = usePostHog()
   const [quotes, setQuotes] = useState<PackageQuote[] | null>(null)
   const [formOpen, setFormOpen] = useState(false)
+  const [savedInterest, setSavedInterest] = useState<PackageId | null>(null)
+  const [resumeInterest, setResumeInterest] = useState<PackageId | null>(null)
   const [logosPaused, setLogosPaused] = useState(false)
   const [logoColumns, setLogoColumns] = useState(4)
+
+  useEffect(() => {
+    setSavedInterest(readPricingUnlock()?.interest ?? null)
+  }, [])
 
   useEffect(() => {
     const query = window.matchMedia("(max-width: 640px)")
@@ -125,10 +134,21 @@ export function ServicesPage() {
               </p>
               <Button
                 type="button"
-                onClick={() => setFormOpen(true)}
+                onClick={() => {
+                  if (savedInterest) {
+                    posthog?.capture("services_pricing_revisit", {
+                      locale: language === "es" ? "es" : "en",
+                      package: savedInterest,
+                    })
+                    setResumeInterest(savedInterest)
+                  } else {
+                    setResumeInterest(null)
+                  }
+                  setFormOpen(true)
+                }}
                 className={`mt-6 h-auto min-h-11 whitespace-normal rounded-full px-5 py-2.5 text-center ${pressable}`}
               >
-                {t("services.form.open")}
+                {savedInterest ? t("services.form.seePrices") : t("services.form.open")}
               </Button>
             </div>
             <ul className="space-y-3">
@@ -261,7 +281,15 @@ export function ServicesPage() {
           </ul>
         </section>
 
-        <ServicesLeadForm open={formOpen} onClose={() => setFormOpen(false)} onQuotes={setQuotes} />
+        <ServicesLeadForm
+          open={formOpen}
+          onClose={() => {
+            setFormOpen(false)
+            setSavedInterest(readPricingUnlock()?.interest ?? null)
+          }}
+          onQuotes={setQuotes}
+          resumeInterest={resumeInterest}
+        />
 
         {projects.length > 0 ? (
           <section className="mt-10" aria-labelledby="services-work">

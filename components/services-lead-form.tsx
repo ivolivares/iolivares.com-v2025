@@ -16,6 +16,8 @@ import {
   type PackageId,
   type PackageQuote,
 } from "@/lib/service-inquiry-contract"
+import { rememberPricingUnlock } from "@/lib/service-pricing-memory"
+import { packageQuotes } from "@/lib/service-quotes"
 
 const STEPS = ["package", "need", "about", "email", "prices"] as const
 type Step = (typeof STEPS)[number]
@@ -44,10 +46,12 @@ export function ServicesLeadForm({
   onClose,
   onQuotes,
   open,
+  resumeInterest = null,
 }: {
   onClose: () => void
   onQuotes: (quotes: PackageQuote[]) => void
   open: boolean
+  resumeInterest?: PackageId | null
 }) {
   const { language, t } = useTranslation()
   const startedAt = useRef(0)
@@ -69,6 +73,11 @@ export function ServicesLeadForm({
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  useEffect(() => {
+    if (!open || !resumeInterest) return
+    onQuotes(packageQuotes(language === "es" ? "es" : "en"))
+  }, [language, onQuotes, open, resumeInterest])
 
   useEffect(() => {
     if (!open) return
@@ -115,7 +124,11 @@ export function ServicesLeadForm({
 
   if (!open || !mounted) return null
 
-  const index = STEPS.indexOf(step)
+  const resumedQuotes = resumeInterest ? packageQuotes(language === "es" ? "es" : "en") : null
+  const viewStep: Step = resumedQuotes ? "prices" : step
+  const viewQuotes = resumedQuotes ?? quotes
+  const viewInterest = resumeInterest ?? interest
+  const index = STEPS.indexOf(viewStep)
 
   function go(next: Step) {
     setError(null)
@@ -147,6 +160,7 @@ export function ServicesLeadForm({
       })
       const payload: unknown = await response.json()
       if (isInquirySuccess(payload) && payload.packages.length > 0) {
+        rememberPricingUnlock(interest)
         setQuotes(payload.packages)
         onQuotes(payload.packages)
         go("prices")
@@ -180,7 +194,7 @@ export function ServicesLeadForm({
           <ol className="mt-6 space-y-3">
             {STEPS.map((item, itemIndex) => {
               const cleared = itemIndex < index
-              const current = item === step
+              const current = item === viewStep
               return (
                 <li key={item} className={current ? "font-medium" : "text-muted-foreground"}>
                   <span className="mr-2 inline-block w-4">{cleared ? "✓" : itemIndex + 1}</span>
@@ -204,7 +218,7 @@ export function ServicesLeadForm({
             </button>
           </div>
           <div className="mx-auto flex w-full min-w-0 max-w-xl flex-1 flex-col justify-center px-4 py-6 pb-16 sm:px-8">
-            {step === "package" ? (
+            {viewStep === "package" ? (
               <StepFrame title={t("services.funnel.packageQuestion")} hint={t("services.funnel.packageHint")}>
                 <div className="space-y-3">
                   {(["agent", "mvp", "advisory"] as const).map((id) => (
@@ -226,7 +240,7 @@ export function ServicesLeadForm({
                 </div>
               </StepFrame>
             ) : null}
-            {step === "need" ? (
+            {viewStep === "need" ? (
               <StepFrame title={t("services.funnel.needQuestion")} hint={t("services.funnel.needHint")}>
                 <Textarea
                   value={need}
@@ -240,7 +254,7 @@ export function ServicesLeadForm({
                 </Button>
               </StepFrame>
             ) : null}
-            {step === "about" ? (
+            {viewStep === "about" ? (
               <StepFrame title={t("services.funnel.aboutQuestion")}>
                 <div className="space-y-4">
                   <div className="space-y-2">
@@ -278,7 +292,7 @@ export function ServicesLeadForm({
                 </Button>
               </StepFrame>
             ) : null}
-            {step === "email" ? (
+            {viewStep === "email" ? (
               <StepFrame title={t("services.funnel.emailQuestion")} hint={t("services.funnel.emailHint")}>
                 <Label htmlFor="lead-email">{t("services.form.email")}</Label>
                 <Input
@@ -303,12 +317,18 @@ export function ServicesLeadForm({
                 </Button>
               </StepFrame>
             ) : null}
-            {step === "prices" && quotes ? (
+            {viewStep === "prices" && viewQuotes ? (
               <StepFrame title={t("services.priceReference")} hint={t("services.form.successBody")}>
-                <ServicesPriceClose emailAddress={email} interest={interest} name={name} need={need} quotes={quotes} />
+                <ServicesPriceClose
+                  emailAddress={resumedQuotes ? "" : email}
+                  interest={viewInterest}
+                  name={resumedQuotes ? "" : name}
+                  need={resumedQuotes ? "" : need}
+                  quotes={viewQuotes}
+                />
               </StepFrame>
             ) : null}
-            {index > 0 && step !== "prices" ? (
+            {index > 0 && viewStep !== "prices" ? (
               <button
                 type="button"
                 onClick={() => go(STEPS[index - 1])}

@@ -7,10 +7,9 @@ import {
   type InquiryLocale,
   type InquiryResponse,
   type InquiryStorage,
-  PACKAGE_IDS,
   type PackageId,
-  type PackageQuote,
 } from "./service-inquiry-contract"
+import { packageQuotes } from "./service-quotes"
 
 /** Notion Status select options. The site only writes "Nuevo". */
 export const LEAD_STATUS_OPTIONS = ["Nuevo", "Contactado", "En conversación", "Propuesta", "Ganado", "Perdido"] as const
@@ -107,9 +106,7 @@ export function isCloudflareWorker(): boolean {
   return typeof navigator !== "undefined" && navigator.userAgent.includes("Cloudflare-Workers")
 }
 
-export function packageQuotes(locale: InquiryLocale): PackageQuote[] {
-  return PACKAGE_IDS.map((id) => quoteFor(id, locale))
-}
+export { packageQuotes } from "./service-quotes"
 
 export async function submitServiceInquiry(input: SubmitInput): Promise<InquiryResponse> {
   if (!input.originAllowed) return failure("origin")
@@ -242,57 +239,6 @@ async function resolveDataSourceId(notion: Client, rawId: string): Promise<strin
 export function normalizeNotionId(id: string): string {
   const match = id.trim().match(/[a-f0-9]{32}|[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/i)
   return (match ? match[0] : id.trim()).replace(/-/g, "")
-}
-
-function quoteFor(id: PackageId, locale: InquiryLocale): PackageQuote {
-  switch (id) {
-    case "agent":
-      return locale === "es"
-        ? {
-            id,
-            name: "Agente de IA / automatización en 1 semana",
-            price: "Desde US$1.500",
-            timeline: "1 semana",
-          }
-        : {
-            id,
-            name: "AI agent / automation in 1 week",
-            price: "From US$1,500",
-            timeline: "1 week",
-          }
-    case "mvp":
-      return locale === "es"
-        ? {
-            id,
-            name: "MVP / desarrollo full-stack rápido",
-            price: "Desde US$5.000",
-            timeline: "4 a 6 semanas",
-          }
-        : {
-            id,
-            name: "MVP / rapid full-stack development",
-            price: "From US$5,000",
-            timeline: "4 to 6 weeks",
-          }
-    case "advisory":
-      return locale === "es"
-        ? {
-            id,
-            name: "Asesoría técnica / CTO o EM fraccional",
-            price: "Desde US$2.500 al mes",
-            timeline: "Unas 6 horas por semana",
-          }
-        : {
-            id,
-            name: "Technical advisory / fractional CTO or EM",
-            price: "From US$2,500 a month",
-            timeline: "About 6 hours a week",
-          }
-    default: {
-      const exhaustive: never = id
-      return exhaustive
-    }
-  }
 }
 
 function parseInquiry(body: unknown): { ok: true; value: ParsedInquiry } | { error: InquiryErrorCode; ok: false } {

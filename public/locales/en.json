@@ -412,6 +412,7 @@
       "title": "See package pricing",
       "body": "Leave your email to see the reference prices, and so I can reply. What you need is optional.",
       "open": "Complete the form",
+      "seePrices": "See prices",
       "honeypot": "Website",
       "email": "Email",
       "name": "Name",

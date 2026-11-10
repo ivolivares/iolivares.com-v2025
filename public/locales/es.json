@@ -412,6 +412,7 @@
       "title": "Ver precios de los paquetes",
       "body": "Deja tu correo para ver los precios de referencia, y para que te responda. Qué necesitas es opcional.",
       "open": "Completa el formulario",
+      "seePrices": "Ver precios",
       "honeypot": "Sitio web",
       "email": "Correo",
       "name": "Nombre",
