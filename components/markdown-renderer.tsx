@@ -20,6 +20,9 @@ interface MarkdownRendererProps {
   className?: string
 }
 
+const tableCellClassName =
+  "border-b border-border px-3 py-3 align-top wrap-break-word sm:px-4 sm:py-3.5 [&_ol]:my-0 [&_p]:mb-2 [&_p:last-child]:mb-0 [&_ul]:my-0"
+
 export function MarkdownRenderer({ content, className }: MarkdownRendererProps) {
   return (
     <div className={cn("prose prose-neutral dark:prose-invert max-w-none", className)}>
@@ -140,6 +143,19 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
               {children}
             </pre>
           ),
+          table: ({ children }) => (
+            <div className="my-8 w-full overflow-x-auto rounded-lg border border-border">
+              <table className="post-table text-left text-base leading-relaxed text-foreground">{children}</table>
+            </div>
+          ),
+          td: ({ children }) => <td className={tableCellClassName}>{children}</td>,
+          th: ({ children }) => (
+            <th scope="col" className={cn(tableCellClassName, "font-semibold text-foreground")}>
+              {children}
+            </th>
+          ),
+          thead: ({ children }) => <thead className="bg-muted">{children}</thead>,
+          tr: ({ children }) => <tr className="last:[&>td]:border-b-0 last:[&>th]:border-b-0">{children}</tr>,
           ul: ({ children }) => (
             <ul className="mb-6 pl-4 space-y-2 text-foreground list-disc list-outside block">{children}</ul>
           ),
